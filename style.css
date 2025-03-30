@@ -206,7 +206,7 @@
   --sds-color-text-danger-secondary: var(--sds-color-red-600);
   --sds-color-text-danger-tertiary: var(--sds-color-red-500);
   --sds-color-text-default-default: var(--sds-color-gray-900);
-  --sds-color-text-default-secondary: var(--sds-color-gray-500);
+  --sds-color-text-neutral-secondary: var(--sds-color-gray-500);
   --sds-color-text-default-tertiary: var(--sds-color-gray-400);
   --sds-color-text-disabled-default: var(--sds-color-brand-400);
   --sds-color-text-disabled-on-disabled: var(--sds-color-brand-400);
@@ -347,7 +347,7 @@
     --sds-color-text-danger-secondary: var(--sds-color-red-400);
     --sds-color-text-danger-tertiary: var(--sds-color-red-500);
     --sds-color-text-default-default: var(--sds-color-white-1000);
-    --sds-color-text-default-secondary: var(--sds-color-white-500);
+    --sds-color-text-neutral-secondary: var(--sds-color-white-500);
     --sds-color-text-default-tertiary: var(--sds-color-white-400);
     --sds-color-text-disabled-default: var(--sds-color-brand-500);
     --sds-color-text-disabled-on-disabled: var(--sds-color-brand-400);
@@ -538,6 +538,10 @@ input,
 textarea {
   all: unset;
   line-height: 1;
+}
+
+a{
+  cursor: pointer;
 }
 
 h1,h2,h3,h4,h5, p{
@@ -772,7 +776,7 @@ line-height: 120%; /* 28.8px */
 letter-spacing: -0.48px;
 }
 .about-subtitle{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
 
 /* Subheading */
 font-family: var(--sds-typography-subheading-font-family);
@@ -895,7 +899,7 @@ gap: 10px;
   letter-spacing: -0.48px;
 }
 .work-experience-card-date{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
 
 /* Body Base */
 font-family: var(--sds-typography-body-font-family);
@@ -906,7 +910,7 @@ line-height: 140%; /* 22.4px */
 color: #757575;
 }
 .work-experience-card-subtitle{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
 
 /* Body Base */
 font-family: var(--sds-typography-body-font-family);
@@ -1014,7 +1018,7 @@ align-self: stretch;
 align-self: stretch;
 }
 .technical-skills-card-body-p{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
 
   /* Body Base */
   font-family: var(--sds-typography-body-font-family);
@@ -1111,7 +1115,7 @@ line-height: 120%; /* 28.8px */
 letter-spacing: -0.48px;
 }
 .projects-card-text{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
 
   /* Body Base */
   font-family: var(--sds-typography-body-font-family);
@@ -1261,7 +1265,7 @@ line-height: 120%; /* 28.8px */
 letter-spacing: -0.48px;
 }
 .education-body-p{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
 
   /* Body Base */
   font-family: var(--sds-typography-body-font-family);
@@ -1364,7 +1368,7 @@ gap: 2px;
 flex: 1 0 0;
 }
 .testimonial-author-info-title{
-  color: var(--sds-color-text-default-secondary);
+  color: var(--sds-color-text-neutral-secondary);
   align-self: stretch;
   /* Body Strong */
   font-family: var(--sds-typography-body-font-family);
