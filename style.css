@@ -207,7 +207,7 @@
   --sds-color-text-danger-tertiary: var(--sds-color-red-500);
   --sds-color-text-default-default: var(--sds-color-gray-900);
   --sds-color-text-neutral-secondary: var(--sds-color-gray-500);
-  --sds-color-text-default-tertiary: var(--sds-color-gray-400);
+  --sds-color-text-neutral-secondary: var(--sds-color-gray-400);
   --sds-color-text-disabled-default: var(--sds-color-brand-400);
   --sds-color-text-disabled-on-disabled: var(--sds-color-brand-400);
   --sds-color-text-neutral-default: var(--sds-color-slate-900);
@@ -348,7 +348,7 @@
     --sds-color-text-danger-tertiary: var(--sds-color-red-500);
     --sds-color-text-default-default: var(--sds-color-white-1000);
     --sds-color-text-neutral-secondary: var(--sds-color-white-500);
-    --sds-color-text-default-tertiary: var(--sds-color-white-400);
+    --sds-color-text-neutral-secondary: var(--sds-color-white-400);
     --sds-color-text-disabled-default: var(--sds-color-brand-500);
     --sds-color-text-disabled-on-disabled: var(--sds-color-brand-400);
     --sds-color-text-neutral-default: var(--sds-color-slate-200);
@@ -785,7 +785,6 @@ font-style: normal;
 font-weight: var(--sds-typography-subheading-font-weight);
 line-height: 120%; /* 24px */
 align-self: stretch;
-color: #757575;
 }
 .about-section-text{
   display: flex;
@@ -907,7 +906,6 @@ font-size: var(--sds-typography-body-size-medium);
 font-style: normal;
 font-weight: var(--sds-typography-body-font-weight-regular);
 line-height: 140%; /* 22.4px */
-color: #757575;
 }
 .work-experience-card-subtitle{
   color: var(--sds-color-text-neutral-secondary);
@@ -1379,7 +1377,7 @@ flex: 1 0 0;
 }
 .testimonial-author-info-subtitle{
   align-self: stretch;
-  color: var(--sds-color-text-default-tertiary);
+  color: var(--sds-color-text-neutral-secondary);
 
 /* Body Base */
 font-family: var(--sds-typography-body-font-family);
