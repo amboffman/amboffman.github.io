@@ -10,42 +10,429 @@
 </head>
 
 <body>
-  <header>
-    <nav>
-        <a href="#" class="logo"><img src="./assets/logo.png" alt="Anthony Boffman Development Logo"></a>
-        <div class="top-center"><button>Jump To: <span>Hero</span></button></div>
-        <a href="" class="top-right"><button class="secondary icon"><span class="download"></span>Download Resume</button></a>
-    </nav>
+  <header class="navigation">
+    <div class="navigation-button">Contact</div>
   </header>
-  <div class="hero-section">
-    <h1>Anthony Boffman</h1>
-    <h2>Software Engineer</h2>
-    <h3>Software Engineer | Building User-Centric Tools</h3>
-    <button class="secondary">CTA</button>
-  </div>
-  <div class="container">
+  <section class="hero-section">
+    <div class="cover-image"></div>
+    <div class="profile-photo">
+      <div class="profile-photo-placeholder"></div>
+      <div alt="photo of Anthony Boffman" class="profile-photo-image"></div>
+    <div class="basic-info">
+      <h1 class="hero-title">Anthony Boffman</h1>
+      <p class="hero-subtitle">Software Engineer</p>
+    </div>
+    </div>
+  </section>
+  <section class="about-section">
+    <div class="about-text">
+      <div class="about-heading">
+          <h2 class="about-title">
+            About
+          </h2>
+          <p class="about-subtitle">Software Engineer | Building User-Centric Tools</p>
+      </div>
+      <p class="about-section-text">I'm a results-driven Software Engineer with 5+ years of experience crafting robust web and mobile solutions. I thrive in collaborative environments and excel at translating complex requirements into user-friendly products. My passion for innovation helps me identify and implement cutting-edge technologies to optimize performance and scalability.</p>
+    </div>
+    <img src="./assets/Image.png" alt="" class="about-section-image">
+  </section>
 
-    <section id="main-bio">
+  <section class="work-experience-section">
+    <h2 class="work-experience-heading">Work Experience</h2>
+    <div class="work-experience-cards">
+      <div class="work-experience-card">
+        <div class="work-experience-card-image"></div>
+        <div class="work-experience-card-body">
+          <div class="work-experience-card-header">
+            <div class="work-experience-card-heading">
+              <div class="work-experience-card-title-and-date">
+                <h3 class="work-experience-card-title">Role and Title</h3>
+                <p class="work-experience-card-date">July 2012 - December 2016</p>
+              </div>
+              <h4 class="work-experience-card-subtitle">Company name</h4>
+            </div>
+          </div>
+            <ul class="work-experience-card-text">
+              <li>Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience.</li>
+              <li>Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%.</li>
+              <li>Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting.</li>
+              <li>Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce.</li>
+              <li>Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making.</li>
+            </ul>
+        </div>
+      </div>
+      <div class="work-experience-card">
+        <div class="work-experience-card-image"></div>
+        <div class="work-experience-card-body">
+          <div class="work-experience-card-header">
+            <div class="work-experience-card-heading">
+              <div class="work-experience-card-title-and-date">
+                <h3 class="work-experience-card-title">Role and Title</h3>
+                <p class="work-experience-card-date">July 2012 - December 2016</p>
+              </div>
+              <h4 class="work-experience-card-subtitle">Company name</h4>
+            </div>
+          </div>
+            <ul class="work-experience-card-text">
+              <li>Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience.</li>
+              <li>Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%.</li>
+              <li>Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting.</li>
+              <li>Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce.</li>
+              <li>Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making.</li>
+            </ul>
+        </div>
+      </div>
+      <div class="work-experience-card">
+        <div class="work-experience-card-image"></div>
+        <div class="work-experience-card-body">
+          <div class="work-experience-card-header">
+            <div class="work-experience-card-heading">
+              <div class="work-experience-card-title-and-date">
+                <h3 class="work-experience-card-title">Role and Title</h3>
+                <p class="work-experience-card-date">July 2012 - December 2016</p>
+              </div>
+              <h4 class="work-experience-card-subtitle">Company name</h4>
+            </div>
+          </div>
+            <ul class="work-experience-card-text">
+              <li>Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience.</li>
+              <li>Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%.</li>
+              <li>Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting.</li>
+              <li>Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce.</li>
+              <li>Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making.</li>
+            </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="technical-skills-section">
+    <div class="technical-skills-heading">
+      <h2 class="technical-skills-title">Technical Skills</h2>
+    </div>
+    <div class="technical-skills-cards-grid">
+      <div class="technical-skills-card">
+        <svg class="technical-skill-card-icon" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+          <path d="M4.33333 12H28.3333M12.3333 28V12M6.99999 4H25.6667C27.1394 4 28.3333 5.19391 28.3333 6.66667V25.3333C28.3333 26.8061 27.1394 28 25.6667 28H6.99999C5.52724 28 4.33333 26.8061 4.33333 25.3333V6.66667C4.33333 5.19391 5.52724 4 6.99999 4Z" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="technical-skill-card-body">
+          <div class="technical-skills-card-body-text">
+            <h3 class="technical-skills-card-body-title">Front-End</h3>
+            <p class="technical-skills-card-body-p">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
+          </div>
+        </div>
+      </div>
+      <div class="technical-skills-card">
+        <svg class="technical-skill-card-icon" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+          <path d="M4.33333 12H28.3333M12.3333 28V12M6.99999 4H25.6667C27.1394 4 28.3333 5.19391 28.3333 6.66667V25.3333C28.3333 26.8061 27.1394 28 25.6667 28H6.99999C5.52724 28 4.33333 26.8061 4.33333 25.3333V6.66667C4.33333 5.19391 5.52724 4 6.99999 4Z" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="technical-skill-card-body">
+          <div class="technical-skills-card-body-text">
+            <h3 class="technical-skills-card-body-title">Front-End</h3>
+            <p class="technical-skills-card-body-p">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
+          </div>
+        </div>
+      </div>
+      <div class="technical-skills-card">
+        <svg class="technical-skill-card-icon" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
+          <path d="M4.33333 12H28.3333M12.3333 28V12M6.99999 4H25.6667C27.1394 4 28.3333 5.19391 28.3333 6.66667V25.3333C28.3333 26.8061 27.1394 28 25.6667 28H6.99999C5.52724 28 4.33333 26.8061 4.33333 25.3333V6.66667C4.33333 5.19391 5.52724 4 6.99999 4Z" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <div class="technical-skill-card-body">
+          <div class="technical-skills-card-body-text">
+            <h3 class="technical-skills-card-body-title">Front-End</h3>
+            <p class="technical-skills-card-body-p">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="projects-section">
+    <div class="projects-heading">
+      <h2 class="prohects-title">Projects & Technologies</h2>
+      <div class="projects-cards-row">
+        <div class="projects-card">
+          <div class="projects-card-image">
 
-      <h2>Your Name</h2>
-      <img src="http://placehold.it/200x200" alt="Your Image" id="bio-image">
-      <p>Write a short paragraph or two about yourself, or use placeholder text from <a href="http://www.lipsum.com/">www.lipsum.com</a></p>
+          </div>
+          <div class="projects-card-body">
+            <div class="projects-card-body-text">
+              <h3 class="projects-card-title">
+                Title
+              </h3>
+              <div class="projects-card-text">
+                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+              </div>
+              <div class="projects-cards-buttons">
+                <button class="projects-card-button-secondary">
+                  Button
+                </button>
+                <button class="projects-card-button-primary">
+                  Button
+                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="projects-card">
+          <div class="projects-card-image">
 
-    </section>
+          </div>
+          <div class="projects-card-body">
+            <div class="projects-card-body-text">
+              <h3 class="projects-card-title">
+                Title
+              </h3>
+              <div class="projects-card-text">
+                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+              </div>
+              <div class="projects-cards-buttons">
+                <button class="projects-card-button-secondary">
+                  Button
+                </button>
+                <button class="projects-card-button-primary">
+                  Button
+                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="projects-card">
+          <div class="projects-card-image">
 
-    <section id="contact-info">
+          </div>
+          <div class="projects-card-body">
+            <div class="projects-card-body-text">
+              <h3 class="projects-card-title">
+                Title
+              </h3>
+              <div class="projects-card-text">
+                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+              </div>
+              <div class="projects-cards-buttons">
+                <button class="projects-card-button-secondary">
+                  Button
+                </button>
+                <button class="projects-card-button-primary">
+                  Button
+                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="projects-cards-row">
+        <div class="projects-card">
+          <div class="projects-card-image">
 
-      <h2>Contact Info</h2>
+          </div>
+          <div class="projects-card-body">
+            <div class="projects-card-body-text">
+              <h3 class="projects-card-title">
+                Title
+              </h3>
+              <div class="projects-card-text">
+                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+              </div>
+              <div class="projects-cards-buttons">
+                <button class="projects-card-button-secondary">
+                  Button
+                </button>
+                <button class="projects-card-button-primary">
+                  Button
+                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="projects-card">
+          <div class="projects-card-image">
 
-      <ul>
-        <li><strong>Email:</strong> <a href="#">someplace@gmail.com</a></li>
-        <li><strong>Github:</strong> <a href="#">sampleName</a></li>
-        <li><strong>Portfolio:</strong> <a href="#">coming soon</a></li>
-      </ul>
+          </div>
+          <div class="projects-card-body">
+            <div class="projects-card-body-text">
+              <h3 class="projects-card-title">
+                Title
+              </h3>
+              <div class="projects-card-text">
+                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+              </div>
+              <div class="projects-cards-buttons">
+                <button class="projects-card-button-secondary">
+                  Button
+                </button>
+                <button class="projects-card-button-primary">
+                  Button
+                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="projects-card">
+          <div class="projects-card-image">
 
-    </section>
-
-  </div>
+          </div>
+          <div class="projects-card-body">
+            <div class="projects-card-body-text">
+              <h3 class="projects-card-title">
+                Title
+              </h3>
+              <div class="projects-card-text">
+                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+              </div>
+              <div class="projects-cards-buttons">
+                <button class="projects-card-button-secondary">
+                  Button
+                </button>
+                <button class="projects-card-button-primary">
+                  Button
+                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
+                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="education-section">
+    <div class="education-heading">
+      <h2 class="education-heading-title">Education</h2>
+    </div>
+    <div class="education-cards">
+      <div class="education-card">
+        <div class="education-card-image"></div>
+        <div class="education-card-body">
+          <div class="education-body-text">
+            <h3 class="education-body-title">Title</h3>
+            <p class="education-body-p">
+              Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="education-card">
+        <div class="education-card-image"></div>
+        <div class="education-card-body">
+          <div class="education-body-text">
+            <h3 class="education-body-title">Title</h3>
+            <p class="education-body-p">
+              Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="education-card">
+        <div class="education-card-image"></div>
+        <div class="education-card-body">
+          <div class="education-body-text">
+            <h3 class="education-body-title">Title</h3>
+            <p class="education-body-p">
+              Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="testimonial-section">
+    <h2 class="testimonial-heading-title">Testimonials</h2>
+    <div class="testimonial-cards">
+      <div class="testimonial-card">
+        <div class="testimonial-heading">
+          <h3 class="testimonial-title">Title</h3>
+          <div class="testimonial-text">
+            <p class="testimonial-text-p">
+              Review body
+            </p>
+          </div>
+        </div>
+        <div class="testimonial-author-block">
+          <div class="testimonial-author-info">
+            <h5 class="testimonial-author-info-title">Author Name</h5>
+            <p class="testimonial-author-info-subtitle">Author Company</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-heading">
+          <h3 class="testimonial-title">Title</h3>
+          <div class="testimonial-text">
+            <p class="testimonial-text-p">
+              Review body
+            </p>
+          </div>
+        </div>
+        <div class="testimonial-author-block">
+          <div class="testimonial-author-info">
+            <h5 class="testimonial-author-info-title">Author Name</h5>
+            <p class="testimonial-author-info-subtitle">Author Company</p>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-heading">
+          <h3 class="testimonial-title">Title</h3>
+          <div class="testimonial-text">
+            <p class="testimonial-text-p">
+              Review body
+            </p>
+          </div>
+        </div>
+        <div class="testimonial-author-block">
+          <div class="testimonial-author-info">
+            <h5 class="testimonial-author-info-title">Author Name</h5>
+            <p class="testimonial-author-info-subtitle">Author Company</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer class="footer">
+    <div class="footer-links">
+      <div class="footer-links-buttton-list">
+        <a class="footer-links-svg" href="https://www.linkedin.com/in/anthonymboffman/">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_8_1057)">
+              <path d="M19 0H5C2.239 0 0 2.239 0 5V19C0 21.761 2.239 24 5 24H19C21.762 24 24 21.761 24 19V5C24 2.239 21.762 0 19 0ZM8 19H5V8H8V19ZM6.5 6.732C5.534 6.732 4.75 5.942 4.75 4.968C4.75 3.994 5.534 3.204 6.5 3.204C7.466 3.204 8.25 3.994 8.25 4.968C8.25 5.942 7.467 6.732 6.5 6.732ZM20 19H17V13.396C17 10.028 13 10.283 13 13.396V19H10V8H13V9.765C14.396 7.179 20 6.988 20 12.241V19Z" fill="#1E1E1E"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_8_1057">
+                <rect width="24" height="24" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+        <a class="footer-links-svg" href="https://github.com/amboffman">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <g clip-path="url(#clip0_8_1113)">
+              <path d="M9 18.9999C4 20.4999 4 16.4999 2 15.9999M16 21.9999V18.1299C16.0375 17.6531 15.9731 17.1737 15.811 16.7237C15.6489 16.2737 15.3929 15.8634 15.06 15.5199C18.2 15.1699 21.5 13.9799 21.5 8.51994C21.4997 7.12376 20.9627 5.78114 20 4.76994C20.4559 3.54844 20.4236 2.19829 19.91 0.999938C19.91 0.999938 18.73 0.649938 16 2.47994C13.708 1.85876 11.292 1.85876 9 2.47994C6.27 0.649938 5.09 0.999938 5.09 0.999938C4.57638 2.19829 4.54414 3.54844 5 4.76994C4.03013 5.78864 3.49252 7.1434 3.5 8.54994C3.5 13.9699 6.8 15.1599 9.94 15.5499C9.611 15.8899 9.35726 16.2953 9.19531 16.7399C9.03335 17.1844 8.96681 17.658 9 18.1299V21.9999" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </g>
+            <defs>
+              <clipPath id="clip0_8_1113">
+                <rect width="24" height="24" fill="white"/>
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
