@@ -1050,16 +1050,7 @@ background: var(--sds-color-background-default-default);
 flex-direction: column;
 align-items: flex-start;
 gap: var(--sds-size-space-200);
-color: var(--sds-color-text-default-default);
 
-/* Heading */
-font-family: var(--sds-typography-heading-font-family);
-font-size: var(--sds-typography-heading-size-base);
-font-style: normal;
-font-weight: var(--sds-typography-heading-font-weight);
-line-height: 120%; /* 28.8px */
-letter-spacing: -0.48px;
-align-self: stretch;
 }
 .projects-title{
   color: var(--sds-color-text-default-default);
