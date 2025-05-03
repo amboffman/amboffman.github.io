@@ -1544,4 +1544,7 @@ line-height: 100%; /* 16px */
     gap: 1.5rem;
 
   }
+  .about-section-image{
+  width: 100%;
+  }
 }
