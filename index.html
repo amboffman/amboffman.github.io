@@ -1,504 +1,428 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang="en" class="scroll-smooth">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anthony Boffman - Software Engineer Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+        }
+        .hero-bg {
+            background-color: #1a1a2e;
+            background-image: 
+                radial-gradient(circle at 15% 50%, #16213e, transparent 40%),
+                radial-gradient(circle at 85% 30%, #0f3460, transparent 40%);
+        }
+        body.high-contrast {
+            background-color: #000000;
+            color: #ffffff;
+        }
+        body.high-contrast .bg-gray-900,
+        body.high-contrast .bg-gray-800,
+        body.high-contrast .hero-bg {
+            background-color: #000000 !important;
+            background-image: none !important;
+        }
+        body.high-contrast .text-cyan-400 {
+            color: #ffff00; 
+        }
+        body.high-contrast .text-cyan-300 {
+            color: #f0f0f0;
+        }
+        body.high-contrast .border-cyan-400 {
+            border-color: #ffff00;
+        }
+        body.high-contrast .bg-cyan-500 {
+            background-color: #005f6b;
+        }
+        body.high-contrast .bg-cyan-600 {
+            background-color: #004c57;
+        }
+        body.high-contrast .bg-gray-700 {
+            background-color: #1a1a1a;
+        }
+        body.high-contrast input, body.high-contrast textarea {
+             background-color: #222 !important;
+             border-color: #555 !important;
+        }
+        body.high-contrast .text-green-400 {
+            color: #8cff8c;
+        }
 
-  <meta charset="UTF-8">
-  <meta name="description" content="A results-driven Software Engineer with 5+ years of experience crafting robust web and mobile solutions. ">
-  <meta name="robots" content="noindex, nofollow">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anthony Boffman Web Devloper</title>
-  <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org/",
-      "@type": "Person",
-      "name": "Anthony Boffman",
-      "url": "https://amboffman.github.io/",
-      "jobTitle": "Software Engineer",
-      "description": "A results-driven Software Engineer with 5+ years of experience crafting robust web and mobile solutions. I thrive in collaborative environments and excel at translating complex requirements into user-friendly products. My passion for innovation helps me identify and implement cutting-edge technologies to optimize performance and scalability.",
-      "image": "https://amboffman.github.io/assets/profile-image.jpg",
-      "sameAs": [
-        "https://www.linkedin.com/in/anthonymboffman/",
-        "https://github.com/amboffman"
-      ],
-      "skills": [
-        "Front-End Development",
-        "Web Development",
-        "Mobile Development",
-        "User-Centric Design",
-        "Scalability Optimization"
-      ],
-      "workExperience": [
-        {
-          "@type": "Organization",
-          "name": "Rio SEO",
-          "jobTitle": "Application Developer III,
-          "startDate": "2021-06-01",
-          "endDate": "present",
-          "description": "Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience. Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%. Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting. Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce. Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making."
-        },
-         {
-          "@type": "Organization",
-          "name": "Company name",
-          "jobTitle": "Role and Title",
-          "startDate": "2012-07-01",
-          "endDate": "2016-12-31",
-          "description": "Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience. Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%. Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting. Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce. Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making."
-        },
-        {
-          "@type": "Organization",
-          "name": "Company name",
-          "jobTitle": "Role and Title",
-          "startDate": "2012-07-01",
-          "endDate": "2016-12-31",
-          "description": "Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience. Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%. Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting. Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce. Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making."
+        /* Gauge animation */
+        .gauge-bar {
+            width: 0%;
+            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
-      ],
-      "education": [
-        {
-          "@type": "EducationalOrganization",
-          "name": "School Name",
-          "description": "Description of the degree or course."
-        },
-        {
-          "@type": "EducationalOrganization",
-          "name": "School Name",
-          "description": "Description of the degree or course."
-        },
-        {
-          "@type": "EducationalOrganization",
-          "name": "School Name",
-          "description": "Description of the degree or course."
+        .gauge-bar.animated {
+            width: var(--gauge-width, 95%);
         }
-      ]
-    }
-    </script>
+    </style>
 </head>
+<body class="bg-gray-900 text-gray-200">
 
-<body>
-  <header class="navigation">
-    <div class="navigation-button">Contact</div>
-  </header>
-  <section class="hero-section">
-    <div class="cover-image"></div>
-    <div class="profile-photo">
-      <div class="profile-photo-placeholder"></div>
-      <div alt="photo of Anthony Boffman" class="profile-photo-image"></div>
-    <div class="basic-info">
-      <h1 class="hero-title">Anthony Boffman</h1>
-      <p class="hero-subtitle">Software Engineer</p>
-    </div>
-    </div>
-  </section>
-  <section class="about-section">
-    <div class="about-text">
-      <div class="about-heading">
-          <h2 class="about-title">
-            About
-          </h2>
-          <p class="about-subtitle">Your Partner for Technically Sound, Search-Visible Web Solutions</p>
-      </div>
-    <div class="about-section-text">
-      <p>I'm Anthony Boffman, a full-stack web developer specializing in creating fast, scalable, and secure websites architected for peak search engine performance and user engagement. I bridge the gap between technical implementation and digital marketing success.</p> 
-      <p>My technical toolkit is comprehensive, spanning front-end technologies like <strong>React, Next.js, JavaScript, and modern CSS frameworks (Tailwind, SASS)</strong>, to back-end systems using <strong>PHP, Node.js (Express), and databases like MySQL and MongoDB.</strong> I have a strong command of <strong>WordPress development (including custom plugin/theme work), REST API integration, Git version control, and cloud platforms like AWS and Google Firebase</strong>. While building, I prioritize <strong>performance optimization, scalable site architecture, and technical SEO best practices</strong> to ensure applications are not just built, but built to be <i>found</i> and to <i>perform</i>.</p>
-    </div>
-    </div>
-    <div alt="" class="about-section-image"></div>
-  </section>
+    <!-- Header & Navigation -->
+    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold text-white">AB</a>
+            <nav class="hidden md:flex space-x-8">
+                <a href="#about" class="hover:text-cyan-400 transition-colors duration-300">About</a>
+                <a href="#quality" class="hover:text-cyan-400 transition-colors duration-300">Quality</a>
+                <a href="#experience" class="hover:text-cyan-400 transition-colors duration-300">Experience</a>
+                <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300">Skills</a>
+                <a href="#contact" class="hover:text-cyan-400 transition-colors duration-300">Contact</a>
+            </nav>
+            <a href="#contact" class="hidden md:block bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105">
+                Hire Me
+            </a>
+            <button id="mobile-menu-button" class="md:hidden text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
+             <a href="#about" class="block py-2 px-6 text-center hover:bg-gray-700">About</a>
+             <a href="#quality" class="block py-2 px-6 text-center hover:bg-gray-700">Quality</a>
+             <a href="#experience" class="block py-2 px-6 text-center hover:bg-gray-700">Experience</a>
+             <a href="#skills" class="block py-2 px-6 text-center hover:bg-gray-700">Skills</a>
+             <a href="#contact" class="block py-2 px-6 text-center hover:bg-gray-700">Contact</a>
+        </div>
+    </header>
 
-  <section class="work-experience-section">
-    <h2 class="work-experience-heading">Work Experience</h2>
-    <div class="work-experience-cards">
-      <div class="work-experience-card">
-        <div class="work-experience-card-image"></div>
-        <div class="work-experience-card-body">
-          <div class="work-experience-card-header">
-            <div class="work-experience-card-heading">
-              <div class="work-experience-card-title-and-date">
-                <h3 class="work-experience-card-title">Role and Title</h3>
-                <p class="work-experience-card-date">July 2012 - December 2016</p>
-              </div>
-              <h4 class="work-experience-card-subtitle">Company name</h4>
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
+            <div class="container mx-auto px-6 text-center">
+                <img src="https://placehold.co/160x160/6366f1/ffffff?text=AB" alt="Anthony Boffman" class="w-40 h-40 mx-auto rounded-full border-4 border-cyan-400 shadow-xl mb-6">
+                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
+                    Hi, I'm Anthony Boffman
+                </h1>
+                <p class="text-xl md:text-2xl text-cyan-300 mb-8">
+                    Software Engineer with 5+ Years of Experience Building User-Centric Tools.
+                </p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#experience" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
+                        View My Work
+                    </a>
+                    <a href="#contact" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
+                        Get In Touch
+                    </a>
+                </div>
             </div>
-          </div>
-            <ul class="work-experience-card-text">
-              <li>Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience.</li>
-              <li>Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%.</li>
-              <li>Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting.</li>
-              <li>Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce.</li>
-              <li>Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making.</li>
-            </ul>
-        </div>
-      </div>
-      <div class="work-experience-card">
-        <div class="work-experience-card-image"></div>
-        <div class="work-experience-card-body">
-          <div class="work-experience-card-header">
-            <div class="work-experience-card-heading">
-              <div class="work-experience-card-title-and-date">
-                <h3 class="work-experience-card-title">Role and Title</h3>
-                <p class="work-experience-card-date">July 2012 - December 2016</p>
-              </div>
-              <h4 class="work-experience-card-subtitle">Company name</h4>
-            </div>
-          </div>
-            <ul class="work-experience-card-text">
-              <li>Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience.</li>
-              <li>Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%.</li>
-              <li>Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting.</li>
-              <li>Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce.</li>
-              <li>Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making.</li>
-            </ul>
-        </div>
-      </div>
-      <div class="work-experience-card">
-        <div class="work-experience-card-image"></div>
-        <div class="work-experience-card-body">
-          <div class="work-experience-card-header">
-            <div class="work-experience-card-heading">
-              <div class="work-experience-card-title-and-date">
-                <h3 class="work-experience-card-title">Role and Title</h3>
-                <p class="work-experience-card-date">July 2012 - December 2016</p>
-              </div>
-              <h4 class="work-experience-card-subtitle">Company name</h4>
-            </div>
-          </div>
-            <ul class="work-experience-card-text">
-              <li>Enhanced web presence: Developed site pages and debugged errors, ensuring optimal user experience.</li>
-              <li>Drove customer retention: Implemented a communication automation program, directly increasing retention rates by 18%.</li>
-              <li>Optimized team efficiency: Identified and implemented technical solutions, enhancing team capacity and generating insightful reporting.</li>
-              <li>Fostered knowledge sharing: Led training seminars for team members, upskilling the workforce.</li>
-              <li>Provided strategic insights: Analyzed and reported key performance indicators (KPIs) to top executives, informing decision-making.</li>
-            </ul>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="technical-skills-section">
-    <div class="technical-skills-heading">
-      <h2 class="technical-skills-title">Technical Skills</h2>
-    </div>
-    <div class="technical-skills-cards-grid">
-      <div class="technical-skills-card">
-        <svg class="technical-skill-card-icon" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
-          <path d="M4.33333 12H28.3333M12.3333 28V12M6.99999 4H25.6667C27.1394 4 28.3333 5.19391 28.3333 6.66667V25.3333C28.3333 26.8061 27.1394 28 25.6667 28H6.99999C5.52724 28 4.33333 26.8061 4.33333 25.3333V6.66667C4.33333 5.19391 5.52724 4 6.99999 4Z" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="technical-skill-card-body">
-          <div class="technical-skills-card-body-text">
-            <h3 class="technical-skills-card-body-title">Front-End</h3>
-            <p class="technical-skills-card-body-p">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
-          </div>
-        </div>
-      </div>
-      <div class="technical-skills-card">
-        <svg class="technical-skill-card-icon" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
-          <path d="M4.33333 12H28.3333M12.3333 28V12M6.99999 4H25.6667C27.1394 4 28.3333 5.19391 28.3333 6.66667V25.3333C28.3333 26.8061 27.1394 28 25.6667 28H6.99999C5.52724 28 4.33333 26.8061 4.33333 25.3333V6.66667C4.33333 5.19391 5.52724 4 6.99999 4Z" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="technical-skill-card-body">
-          <div class="technical-skills-card-body-text">
-            <h3 class="technical-skills-card-body-title">Front-End</h3>
-            <p class="technical-skills-card-body-p">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
-          </div>
-        </div>
-      </div>
-      <div class="technical-skills-card">
-        <svg class="technical-skill-card-icon" xmlns="http://www.w3.org/2000/svg" width="33" height="32" viewBox="0 0 33 32" fill="none">
-          <path d="M4.33333 12H28.3333M12.3333 28V12M6.99999 4H25.6667C27.1394 4 28.3333 5.19391 28.3333 6.66667V25.3333C28.3333 26.8061 27.1394 28 25.6667 28H6.99999C5.52724 28 4.33333 26.8061 4.33333 25.3333V6.66667C4.33333 5.19391 5.52724 4 6.99999 4Z" stroke="#1E1E1E" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <div class="technical-skill-card-body">
-          <div class="technical-skills-card-body-text">
-            <h3 class="technical-skills-card-body-title">Front-End</h3>
-            <p class="technical-skills-card-body-p">Body text for whatever you'd like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="projects-section">
-    <div class="projects-heading">
-      <h2 class="projects-title">Projects & Technologies</h2>
-      <div class="projects-cards-row">
-        <div class="projects-card">
-          <div class="projects-card-image">
+        </section>
 
-          </div>
-          <div class="projects-card-body">
-            <div class="projects-card-body-text">
-              <h3 class="projects-card-title">
-                Title
-              </h3>
-              <div class="projects-card-text">
-                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-              </div>
-              <div class="projects-cards-buttons">
-                <button class="projects-card-button-secondary">
-                  Button
-                </button>
-                <button class="projects-card-button-primary">
-                  Button
-                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
+        <!-- About Section -->
+        <section id="about" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-12">About Me</h2>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img src="https://placehold.co/600x600/1f2937/ffffff?text=Portrait" alt="About Anthony Boffman" class="rounded-lg shadow-2xl w-full">
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-semibold text-cyan-400 mb-4">Who I Am</h3>
+                        <p class="text-lg mb-4">
+                            I'm a results-driven Software Engineer with 5+ years of experience crafting robust web and mobile solutions. I thrive in collaborative environments and excel at translating complex requirements into user-friendly products. My passion for innovation helps me identify and implement cutting-edge technologies to optimize performance and scalability.
+                        </p>
+                        <p class="text-lg mb-6">
+                            Here's what I bring to the table: Full-Stack Prowess (MERN/MEAN, Java, React), Cloud & DevOps Fluency (AWS, Firebase, Git), a focus on quality assurance, and a strong design sensibility (Figma). Let's connect if you're seeking a developer dedicated to delivering exceptional user experiences.
+                        </p>
+                        <div class="flex space-x-4">
+                           <a href="https://linkedin.com/in/anthonyboffman" target="_blank" class="text-gray-400 hover:text-cyan-400">LinkedIn</a>
+                           <a href="https://github.com/amboffman" target="_blank" class="text-gray-400 hover:text-cyan-400">Github</a>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="projects-card">
-          <div class="projects-card-image">
+        </section>
 
-          </div>
-          <div class="projects-card-body">
-            <div class="projects-card-body-text">
-              <h3 class="projects-card-title">
-                Title
-              </h3>
-              <div class="projects-card-text">
-                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-              </div>
-              <div class="projects-cards-buttons">
-                <button class="projects-card-button-secondary">
-                  Button
-                </button>
-                <button class="projects-card-button-primary">
-                  Button
-                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="projects-card">
-          <div class="projects-card-image">
+        <!-- Commitment to Quality Section -->
+        <section id="quality" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-4">Commitment to Quality</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">I build websites that are not only beautiful but also high-performing, accessible, and SEO-friendly. This section demonstrates the built-in quality of this very page.</p>
+                
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+                    <!-- Core Web Vitals -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-4">Core Web Vitals</h3>
+                        <p class="text-sm text-gray-400 mb-6">This page is optimized for a fast, responsive user experience. The scores below are simulated to reflect best practices.</p>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium">LCP (Load Speed)</span>
+                                    <span class="text-sm font-medium">Excellent</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full gauge-bar" style="--gauge-width: 98%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium">INP (Responsiveness)</span>
+                                    <span class="text-sm font-medium">Excellent</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full gauge-bar" style="--gauge-width: 99%;"></div></div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span class="text-sm font-medium">CLS (Visual Stability)</span>
+                                    <span class="text-sm font-medium">Excellent</span>
+                                </div>
+                                <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full gauge-bar" style="--gauge-width: 100%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
 
-          </div>
-          <div class="projects-card-body">
-            <div class="projects-card-body-text">
-              <h3 class="projects-card-title">
-                Title
-              </h3>
-              <div class="projects-card-text">
-                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-              </div>
-              <div class="projects-cards-buttons">
-                <button class="projects-card-button-secondary">
-                  Button
-                </button>
-                <button class="projects-card-button-primary">
-                  Button
-                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="projects-cards-row">
-        <div class="projects-card">
-          <div class="projects-card-image">
+                    <!-- Accessibility -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-4">Accessibility</h3>
+                        <p class="text-sm text-gray-400 mb-6">A great website is usable by everyone. This site includes features to ensure accessibility.</p>
+                        <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg mb-4">
+                            <span class="font-medium">High Contrast Mode</span>
+                            <label for="contrast-toggle" class="relative inline-flex items-center cursor-pointer">
+                                <input type="checkbox" id="contrast-toggle" class="sr-only peer">
+                                <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600"></div>
+                            </label>
+                        </div>
+                         <ul class="list-disc list-inside space-y-2 text-gray-400 text-sm">
+                            <li>WCAG 2.1 AA Compliance</li>
+                            <li>Full Keyboard Navigation</li>
+                            <li>Semantic HTML & ARIA Labels</li>
+                            <li>Screen Reader Friendly</li>
+                        </ul>
+                    </div>
 
-          </div>
-          <div class="projects-card-body">
-            <div class="projects-card-body-text">
-              <h3 class="projects-card-title">
-                Title
-              </h3>
-              <div class="projects-card-text">
-                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-              </div>
-              <div class="projects-cards-buttons">
-                <button class="projects-card-button-secondary">
-                  Button
-                </button>
-                <button class="projects-card-button-primary">
-                  Button
-                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
+                    <!-- SEO -->
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
+                        <h3 class="text-xl font-bold text-cyan-400 mb-2">SEO Audit</h3>
+                        <div class="flex items-baseline mb-4">
+                            <p class="text-3xl font-bold text-green-400">98</p>
+                            <p class="text-xl text-gray-400">/100</p>
+                        </div>
+                        <p class="text-sm text-gray-400 mb-6">Built with a solid SEO foundation to ensure maximum visibility on search engines.</p>
+                        <div>
+                            <ul class="space-y-2">
+                                <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Optimized Meta Tags</span>
+                                </li>
+                                <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Image Alt Attributes</span>
+                                </li>
+                                <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Mobile-First Design</span>
+                                </li>
+                                 <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
+                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                    <span>Clean URL Structure</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
-        </div>
-        <div class="projects-card">
-          <div class="projects-card-image">
+        </section>
 
-          </div>
-          <div class="projects-card-body">
-            <div class="projects-card-body-text">
-              <h3 class="projects-card-title">
-                Title
-              </h3>
-              <div class="projects-card-text">
-                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-              </div>
-              <div class="projects-cards-buttons">
-                <button class="projects-card-button-secondary">
-                  Button
-                </button>
-                <button class="projects-card-button-primary">
-                  Button
-                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="projects-card">
-          <div class="projects-card-image">
 
-          </div>
-          <div class="projects-card-body">
-            <div class="projects-card-body-text">
-              <h3 class="projects-card-title">
-                Title
-              </h3>
-              <div class="projects-card-text">
-                Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-              </div>
-              <div class="projects-cards-buttons">
-                <button class="projects-card-button-secondary">
-                  Button
-                </button>
-                <button class="projects-card-button-primary">
-                  Button
-                  <svg class="projects-card-button-primary-arrow" xmlns="http://www.w3.org/2000/svg" width="17" height="16" viewBox="0 0 17 16" fill="none">
-                    <path d="M6.66666 12L10.6667 8L6.66666 4" stroke="#F2F2F2" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
-                  </svg>
-                </button>
-              </div>
+        <!-- Experience Section -->
+        <section id="experience" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-12">Professional Experience</h2>
+                <div class="max-w-4xl mx-auto">
+
+                    <div class="bg-gray-900 rounded-lg p-6 mb-8 shadow-lg">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-bold text-cyan-400">Application Developer III</h3>
+                            <p class="text-sm text-gray-400">Jun 2021 - Present</p>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-4">Press Ganey</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400">
+                            <li>Led design and development of 15+ high-traffic web apps, improving performance and user engagement, resulting in an average of <strong>56% increase in total views</strong> and <strong>19% increase in total action</strong>.</li>
+                            <li>Developed and implemented a custom Next.js and Wordpress CMS solution, empowering marketing teams to deploy new pages and campaign updates without developer bandwidth.</li>
+                            <li>Acted as primary liaison between the development team and stakeholders, effectively translating requirements into effective UI/UX designs and user stories.</li>
+                            <li>Engineered custom WordPress solutions, including plugins and Gutenberg blocks, to provide tailored functionality.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-lg p-6 mb-8 shadow-lg">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-bold text-cyan-400">Software Engineer (Internship)</h3>
+                            <p class="text-sm text-gray-400">Jul 2020 - Dec 2020</p>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-4">Victorise</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400">
+                            <li>Crafted cross-platform mobile experiences by developing native iOS and Android applications with React Native.</li>
+                            <li>Championed code quality by building clean, reusable code to enhance maintainability and streamline future development.</li>
+                            <li>Embraced a test-driven approach, designing functional and unit tests to improve code reliability and reduce defects.</li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-gray-900 rounded-lg p-6 shadow-lg">
+                        <div class="flex justify-between items-baseline mb-2">
+                            <h3 class="text-xl font-bold text-cyan-400">Enterprise Communications Coordinator</h3>
+                            <p class="text-sm text-gray-400">Nov 2018 - Mar 2020</p>
+                        </div>
+                        <p class="text-lg font-semibold text-gray-300 mb-4">ICW Group</p>
+                        <ul class="list-disc list-inside space-y-2 text-gray-400">
+                            <li>Drove customer retention by implementing a communication automation program, directly increasing retention rates by <strong>18%</strong>.</li>
+                            <li>Enhanced web presence by developing site pages and debugging errors, ensuring an optimal user experience.</li>
+                            <li>Optimized team efficiency by identifying and implementing technical solutions, enhancing team capacity and generating insightful reporting.</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="py-20 bg-gray-900">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-12">Technical Skills</h2>
+                <div class="flex flex-wrap justify-center items-center gap-6">
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">React</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Next.js</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">WordPress</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">JavaScript</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">PHP</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Node.js</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Java</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">AWS</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Firebase</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Git</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Figma</div>
+                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Tailwind CSS</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-gray-800">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center text-white mb-4">Contact Me</h2>
+                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">I'm currently open to new opportunities. Feel free to reach out via the form below or directly at <a href="mailto:amboffman@gmail.com" class="text-cyan-400 hover:underline">amboffman@gmail.com</a>.</p>
+                <div class="max-w-2xl mx-auto">
+                    <form id="contact-form" class="space-y-6">
+                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-400">Full Name</label>
+                            <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-white rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm p-3">
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-400">Email Address</label>
+                            <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-white rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm p-3">
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
+                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-white rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm p-3"></textarea>
+                        </div>
+                        <div>
+                            <button id="submit-button" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 disabled:opacity-50">
+                                Send Message
+                            </button>
+                        </div>
+                    </form>
+                    <div id="form-status" class="text-center mt-4"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900">
+        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
+            <p>&copy; 2024 Anthony Boffman. All Rights Reserved.</p>
         </div>
-      </div>
-    </div>
-  </section>
-  <section class="education-section">
-    <div class="education-heading">
-      <h2 class="education-heading-title">Education</h2>
-    </div>
-    <div class="education-cards">
-      <div class="education-card">
-        <div class="education-card-image"></div>
-        <div class="education-card-body">
-          <div class="education-body-text">
-            <h3 class="education-body-title">Title</h3>
-            <p class="education-body-p">
-              Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="education-card">
-        <div class="education-card-image"></div>
-        <div class="education-card-body">
-          <div class="education-body-text">
-            <h3 class="education-body-title">Title</h3>
-            <p class="education-body-p">
-              Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-            </p>
-          </div>
-        </div>
-      </div>
-      <div class="education-card">
-        <div class="education-card-image"></div>
-        <div class="education-card-body">
-          <div class="education-body-text">
-            <h3 class="education-body-title">Title</h3>
-            <p class="education-body-p">
-              Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes, or even a very very short story. 
-            </p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <section class="testimonial-section">
-    <h2 class="testimonial-heading-title">Testimonials</h2>
-    <div class="testimonial-cards">
-      <div class="testimonial-card">
-        <div class="testimonial-heading">
-          <h3 class="testimonial-title">Title</h3>
-          <div class="testimonial-text">
-            <p class="testimonial-text-p">
-              Review body
-            </p>
-          </div>
-        </div>
-        <div class="testimonial-author-block">
-          <div class="testimonial-author-info">
-            <p class="testimonial-author-info-title">Author Name</p>
-            <p class="testimonial-author-info-subtitle">Author Company</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-heading">
-          <h3 class="testimonial-title">Title</h3>
-          <div class="testimonial-text">
-            <p class="testimonial-text-p">
-              Review body
-            </p>
-          </div>
-        </div>
-        <div class="testimonial-author-block">
-          <div class="testimonial-author-info">
-            <p class="testimonial-author-info-title">Author Name</p>
-            <p class="testimonial-author-info-subtitle">Author Company</p>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card">
-        <div class="testimonial-heading">
-          <h3 class="testimonial-title">Title</h3>
-          <div class="testimonial-text">
-            <p class="testimonial-text-p">
-              Review body
-            </p>
-          </div>
-        </div>
-        <div class="testimonial-author-block">
-          <div class="testimonial-author-info">
-            <p class="testimonial-author-info-title">Author Name</p>
-            <p class="testimonial-author-info-subtitle">Author Company</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-  <footer class="footer">
-    <div class="footer-links">
-      <div class="footer-links-buttton-list">
-        <a class="footer-links-svg" title="View Linkedin Profile" aria-label="View Linkedin Profile" href="https://www.linkedin.com/in/anthonymboffman/">
-          <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="32" height="32" viewBox="0 0 32 32">
-            <title>linkedin</title>
-            <path d="M27.26 27.271h-4.733v-7.427c0-1.771-0.037-4.047-2.475-4.047-2.468 0-2.844 1.921-2.844 3.916v7.557h-4.739v-15.271h4.552v2.083h0.061c0.636-1.203 2.183-2.468 4.491-2.468 4.801 0 5.692 3.161 5.692 7.271v8.385zM7.115 9.912c-1.527 0-2.751-1.235-2.751-2.756 0-1.516 1.229-2.749 2.751-2.749s2.755 1.233 2.755 2.749c0 1.521-1.233 2.756-2.755 2.756zM9.489 27.271h-4.749v-15.271h4.749zM29.636 0h-27.276c-1.303 0-2.36 1.031-2.36 2.307v27.387c0 1.276 1.057 2.307 2.36 2.307h27.271c1.301 0 2.369-1.031 2.369-2.307v-27.387c0-1.276-1.068-2.307-2.369-2.307z"/>
-            </svg>
-        </a>
-        <a class="footer-links-svg" title="View Linkedin Profile" aria-label="View Linkedin Profile" href="https://github.com/amboffman">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-            <g clip-path="url(#clip0_8_1113)">
-              <path d="M9 18.9999C4 20.4999 4 16.4999 2 15.9999M16 21.9999V18.1299C16.0375 17.6531 15.9731 17.1737 15.811 16.7237C15.6489 16.2737 15.3929 15.8634 15.06 15.5199C18.2 15.1699 21.5 13.9799 21.5 8.51994C21.4997 7.12376 20.9627 5.78114 20 4.76994C20.4559 3.54844 20.4236 2.19829 19.91 0.999938C19.91 0.999938 18.73 0.649938 16 2.47994C13.708 1.85876 11.292 1.85876 9 2.47994C6.27 0.649938 5.09 0.999938 5.09 0.999938C4.57638 2.19829 4.54414 3.54844 5 4.76994C4.03013 5.78864 3.49252 7.1434 3.5 8.54994C3.5 13.9699 6.8 15.1599 9.94 15.5499C9.611 15.8899 9.35726 16.2953 9.19531 16.7399C9.03335 17.1844 8.96681 17.658 9 18.1299V21.9999" stroke="#1E1E1E" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            </g>
-            <defs>
-              <clipPath id="clip0_8_1113">
-                <rect width="24" height="24" fill="white"/>
-              </clipPath>
-            </defs>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </footer>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
+            for (let link of mobileMenuLinks) {
+                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+            }
+
+
+            // Core Web Vitals Gauge Animation
+            const qualitySection = document.getElementById('quality');
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    document.querySelectorAll('.gauge-bar').forEach(bar => {
+                        bar.classList.add('animated');
+                    });
+                    observer.disconnect();
+                }
+            }, { threshold: 0.5 });
+            
+            if (qualitySection) {
+                observer.observe(qualitySection);
+            }
+
+            // High Contrast Toggle
+            const contrastToggle = document.getElementById('contrast-toggle');
+            if (contrastToggle) {
+                contrastToggle.addEventListener('change', () => {
+                    document.body.classList.toggle('high-contrast');
+                });
+            }
+
+             //Contact Form Submission with Fetch API
+            const contactForm = document.getElementById('contact-form');
+            const submitButton = document.getElementById('submit-button');
+            const formStatus = document.getElementById('form-status');
+
+            if (contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const formData = new FormData(this);
+                    const action = "https://formsubmit.co/amboffman@gmail.com";
+                    
+                    submitButton.disabled = true;
+                    submitButton.textContent = 'Sending...';
+                    formStatus.innerHTML = '';
+
+                    fetch(action, {
+                        method: 'POST',
+                        body: formData,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    }).then(response => {
+                        const contentType = response.headers.get('content-type');
+                        if (contentType && contentType.indexOf('application/json') !== -1) {
+                            return response.json();
+                        } else {
+                            return { isHtml: true };
+                        }
+                    }).then(data => {
+                        if (data.isHtml) {
+                             formStatus.innerHTML = "<p class='text-green-400'>Thanks! Please check your email to activate the form.</p>";
+                        } else {
+                             formStatus.innerHTML = "<p class='text-green-400'>Thank you! Your message has been sent successfully.</p>";
+                        }
+                        contactForm.reset();
+                    }).catch(error => {
+                        formStatus.innerHTML = `<p class='text-red-400'>Oops! There was a problem submitting your form.</p>`;
+                        console.error(error);
+                    }).finally(() => {
+                        submitButton.disabled = false;
+                        submitButton.textContent = 'Send Message';
+                    });
+                });
+            }
+        });
+    </script>
 
 </body>
-
 </html>
