@@ -1325,7 +1325,7 @@ body {
   box-shadow: 0 0 0 2px var(--color-on-surface-subtle), 0 0 0 5px var(--color-surface-low);
 }
 .timeline-item--inactive .timeline-item__title {
-  color: var(--color-on-surface-muted);
+  color: var(--color-primary);
 }
 
 /* Mobile: stack date below title */
