@@ -4,62 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Anthony Boffman - Full Stack Developer Portfolio</title>
-    <meta name="robots" content="noindex, nofollow">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Anthony Boffman is a Full Stack Developer with 5+ years of experience building high-performance web and mobile applications. Available for new opportunities.">
+    <meta property="og:title" content="Anthony Boffman — Full Stack Developer">
+    <meta property="og:description" content="Full Stack Developer crafting sites and apps with a focus on performance & human-centered design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://anthonyboffman.com">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="./reset.css">
+    <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: var(--font-body);
+            background-color: var(--color-surface);
+            color: var(--color-on-surface);
             transition: background-color 0.3s, color 0.3s;
         }
-        .hero-bg {
-            background-color: #1a1a2e;
-            background-image: 
-                radial-gradient(circle at 15% 50%, #16213e, transparent 40%),
-                radial-gradient(circle at 85% 30%, #0f3460, transparent 40%);
-        }
+
+        /* High Contrast Mode — overrides all tokens via cascade */
         body.high-contrast {
-            background-color: #000000;
-            color: #ffffff;
+            --color-surface:            #000000;
+            --color-surface-low:        #0d0d0d;
+            --color-surface-mid:        #111111;
+            --color-surface-high:       #181818;
+            --color-surface-highest:    #1a1a1a;
+            --color-primary:            #ffff00;
+            --color-primary-container:  #cccc00;
+            --color-on-primary:         #000000;
+            --color-on-surface:         #ffffff;
+            --color-on-surface-muted:   #cccccc;
+            --color-on-surface-subtle:  #999999;
+            --color-positive:           #8cff8c;
+            --gradient-primary:         linear-gradient(135deg, #ffff00 0%, #cccc00 100%);
         }
-        body.high-contrast .bg-gray-900,
-        body.high-contrast .bg-gray-800,
-        body.high-contrast .hero-bg {
-            background-color: #000000 !important;
-            background-image: none !important;
-        }
-        body.high-contrast .text-cyan-400 {
-            color: #ffff00; 
-        }
-        body.high-contrast .fill-cyan-400 {
-            fill: #ffff00; 
-        }
-        body.high-contrast .text-cyan-300 {
-            color: #f0f0f0;
-        }
-        body.high-contrast .border-cyan-400 {
-            border-color: #ffff00;
-        }
-        body.high-contrast .bg-cyan-500 {
-            background-color: #005f6b;
-        }
-        body.high-contrast .bg-cyan-600 {
-            background-color: #004c57;
-        }
-        body.high-contrast .bg-gray-700 {
-            background-color: #1a1a1a;
-        }
-        body.high-contrast input, body.high-contrast textarea {
-             background-color: #222 !important;
-             border-color: #555 !important;
-        }
-        body.high-contrast .text-green-400 {
-            color: #8cff8c;
+        body.high-contrast input,
+        body.high-contrast textarea {
+            border: 1px solid #ffff00 !important;
+            background-color: #111 !important;
         }
 
         /* Gauge animation */
@@ -72,81 +57,100 @@
         }
     </style>
 </head>
-<body class="bg-gray-900 text-gray-200">
+<body>
 
     <!-- Header & Navigation -->
-    <header class="bg-gray-900/80 backdrop-blur-sm fixed top-0 left-0 right-0 z-50">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold text-white">AB</a>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#about" class="hover:text-cyan-400 transition-colors duration-300">About</a>
-                <a href="#quality" class="hover:text-cyan-400 transition-colors duration-300">Quality</a>
-                <a href="#experience" class="hover:text-cyan-400 transition-colors duration-300">Experience</a>
-                <a href="#case-studies" class="hover:text-cyan-400 transition-colors duration-300">Case Studies</a>
-                <a href="#skills" class="hover:text-cyan-400 transition-colors duration-300">Skills</a>
-                <a href="#contact" class="hover:text-cyan-400 transition-colors duration-300">Contact</a>
+    <header class="site-header" id="site-header">
+        <div class="site-header__inner">
+            <a href="#" class="site-header__logo">AB</a>
+            <nav class="site-header__nav">
+                <a href="#case-studies" class="site-header__link">Work</a>
+                <a href="#experience" class="site-header__link">Experience</a>
+                <a href="#skills" class="site-header__link">Expertise</a>
+                <a href="#contact" class="site-header__link">Contact</a>
             </nav>
-            <a href="#contact" class="hidden md:block bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-transform duration-300 transform hover:scale-105">
-                Hire Me
-            </a>
-            <button id="mobile-menu-button" class="md:hidden text-white">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+            <div class="site-header__icons">
+                <a href="mailto:aboffmanengineering@gmail.com" class="site-header__icon-link" aria-label="Email Anthony">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
+                </a>
+                <a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer" class="site-header__icon-link" aria-label="GitHub">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/anthonyboffman" target="_blank" rel="noopener noreferrer" class="site-header__icon-link" aria-label="LinkedIn">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                </a>
+            </div>
+            <a href="#contact" class="btn btn--primary site-header__cta">Hire Me</a>
+            <button id="mobile-menu-button" class="site-header__hamburger" aria-label="Toggle navigation">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
                 </svg>
             </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-gray-800">
-             <a href="#about" class="block py-2 px-6 text-center hover:bg-gray-700">About</a>
-             <a href="#quality" class="block py-2 px-6 text-center hover:bg-gray-700">Quality</a>
-             <a href="#experience" class="block py-2 px-6 text-center hover:bg-gray-700">Experience</a>             
-             <a href="#case-studies" class="block py-2 px-6 text-center hover:bg-gray-700">Case Studies</a>
-             <a href="#skills" class="block py-2 px-6 text-center hover:bg-gray-700">Skills</a>
-             <a href="#contact" class="block py-2 px-6 text-center hover:bg-gray-700">Contact</a>
+        <div id="mobile-menu" class="mobile-menu hidden">
+            <a href="#case-studies" class="mobile-menu__link">Work</a>
+            <a href="#experience" class="mobile-menu__link">Experience</a>
+            <a href="#skills" class="mobile-menu__link">Expertise</a>
+            <a href="#contact" class="mobile-menu__link">Contact</a>
         </div>
     </header>
 
     <main>
         <!-- Hero Section -->
-        <section id="home" class="hero-bg min-h-screen flex items-center pt-20">
-            <div class="container mx-auto px-6 text-center">
-                <img src="https://placehold.co/160x160/6366f1/ffffff?text=AB" alt="Anthony Boffman" class="w-40 h-40 mx-auto rounded-full border-4 border-cyan-400 shadow-xl mb-6">
-                <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight mb-4">
-                    Hi, I'm Anthony Boffman
-                </h1>
-                <p class="text-xl md:text-2xl text-cyan-300 mb-8">
-                    Full-Stack Developer: Crafting Sites and Apps with a Focus on Performance & Human-Centered Design
-                </p>
-                <div class="flex justify-center space-x-4">
-                    <a href="#experience" class="bg-cyan-500 hover:bg-cyan-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
-                        View My Work
-                    </a>
-                    <a href="#contact" class="bg-gray-700 hover:bg-gray-600 text-white font-semibold py-3 px-8 rounded-lg shadow-lg transition-transform duration-300 transform hover:scale-105">
-                        Get In Touch
-                    </a>
+        <section id="home" class="hero">
+            <div class="hero__inner">
+                <!-- Left: text content -->
+                <div class="hero__content">
+                    <p class="hero__eyebrow"><span class="hero__status-dot"></span>Full Stack Developer</p>
+                    <h1 class="display-lg">Hi, I'm <em class="text-gradient">Anthony Boffman</em></h1>
+                    <p class="hero__subtitle">
+                        Crafting Sites and Apps with a Focus on Performance &amp; Human-Centered Design
+                    </p>
+                    <div class="hero__actions">
+                        <a href="#experience" class="btn btn--primary">View My Experience &rarr;</a>
+                    </div>
+                    <div class="hero__stats">
+                        <div class="hero__stat">
+                            <span class="hero__stat-value">5+</span>
+                            <span class="hero__stat-label">Years Experience</span>
+                        </div>
+                        <div class="hero__stat">
+                            <span class="hero__stat-value">120+</span>
+                            <span class="hero__stat-label">Deployments</span>
+                        </div>
+                        <div class="hero__stat">
+                            <span class="hero__stat-value">99%</span>
+                            <span class="hero__stat-label">Uptime Focus</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: portrait -->
+                <div class="hero__portrait">
+                    <img src="https://amboffman.github.io/assets/profile-image.jpg" alt="Anthony Boffman" class="hero__photo">
                 </div>
             </div>
         </section>
 
         <!-- About Section -->
-        <section id="about" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-white mb-12">About Me</h2>
-                <div class="flex flex-col md:flex-row items-center gap-12">
-                    <div class="md:w-1/3">
-                        <img src="https://amboffman.github.io/assets/profile-image.jpg" alt="About Anthony Boffman" class="rounded-lg shadow-2xl w-full">
+        <section id="about" class="section section--surface-low">
+            <div class="section__inner">
+                <div class="about__card">
+                    <div class="about__image-col">
+                        <img src="https://amboffman.github.io/assets/about-me.jpg" alt="About Anthony Boffman" class="about__image">
                     </div>
-                    <div class="md:w-2/3">
-                        <h3 class="text-2xl font-semibold text-cyan-400 mb-4">Who I Am</h3>
-                        <p class="text-lg mb-4">
+                    <div class="about__content">
+                        <h2 class="about__title">About Me</h2>
+                        <p class="section-label">Who I Am</p>
+                        <p class="body-lg">
                             I'm a results-driven Full-Stack Developer with 5+ years of experience crafting robust web and mobile solutions. I thrive in collaborative environments and excel at translating complex requirements into user-friendly products. My passion for innovation helps me identify and implement cutting-edge technologies to optimize performance and scalability.
                         </p>
-                        <p class="text-lg mb-6">
-                            Here's what I bring to the table: Full-Stack Prowess (MERN/MEAN, Java, React), Cloud & DevOps Fluency (AWS, Firebase, Git), a focus on quality assurance, and a strong design sensibility. Let's connect if you're seeking a developer dedicated to delivering exceptional user experiences.
+                        <p class="body-lg">
+                            Here's what I bring to the table: Full-Stack Prowess (MERN/MEAN, Java, React), Cloud &amp; DevOps Fluency (AWS, Firebase, Git), a focus on quality assurance, and a strong design sensibility. Let's connect if you're seeking a developer dedicated to delivering exceptional user experiences.
                         </p>
-                        <div class="flex space-x-4">
-                           <a href="https://linkedin.com/in/anthonyboffman" target="_blank" class="text-gray-400 hover:text-cyan-400">LinkedIn</a>
-                           <a href="https://github.com/amboffman" target="_blank" class="text-gray-400 hover:text-cyan-400">Github</a>
+                        <div class="about__links">
+                            <a href="https://linkedin.com/in/anthonyboffman" target="_blank" class="about__link">LinkedIn</a>
+                            <a href="https://github.com/amboffman" target="_blank" class="about__link">GitHub</a>
                         </div>
                     </div>
                 </div>
@@ -154,223 +158,230 @@
         </section>
 
         <!-- Commitment to Quality Section -->
-        <section id="quality" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-white mb-4">Commitment to Quality</h2>
-                <p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">I build websites that are not only beautiful but also high-performing, accessible, and SEO-friendly. This section demonstrates the built-in quality of this very page.</p>
-                
-                <div class="grid grid-cols-1 md:grid-cols-3 mb-12 gap-8 text-white">
+        <section id="quality" class="section section--surface">
+            <div class="section__inner">
+                <h2 class="section-title">Commitment to Quality</h2>
+                <p class="section-intro">I build websites that are not only beautiful but also high-performing, accessible, and SEO-friendly. This section demonstrates the built-in quality of this very page.</p>
+
+                <div class="quality__grid">
                     <!-- Core Web Vitals -->
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-4">Core Web Vitals</h3>
-                        <p class="text-sm text-gray-400 mb-6">This page is optimized for a fast, responsive user experience. The scores below are simulated to reflect best practices.</p>
-                        <div class="space-y-4">
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-medium">Largest Contentful Paint (Load Speed)</span>
-                                    <span class="text-sm font-medium">Excellent</span>
-                                </div>
-                                <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full gauge-bar" style="--gauge-width: 100%;"></div></div>
+                    <div class="card">
+                        <h3 class="quality-card__title">Core Web Vitals</h3>
+                        <p class="quality-card__desc">This page is optimized for a fast, responsive user experience. The scores below are simulated to reflect best practices.</p>
+                        <div class="gauge-row">
+                            <div class="gauge-label">
+                                <span>Largest Contentful Paint (Load Speed)</span>
+                                <span>Excellent</span>
                             </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-medium">First Input Delay (Responsiveness)</span>
-                                    <span class="text-sm font-medium">Excellent</span>
-                                </div>
-                                <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full gauge-bar" style="--gauge-width: 100%;"></div></div>
+                            <div class="gauge-track"><div class="gauge-bar" style="--gauge-width: 100%;"></div></div>
+                        </div>
+                        <div class="gauge-row">
+                            <div class="gauge-label">
+                                <span>First Input Delay (Responsiveness)</span>
+                                <span>Excellent</span>
                             </div>
-                            <div>
-                                <div class="flex justify-between mb-1">
-                                    <span class="text-sm font-medium">Cumulative Layout Shift (Visual Stability)</span>
-                                    <span class="text-sm font-medium">Excellent</span>
-                                </div>
-                                <div class="w-full bg-gray-700 rounded-full h-2.5"><div class="bg-green-500 h-2.5 rounded-full gauge-bar" style="--gauge-width: 100%;"></div></div>
+                            <div class="gauge-track"><div class="gauge-bar" style="--gauge-width: 100%;"></div></div>
+                        </div>
+                        <div class="gauge-row">
+                            <div class="gauge-label">
+                                <span>Cumulative Layout Shift (Visual Stability)</span>
+                                <span>Excellent</span>
                             </div>
+                            <div class="gauge-track"><div class="gauge-bar" style="--gauge-width: 100%;"></div></div>
                         </div>
                     </div>
 
                     <!-- Accessibility -->
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-4">Accessibility</h3>
-                        <p class="text-sm text-gray-400 mb-6">A great website is usable by everyone. This site includes features to ensure accessibility.</p>
-                        <div class="flex items-center justify-between bg-gray-700 p-3 rounded-lg mb-4">
-                            <span class="font-medium">High Contrast Mode</span>
-                            <label for="contrast-toggle" class="relative inline-flex items-center cursor-pointer">
-                                <input type="checkbox" id="contrast-toggle" class="sr-only peer">
+                    <div class="card">
+                        <h3 class="quality-card__title">Accessibility</h3>
+                        <p class="quality-card__desc">A great website is usable by everyone. This site includes features to ensure accessibility.</p>
+                        <div class="contrast-toggle-row">
+                            <span>High Contrast Mode</span>
+                            <label for="contrast-toggle" style="position:relative;display:inline-flex;align-items:center;cursor:pointer;">
+                                <input type="checkbox" id="contrast-toggle" class="sr-only peer" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">
                                 <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600"></div>
                             </label>
                         </div>
-                         <ul class="list-disc list-outside space-y-2 text-gray-400 text-sm">
+                        <ul class="access-list">
                             <li>WCAG 2.1 AA Compliance</li>
                             <li>Full Keyboard Navigation</li>
-                            <li>Semantic HTML & ARIA Labels</li>
+                            <li>Semantic HTML &amp; ARIA Labels</li>
                             <li>Screen Reader Friendly</li>
                         </ul>
                     </div>
 
                     <!-- SEO -->
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-2">SEO Audit</h3>
-                        <div class="flex items-baseline mb-4">
-                            <p class="text-3xl font-bold text-green-400">100</p>
-                            <p class="text-xl text-gray-400">/100</p>
+                    <div class="card">
+                        <h3 class="quality-card__title">SEO Audit</h3>
+                        <div class="seo-score">
+                            <span class="seo-score__value">100</span>
+                            <span class="seo-score__denom">/100</span>
                         </div>
-                        <p class="text-sm text-gray-400 mb-6">Built with a solid SEO foundation to ensure maximum visibility on search engines.</p>
-                        <div>
-                            <ul class="space-y-2">
-                                <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
-                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Optimized Meta Tags</span>
-                                </li>
-                                <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
-                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Image Alt Attributes</span>
-                                </li>
-                                <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
-                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Mobile-First Design</span>
-                                </li>
-                                 <li class="flex items-center text-gray-300 transition-all duration-200 hover:text-white hover:bg-gray-700 p-2 rounded-md -mx-2">
-                                    <svg class="w-5 h-5 text-green-400 mr-3 flex-shrink-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                    <span>Clean URL Structure</span>
-                                </li>
-                            </ul>
-                        </div>
+                        <p class="quality-card__desc">Built with a solid SEO foundation to ensure maximum visibility on search engines.</p>
+                        <ul class="seo-list">
+                            <li>
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span>Optimized Meta Tags</span>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span>Image Alt Attributes</span>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span>Mobile-First Design</span>
+                            </li>
+                            <li>
+                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
+                                <span>Clean URL Structure</span>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-<h3 class="text-2xl font-bold text-center text-white mb-4">From Performance to Profit</h3>
-<p class="text-center text-gray-400 mb-12 max-w-3xl mx-auto">Elite performance and accessibility are not just technical achievements - they are critical business drivers. My development approach focuses on creating websites that deliver a tangible return on investment through superior user experiences.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
-                <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                    <div class="w-24 h-24 mb-6 flex items-center justify-center">
-                        <svg class="w-full h-full text-cyan-400 fill-cyan-400" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path class="fill-inherit" d="M160-200h160v-320H160v320Zm240 0h160v-560H400v560Zm240 0h160v-240H640v240ZM80-120v-480h240v-240h320v320h240v400H80Z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Dominate Search Rankings</h3>
-                    <p class="text-gray-400">Google's algorithm explicitly rewards sites with excellent Core Web Vitals. By optimizing for metrics like Largest Contentful Paint, Interation to Next Paint, and Cumulative Layout Shift, I build sites that see a direct and measurable improvement in web performance leading to increased organic traffic, a stronger market presence, and a superior user experience.</p>
                 </div>
 
-                <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                    <div class="w-24 h-24 mb-6 flex items-center justify-center">
-                    <svg class="w-full h-full text-cyan-400 fill-cyan-400" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path class="fill-inherit" d="M80-480v-80h120v80H80Zm136 222-56-58 84-84 58 56-86 86Zm28-382-84-84 56-58 86 86-58 56Zm476 480L530-350l-50 150-120-400 400 120-148 52 188 188-80 80ZM400-720v-120h80v120h-80Zm236 80-58-56 86-86 56 56-84 86Z"/></svg>
-                    </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Maximize User Conversion</h3>
-                    <p class="text-gray-400">A 1-second delay in page load can decrease conversions by up to 7%. I design sites to be exceptionally fast and responsive, virtually eliminating bounce rates caused by frustration and guiding users smoothly toward conversion goals.</p>
-                </div>
+                <h3 class="profit-subtitle"><em>From Performance to Profit</em></h3>
+                <p class="profit-intro">Elite performance and accessibility are critical business drivers that deliver a tangible return on investment.</p>
 
-                <div class="bg-gray-800 p-8 rounded-lg shadow-lg flex flex-col items-center text-center">
-                    <div class="w-24 h-24 mb-6 flex items-center justify-center">
-                        <svg class="w-full h-full text-cyan-400 fill-cyan-400" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"><path  class="fill-inherit" d="M660-570q-25 0-42.5-17.5T600-630q0-25 17.5-42.5T660-690q25 0 42.5 17.5T720-630q0 25-17.5 42.5T660-570Zm-360 0q-25 0-42.5-17.5T240-630q0-25 17.5-42.5T300-690q25 0 42.5 17.5T360-630q0 25-17.5 42.5T300-570Zm180 110q-25 0-42.5-17.5T420-520q0-25 17.5-42.5T480-580q25 0 42.5 17.5T540-520q0 25-17.5 42.5T480-460Zm0-220q-25 0-42.5-17.5T420-740q0-25 17.5-42.5T480-800q25 0 42.5 17.5T540-740q0 25-17.5 42.5T480-680Zm0 520q-20 0-40.5-3t-39.5-8v-143q0-35 23.5-60.5T480-400q33 0 56.5 25.5T560-314v143q-19 5-39.5 8t-40.5 3Zm-140-32q-20-8-38.5-18T266-232q-28-20-44.5-52T205-352q0-26-5.5-48.5T180-443q-10-13-37.5-39.5T92-532q-11-11-11-28t11-28q11-11 28-11t28 11l153 145q20 18 29.5 42.5T340-350v158Zm280 0v-158q0-26 10-51t29-42l153-145q12-11 28.5-11t27.5 11q11 11 11 28t-11 28q-23 23-50.5 49T780-443q-14 20-19.5 42.5T755-352q0 36-16.5 68.5T693-231q-16 11-34.5 21T620-192Z"/></svg>
+                <div class="profit-grid">
+                    <div class="profit-card">
+                        <svg class="profit-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M160-200h160v-320H160v320Zm240 0h160v-560H400v560Zm240 0h160v-240H640v240ZM80-120v-480h240v-240h320v320h240v400H80Z"/></svg>
+                        <h3 class="profit-card__title"><em>Dominate Search Rankings</em></h3>
+                        <p class="profit-card__body">Google's algorithm explicitly rewards sites with excellent Core Web Vitals, leading to increased organic traffic and stronger market presence.</p>
                     </div>
-                    <h3 class="text-xl font-bold text-white mb-3">Expand Audience & Ensure Compliance</h3>
-                    <p class="text-gray-400">Adhering to WCAG standards doesn't just make a site usable for the 1 in 4 adults with a disability; it improves the experience for all users. This commitment to inclusivity broadens market reach and ensures compliance, protecting brand reputation.</p>
+
+                    <div class="profit-card">
+                        <svg class="profit-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M80-480v-80h120v80H80Zm136 222-56-58 84-84 58 56-86 86Zm28-382-84-84 56-58 86 86-58 56Zm476 480L530-350l-50 150-120-400 400 120-148 52 188 188-80 80ZM400-720v-120h80v120h-80Zm236 80-58-56 86-86 56 56-84 86Z"/></svg>
+                        <h3 class="profit-card__title"><em>Maximize User Conversion</em></h3>
+                        <p class="profit-card__body">A 1-second delay in page load can decrease conversions by up to 7%. I build lightning-fast sites that guide users smoothly toward conversion goals.</p>
+                    </div>
+
+                    <div class="profit-card">
+                        <svg class="profit-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M660-570q-25 0-42.5-17.5T600-630q0-25 17.5-42.5T660-690q25 0 42.5 17.5T720-630q0 25-17.5 42.5T660-570Zm-360 0q-25 0-42.5-17.5T240-630q0-25 17.5-42.5T300-690q25 0 42.5 17.5T360-630q0 25-17.5 42.5T300-570Zm180 110q-25 0-42.5-17.5T420-520q0-25 17.5-42.5T480-580q25 0 42.5 17.5T540-520q0 25-17.5 42.5T480-460Zm0-220q-25 0-42.5-17.5T420-740q0-25 17.5-42.5T480-800q25 0 42.5 17.5T540-740q0 25-17.5 42.5T480-680Zm0 520q-20 0-40.5-3t-39.5-8v-143q0-35 23.5-60.5T480-400q33 0 56.5 25.5T560-314v143q-19 5-39.5 8t-40.5 3Zm-140-32q-20-8-38.5-18T266-232q-28-20-44.5-52T205-352q0-26-5.5-48.5T180-443q-10-13-37.5-39.5T92-532q-11-11-11-28t11-28q11-11 28-11t28 11l153 145q20 18 29.5 42.5T340-350v158Zm280 0v-158q0-26 10-51t29-42l153-145q12-11 28.5-11t27.5 11q11 11 11 28t-11 28q-23 23-50.5 49T780-443q-14 20-19.5 42.5T755-352q0 36-16.5 68.5T693-231q-16 11-34.5 21T620-192Z"/></svg>
+                        <h3 class="profit-card__title"><em>Expand Audience &amp; Compliance</em></h3>
+                        <p class="profit-card__body">Adhering to WCAG standards ensures your experience is usable for all users, broadening market reach and protecting brand reputation.</p>
+                    </div>
                 </div>
-            </div>
             </div>
         </section>
 
 
         <!-- Experience Section -->
-        <section id="experience" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-white mb-12">Professional Experience</h2>
-                <div class="max-w-4xl mx-auto">
+        <section id="experience" class="section section--surface-low">
+            <div class="section__inner">
+                <h2 class="section-title experience__section-title">Professional Experience</h2>
+                <div class="experience-timeline">
 
-                    <div class="bg-gray-900 rounded-lg p-6 mb-8 shadow-lg">
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="text-xl font-bold text-cyan-400">Application Developer III</h3>
-                            <p class="text-sm text-right sm:text-left text-gray-400">Jun 2021 - Present</p>
+                    <div class="timeline-item">
+                        <div class="timeline-item__marker">
+                            <div class="timeline-item__dot"></div>
                         </div>
-                        <p class="text-lg font-semibold text-gray-300 mb-4">Press Ganey</p>
-                        <ul class="list-disc list-outside space-y-2 text-gray-400">
-                            <li>Led design and development of 15+ high-traffic web apps, improving performance and user engagement, resulting in an average of <strong>56% increase in total views</strong> and <strong>19% increase in total action</strong>.</li>
-                            <li>Developed and implemented a custom Next.js and Wordpress CMS solution, empowering marketing teams to deploy new pages and campaign updates without developer bandwidth.</li>
-                            <li>Acted as primary liaison between the development team and stakeholders, effectively translating requirements into effective UI/UX designs and user stories.</li>
-                            <li>Engineered custom WordPress solutions, including plugins and Gutenberg blocks, to provide tailored functionality.</li>
-                        </ul>
+                        <div class="timeline-item__body">
+                            <div class="timeline-item__header">
+                                <h3 class="timeline-item__title">Application Developer III</h3>
+                                <span class="timeline-item__date">Jun 2021 &ndash; Present</span>
+                            </div>
+                            <p class="timeline-item__company">Press Ganey</p>
+                            <ul class="timeline-item__list">
+                                <li>Led design and development of 15+ high-traffic web apps, improving performance and user engagement, resulting in an average of <strong>56% increase in total views</strong> and <strong>19% increase in total action</strong>.</li>
+                                <li>Developed and implemented a custom Next.js and WordPress CMS solution, empowering marketing teams to deploy new pages and campaign updates without developer bandwidth.</li>
+                                <li>Acted as primary liaison between the development team and stakeholders, effectively translating requirements into effective UI/UX designs and user stories.</li>
+                                <li>Engineered custom WordPress solutions, including plugins and Gutenberg blocks, to provide tailored functionality.</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-lg p-6 mb-8 shadow-lg">
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="text-xl font-bold text-cyan-400">Software Engineer (Internship)</h3>
-                            <p class="text-sm text-right sm:text-left text-gray-400">Jul 2020 - Dec 2020</p>
+                    <div class="timeline-item timeline-item--inactive">
+                        <div class="timeline-item__marker">
+                            <div class="timeline-item__dot"></div>
                         </div>
-                        <p class="text-lg font-semibold text-gray-300 mb-4">Victorise</p>
-                        <ul class="list-disc list-outside space-y-2 text-gray-400">
-                            <li>Crafted cross-platform mobile experiences by developing native iOS and Android applications with React Native.</li>
-                            <li>Championed code quality by building clean, reusable code to enhance maintainability and streamline future development.</li>
-                            <li>Embraced a test-driven approach, designing functional and unit tests to improve code reliability and reduce defects.</li>
-                        </ul>
+                        <div class="timeline-item__body">
+                            <div class="timeline-item__header">
+                                <h3 class="timeline-item__title">Software Engineer (Internship)</h3>
+                                <span class="timeline-item__date">Jul 2020 &ndash; Dec 2020</span>
+                            </div>
+                            <p class="timeline-item__company">Victorise</p>
+                            <ul class="timeline-item__list">
+                                <li>Crafted cross-platform mobile experiences by developing native iOS and Android applications with React Native.</li>
+                                <li>Championed code quality by building clean, reusable code to enhance maintainability and streamline future development.</li>
+                                <li>Embraced a test-driven approach, designing functional and unit tests to improve code reliability and reduce defects.</li>
+                            </ul>
+                        </div>
                     </div>
 
-                    <div class="bg-gray-900 rounded-lg p-6 shadow-lg">
-                        <div class="flex justify-between items-baseline mb-2">
-                            <h3 class="text-xl font-bold text-cyan-400">Enterprise Communications Coordinator</h3>
-                            <p class="text-sm text-right sm:text-left text-gray-400">Nov 2018 - Mar 2020</p>
+                    <div class="timeline-item timeline-item--inactive">
+                        <div class="timeline-item__marker">
+                            <div class="timeline-item__dot"></div>
                         </div>
-                        <p class="text-lg font-semibold text-gray-300 mb-4">ICW Group</p>
-                        <ul class="list-disc list-outside space-y-2 text-gray-400">
-                            <li>Drove customer retention by implementing a communication automation program, directly increasing retention rates by <strong>18%</strong>.</li>
-                            <li>Enhanced web presence by developing site pages and debugging errors, ensuring an optimal user experience.</li>
-                            <li>Optimized team efficiency by identifying and implementing technical solutions, enhancing team capacity and generating insightful reporting.</li>
-                        </ul>
+                        <div class="timeline-item__body">
+                            <div class="timeline-item__header">
+                                <h3 class="timeline-item__title">Enterprise Communications Coordinator</h3>
+                                <span class="timeline-item__date">Nov 2018 &ndash; Mar 2020</span>
+                            </div>
+                            <p class="timeline-item__company">ICW Group</p>
+                            <ul class="timeline-item__list">
+                                <li>Drove customer retention by implementing a communication automation program, directly increasing retention rates by <strong>18%</strong>.</li>
+                                <li>Enhanced web presence by developing site pages and debugging errors, ensuring an optimal user experience.</li>
+                                <li>Optimized team efficiency by identifying and implementing technical solutions, enhancing team capacity and generating insightful reporting.</li>
+                            </ul>
+                        </div>
                     </div>
+
                 </div>
             </div>
         </section>
 
         <!-- Case Studies Section -->
-        <section id="case-studies" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-white mb-12">Impact Highlights: Case Studies</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-                    
+        <section id="case-studies" class="section section--surface">
+            <div class="section__inner">
+                <h2 class="section-title">Impact Highlights: Case Studies</h2>
+                <div class="case-studies__grid">
+
                     <!-- Case Study 1: Mortgage Lender -->
-                    <div class="bg-gray-800 rounded-lg p-8 shadow-lg case-study-card">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-2">A Leading National Mortgage Lender</h3>
-                        <p class="text-gray-400 mb-4 italic">The Challenge: Low search visibility and user engagement for local branches.</p>
-                        <p class="text-gray-300 mb-6">Solution: Deployed a scalable local pages strategy, optimizing each branch for performance and local SEO to capture high-intent traffic.</p>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div><p class="text-4xl font-bold text-white" data-count="52">0%</p><p class="text-sm text-cyan-300">Increase in Searches</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="56">0%</p><p class="text-sm text-cyan-300">Increase in Views</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="19">0%</p><p class="text-sm text-cyan-300">Increase in Actions</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="26">0%</p><p class="text-sm text-cyan-300">Increase in Map Views</p></div>
+                    <div class="case-study-card">
+                        <h3 class="case-study-card__title">A Leading National Mortgage Lender</h3>
+                        <p class="case-study-card__challenge">The Challenge: Low search visibility and user engagement for local branches.</p>
+                        <p class="case-study-card__solution">Solution: Deployed a scalable local pages strategy, optimizing each branch for performance and local SEO to capture high-intent traffic.</p>
+                        <div class="case-study-metrics">
+                            <div><span class="case-study-metrics__value" data-count="52">0%</span><span class="case-study-metrics__label">Increase in Searches</span></div>
+                            <div><span class="case-study-metrics__value" data-count="56">0%</span><span class="case-study-metrics__label">Increase in Views</span></div>
+                            <div><span class="case-study-metrics__value" data-count="19">0%</span><span class="case-study-metrics__label">Increase in Actions</span></div>
+                            <div><span class="case-study-metrics__value" data-count="26">0%</span><span class="case-study-metrics__label">Increase in Map Views</span></div>
                         </div>
                     </div>
 
                     <!-- Case Study 2: Pet Retailer -->
-                    <div class="bg-gray-800 rounded-lg p-8 shadow-lg case-study-card">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-2">A Major National Pet Supplies Retailer</h3>
-                        <p class="text-gray-400 mb-4 italic">The Challenge: Difficulty converting online searches into in-store sales across hundreds of locations.</p>
-                        <p class="text-gray-300 mb-6">Solution: Architected a comprehensive local pages program, providing each store with an optimized digital storefront to drive local conversions.</p>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div><p class="text-4xl font-bold text-white" data-count="60">0%</p><p class="text-sm text-cyan-300">Increase in Local Traffic</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="112">0%</p><p class="text-sm text-cyan-300">Increase in Website Clicks</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="45">0%</p><p class="text-sm text-cyan-300">Increase in Phone Calls</p></div>
+                    <div class="case-study-card">
+                        <h3 class="case-study-card__title">A Major National Pet Supplies Retailer</h3>
+                        <p class="case-study-card__challenge">The Challenge: Difficulty converting online searches into in-store sales across hundreds of locations.</p>
+                        <p class="case-study-card__solution">Solution: Architected a comprehensive local pages program, providing each store with an optimized digital storefront to drive local conversions.</p>
+                        <div class="case-study-metrics">
+                            <div><span class="case-study-metrics__value" data-count="60">0%</span><span class="case-study-metrics__label">Increase in Local Traffic</span></div>
+                            <div><span class="case-study-metrics__value" data-count="112">0%</span><span class="case-study-metrics__label">Increase in Website Clicks</span></div>
+                            <div><span class="case-study-metrics__value" data-count="45">0%</span><span class="case-study-metrics__label">Increase in Phone Calls</span></div>
                         </div>
                     </div>
 
                     <!-- Case Study 3: Women's Retailer -->
-                    <div class="bg-gray-800 rounded-lg p-8 shadow-lg case-study-card">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-2">A Renowned Women's Retailer</h3>
-                        <p class="text-gray-400 mb-4 italic">The Challenge: Needed to drive local foot traffic and online engagement for individual store locations.</p>
-                        <p class="text-gray-300 mb-6">Solution: Implemented a scalable local pages strategy to create a unique, optimized online presence for each store, capturing local search interest.</p>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div><p class="text-4xl font-bold text-white" data-count="96">0%</p><p class="text-sm text-cyan-300">Increase in Total Clicks</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="115">0%</p><p class="text-sm text-cyan-300">Increase in Website Clicks</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="95">0%</p><p class="text-sm text-cyan-300">Increase in Map Views</p></div>
+                    <div class="case-study-card">
+                        <h3 class="case-study-card__title">A Renowned Women's Retailer</h3>
+                        <p class="case-study-card__challenge">The Challenge: Needed to drive local foot traffic and online engagement for individual store locations.</p>
+                        <p class="case-study-card__solution">Solution: Implemented a scalable local pages strategy to create a unique, optimized online presence for each store, capturing local search interest.</p>
+                        <div class="case-study-metrics">
+                            <div><span class="case-study-metrics__value" data-count="96">0%</span><span class="case-study-metrics__label">Increase in Total Clicks</span></div>
+                            <div><span class="case-study-metrics__value" data-count="115">0%</span><span class="case-study-metrics__label">Increase in Website Clicks</span></div>
+                            <div><span class="case-study-metrics__value" data-count="95">0%</span><span class="case-study-metrics__label">Increase in Map Views</span></div>
                         </div>
                     </div>
 
                     <!-- Case Study 4: Beauty Franchise -->
-                    <div class="bg-gray-800 rounded-lg p-8 shadow-lg case-study-card">
-                        <h3 class="text-xl font-bold text-cyan-400 mb-2">A Premier Beauty & Waxing Franchise</h3>
-                        <p class="text-gray-400 mb-4 italic">The Challenge: Needed to boost local appointment bookings and brand visibility for individual franchise locations.</p>
-                        <p class="text-gray-300 mb-6">Solution: Rolled out an optimized local pages strategy to capture local search intent and drive appointment conversions directly from search results.</p>
-                        <div class="grid grid-cols-2 gap-4 text-center">
-                            <div><p class="text-4xl font-bold text-white" data-count="41">0%</p><p class="text-sm text-cyan-300">Increase in Clicks for Directions</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="22">0%</p><p class="text-sm text-cyan-300">Increase in Website Clicks</p></div>
-                            <div><p class="text-4xl font-bold text-white" data-count="20">0%</p><p class="text-sm text-cyan-300">Increase in Calls</p></div>
+                    <div class="case-study-card">
+                        <h3 class="case-study-card__title">A Premier Beauty &amp; Waxing Franchise</h3>
+                        <p class="case-study-card__challenge">The Challenge: Needed to boost local appointment bookings and brand visibility for individual franchise locations.</p>
+                        <p class="case-study-card__solution">Solution: Rolled out an optimized local pages strategy to capture local search intent and drive appointment conversions directly from search results.</p>
+                        <div class="case-study-metrics">
+                            <div><span class="case-study-metrics__value" data-count="41">0%</span><span class="case-study-metrics__label">Increase in Clicks for Directions</span></div>
+                            <div><span class="case-study-metrics__value" data-count="22">0%</span><span class="case-study-metrics__label">Increase in Website Clicks</span></div>
+                            <div><span class="case-study-metrics__value" data-count="20">0%</span><span class="case-study-metrics__label">Increase in Calls</span></div>
                         </div>
                     </div>
 
@@ -379,72 +390,131 @@
         </section>
 
         <!-- Skills Section -->
-        <section id="skills" class="py-20 bg-gray-900">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-white mb-12">Technical Skills</h2>
-                <div class="flex flex-wrap justify-center items-center gap-6">
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">PHP</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">MySQL</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">CSS</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">JavaScript</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">WordPress</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Angular JS</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">React JS</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Next.js</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Node.js</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Java</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">AWS</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Firebase</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Git</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Figma</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Tailwind CSS</div>
-                    <div class="bg-gray-700 py-2 px-4 rounded-lg shadow-md text-lg font-semibold">Bootstrap</div>
-                    
+        <section id="skills" class="section section--surface-low">
+            <div class="section__inner">
+                <h2 class="section-title">Technical Skills</h2>
+                <div class="skills__grid">
+                    <div class="chip">PHP</div>
+                    <div class="chip">MySQL</div>
+                    <div class="chip">CSS</div>
+                    <div class="chip">JavaScript</div>
+                    <div class="chip">WordPress</div>
+                    <div class="chip">Angular JS</div>
+                    <div class="chip">React JS</div>
+                    <div class="chip">Next.js</div>
+                    <div class="chip">Node.js</div>
+                    <div class="chip">Java</div>
+                    <div class="chip">AWS</div>
+                    <div class="chip">Firebase</div>
+                    <div class="chip">Git</div>
+                    <div class="chip">Figma</div>
+                    <div class="chip">Tailwind CSS</div>
+                    <div class="chip">Bootstrap</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Peer Endorsements -->
+        <section id="testimonials" class="section section--surface-low" style="display:none;">
+            <div class="section__inner">
+                <h2 class="section-title testimonials__section-title">Peer Endorsements</h2>
+                <div class="testimonials__grid">
+
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">&ldquo;Anthony is a gifted problem solver with a rare combination of tenacity, research skills, and articulate communication. His commitment, dependability, and &lsquo;student for life&rsquo; mentality position him to overcome any challenge. As an employee and an individual, Anthony earns my highest recommendation.&rdquo;</p>
+                        <div class="testimonial__author">
+                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/D5603AQGKQKuasqEzEA/profile-displayphoto-scale_100_100/B56ZfrSEPIGQAg-/0/1751999071609?e=1775692800&v=beta&t=55VzsTet_qHqQPQG_JoX-3FaEt-Qvwhdf0aJ7xUSLB4" alt="Todd Sarkaria">
+                            <div>
+                                <p class="testimonial__name">Todd Sarkaria</p>
+                                <p class="testimonial__role">SVP Operations, Waterworks Aquatics</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">&ldquo;If I could describe Anthony&rsquo;s work ethic in two words, it would be perseverant and punctual. Anyone who has worked with Anthony will tell you he is not a time-waster &mdash; he will undoubtedly make any team he is placed in more cohesive, more effective, and more efficient.&rdquo;</p>
+                        <div class="testimonial__author">
+                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/D5603AQGFxNx4OPhZBg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1718212108921?e=1775692800&v=beta&t=oZVooait5oRJCAShRethm4gqmH62JNdzRieVYocdmkA" alt="Jake Williams">
+                            <div>
+                                <p class="testimonial__name">Jake Williams</p>
+                                <p class="testimonial__role">Software Engineer, Insulet Corporation</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">&ldquo;I worked with Anthony for a year at ICW Group, and in that year I watched him quickly take on new responsibilities &ndash; all with a positive attitude. He always went the extra mile and utilized his strong communication skills to quickly solve problems.&rdquo;</p>
+                        <div class="testimonial__author">
+                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/D5603AQHEmDYrOaijGg/profile-displayphoto-scale_100_100/B56ZqUAg2FHIAc-/0/1763419754601?e=1775692800&v=beta&t=y8n0fMSYTSO1fObRx_4HyCr1xBt5KMYEi_h6gfeL7c0" alt="Trisha Rule">
+                            <div>
+                                <p class="testimonial__name">Trisha Rule</p>
+                                <p class="testimonial__role">Director of Communications, CJ Foodville USA</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="testimonial-card">
+                        <p class="testimonial__text">&ldquo;It&rsquo;s rare that you come across standout talent like Anthony. His digital marketing skills are highly developed and come naturally to him. No matter what the task, he always took on the challenge with a smile. Any employer would be lucky to have him.&rdquo;</p>
+                        <div class="testimonial__author">
+                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/C5603AQGj6U06LBt-TA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1659384174723?e=1775692800&v=beta&t=fCyAX-oMRAuK0USxj6KyqIzOTIPu5TA-WqMiXXIPKcs" alt="Chris Acevedo">
+                            <div>
+                                <p class="testimonial__name">Chris Acevedo</p>
+                                <p class="testimonial__role">Senior Digital Marketing Manager, ICW Group</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="carousel-dots" aria-label="Testimonial navigation">
+                    <button class="carousel-dot active" aria-label="Go to testimonial 1"></button>
+                    <button class="carousel-dot" aria-label="Go to testimonial 2"></button>
+                    <button class="carousel-dot" aria-label="Go to testimonial 3"></button>
+                    <button class="carousel-dot" aria-label="Go to testimonial 4"></button>
                 </div>
             </div>
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="py-20 bg-gray-800">
-            <div class="container mx-auto px-6">
-                <h2 class="text-3xl font-bold text-center text-white mb-4">Contact Me</h2>
-                <p class="text-center text-gray-400 mb-12 max-w-2xl mx-auto">I'm currently open to new opportunities. Feel free to reach out via the form below or directly at <a href="mailto:aboffmanengineering@gmail.com" class="text-cyan-400 hover:underline">aboffmanengineering@gmail.com</a>.</p>
-                <div class="max-w-2xl mx-auto">
-                    <form id="contact-form" class="space-y-6" action="3977e0c9c28486ab6170e889519ac739" method="POST">
-                        <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
-                        <div>
-                            <label for="name" class="block text-sm font-medium text-gray-400">Full Name</label>
-                            <input type="text" name="name" id="name" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-white rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm p-3">
-                        </div>
-                        <div>
-                            <label for="email" class="block text-sm font-medium text-gray-400">Email Address</label>
-                            <input type="email" name="email" id="email" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-white rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm p-3">
-                        </div>
-                        <div>
-                            <label for="message" class="block text-sm font-medium text-gray-400">Message</label>
-                            <textarea id="message" name="message" rows="4" required class="mt-1 block w-full bg-gray-700 border-gray-600 text-white rounded-md shadow-sm focus:ring-cyan-500 focus:border-cyan-500 sm:text-sm p-3"></textarea>
-                        </div>
-                        <div>
-                            <button id="submit-button" type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-cyan-600 hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-cyan-500 disabled:opacity-50">
-                                Send Message
-                            </button>
-                        </div>
-                    </form>
-                    <div id="form-status" class="text-center mt-4"></div>
-                </div>
+        <section id="contact" class="section section--surface">
+            <div class="section__inner">
+                <h2 class="section-title">Contact Me</h2>
+                <p class="section-intro">I'm currently open to new opportunities. Feel free to reach out via the form below or directly at <a href="mailto:aboffmanengineering@gmail.com" class="contact-form__link">aboffmanengineering@gmail.com</a>.</p>
+                <form id="contact-form" class="contact-form" action="3977e0c9c28486ab6170e889519ac739" method="POST">
+                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                    <div class="contact-form__field">
+                        <label for="name" class="contact-form__label">Full Name</label>
+                        <input type="text" name="name" id="name" required class="contact-form__input">
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="email" class="contact-form__label">Email Address</label>
+                        <input type="email" name="email" id="email" required class="contact-form__input">
+                    </div>
+                    <div class="contact-form__field">
+                        <label for="message" class="contact-form__label">Message</label>
+                        <textarea id="message" name="message" rows="5" required class="contact-form__input"></textarea>
+                    </div>
+                    <button id="submit-button" type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
+                        Send Message
+                    </button>
+                </form>
+                <div id="form-status" class="contact-form__status" style="margin-top:1rem;"></div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-900">
-        <div class="container mx-auto px-6 py-6 text-center text-gray-400">
-            <p>&copy; 2025 Anthony Boffman. All Rights Reserved.</p>
-        </div>
+    <footer class="site-footer">
+        <p>&copy; 2026 Anthony Boffman. All Rights Reserved.</p>
     </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
+            // Glassmorphism nav on scroll
+            const siteHeader = document.getElementById('site-header');
+            window.addEventListener('scroll', () => {
+                siteHeader.classList.toggle('scrolled', window.scrollY > 50);
+            });
+
             const mobileMenuButton = document.getElementById('mobile-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
             mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
@@ -553,6 +623,28 @@
 
             if (caseStudiesSection) {
                 caseStudiesObserver.observe(caseStudiesSection);
+            }
+
+            // Testimonials carousel dots
+            const testimonialsGrid = document.querySelector('.testimonials__grid');
+            const carouselDots = document.querySelectorAll('.carousel-dot');
+            if (testimonialsGrid && carouselDots.length) {
+                const updateDots = () => {
+                    const cards = testimonialsGrid.querySelectorAll('.testimonial-card');
+                    const scrollLeft = testimonialsGrid.scrollLeft;
+                    let activeIndex = 0;
+                    cards.forEach((card, i) => {
+                        if (scrollLeft >= card.offsetLeft - 20) activeIndex = i;
+                    });
+                    carouselDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
+                };
+                testimonialsGrid.addEventListener('scroll', updateDots, { passive: true });
+                carouselDots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => {
+                        const cards = testimonialsGrid.querySelectorAll('.testimonial-card');
+                        if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
+                    });
+                });
             }
         });
     </script>
