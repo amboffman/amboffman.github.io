@@ -1465,7 +1465,12 @@ body {
 /* =============================================
    TESTIMONIALS / PEER ENDORSEMENTS
    ============================================= */
-
+#testimonials{
+  display:none;
+}
+@media (min-width: 768px) {
+  #testimonials { display: block; }
+}
 /* Left-aligned title with gold accent bar (matches Experience section) */
 .testimonials__section-title {
   text-align: left;
