@@ -1205,21 +1205,6 @@ body {
    EXPERIENCE SECTION — TIMELINE
    ============================================= */
 
-/* Left-aligned title with gold accent bar */
-.experience__section-title {
-  text-align: left;
-  margin-bottom: 0.75rem;
-}
-.experience__section-title::after {
-  content: '';
-  display: block;
-  width: 2.5rem;
-  height: 3px;
-  background: var(--gradient-primary);
-  margin-top: 0.875rem;
-  border-radius: 9999px;
-}
-
 .experience-timeline {
   position: relative;
   margin-top: 3rem;
@@ -1471,11 +1456,6 @@ body {
 @media (min-width: 768px) {
   #testimonials { display: block; }
 }
-/* Left-aligned title with gold accent bar (matches Experience section) */
-.testimonials__section-title {
-  margin-bottom: 0.75rem;
-}
-
 
 /* Desktop: 2-column grid */
 .testimonials__grid {
