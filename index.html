@@ -198,7 +198,7 @@
                         <div class="contrast-toggle-row">
                             <span>High Contrast Mode</span>
                             <label for="contrast-toggle" style="position:relative;display:inline-flex;align-items:center;cursor:pointer;">
-                                <input type="checkbox" id="contrast-toggle" class="sr-only peer" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">
+                                <input aria-label="Contrast toggle" type="checkbox" id="contrast-toggle" class="sr-only peer" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">
                                 <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600"></div>
                             </label>
                         </div>
@@ -483,15 +483,15 @@
                     <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
                     <div class="contact-form__field">
                         <label for="name" class="contact-form__label">Full Name</label>
-                        <input type="text" name="name" id="name" required class="contact-form__input">
+                        <input type="text" aria-label="Name" name="name" id="name" required class="contact-form__input">
                     </div>
                     <div class="contact-form__field">
                         <label for="email" class="contact-form__label">Email Address</label>
-                        <input type="email" name="email" id="email" required class="contact-form__input">
+                        <input type="email" aria-label="Email" name="email" id="email" required class="contact-form__input">
                     </div>
                     <div class="contact-form__field">
                         <label for="message" class="contact-form__label">Message</label>
-                        <textarea id="message" name="message" rows="5" required class="contact-form__input"></textarea>
+                        <textarea id="message" aria-label="Message" name="message" rows="5" required class="contact-form__input"></textarea>
                     </div>
                     <button id="submit-button" type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
                         Send Message
