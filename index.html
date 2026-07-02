@@ -1,652 +1,1135 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anthony Boffman - Full Stack Developer Portfolio</title>
-    <meta name="description" content="Anthony Boffman is a Full Stack Developer with 5+ years of experience building high-performance web and mobile applications. Available for new opportunities.">
-    <meta property="og:title" content="Anthony Boffman — Full Stack Developer">
-    <meta property="og:description" content="Full Stack Developer crafting sites and apps with a focus on performance & human-centered design.">
+    <title>Anthony Boffman — Senior Fullstack Engineer</title>
+    <meta name="description" content="Anthony Boffman is a Senior Fullstack Engineer in San Diego with 6+ years building enterprise-scale SaaS — 18 apps shipped, $1.1M in revenue — with deep command of AI-assisted engineering.">
+    <link rel="canonical" href="https://anthonyboffman.com/">
+    <meta name="theme-color" content="#0a0f14">
+    <meta property="og:title" content="Anthony Boffman — Senior Fullstack Engineer">
+    <meta property="og:description" content="Enterprise systems, shipped with AI leverage. 6+ years · 18 enterprise apps · $1.1M revenue represented.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://anthonyboffman.com">
+    <meta property="og:image" content="https://anthonyboffman.com/assets/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
     <link rel="icon" type="image/x-icon" href="./assets/favicon.ico">
+    <link rel="preload" href="./assets/fonts/space-grotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="./reset.css">
     <link rel="stylesheet" href="./style.css">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:ital,wght@0,400;0,700;1,400&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
-    <style>
-        body {
-            font-family: var(--font-body);
-            background-color: var(--color-surface);
-            color: var(--color-on-surface);
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* High Contrast Mode — overrides all tokens via cascade */
-        body.high-contrast {
-            --color-surface:            #000000;
-            --color-surface-low:        #0d0d0d;
-            --color-surface-mid:        #111111;
-            --color-surface-high:       #181818;
-            --color-surface-highest:    #1a1a1a;
-            --color-primary:            #ffff00;
-            --color-primary-container:  #cccc00;
-            --color-on-primary:         #000000;
-            --color-on-surface:         #ffffff;
-            --color-on-surface-muted:   #cccccc;
-            --color-on-surface-subtle:  #999999;
-            --color-positive:           #8cff8c;
-            --gradient-primary:         linear-gradient(135deg, #ffff00 0%, #cccc00 100%);
-        }
-        body.high-contrast input,
-        body.high-contrast textarea {
-            border: 1px solid #ffff00 !important;
-            background-color: #111 !important;
-        }
-
-        /* Gauge animation */
-        .gauge-bar {
-            width: 0%;
-            transition: width 1.5s cubic-bezier(0.25, 1, 0.5, 1);
-        }
-        .gauge-bar.animated {
-            width: var(--gauge-width, 95%);
-        }
-    </style>
+    <script>document.documentElement.classList.add('js');</script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Anthony Boffman",
+      "jobTitle": "Senior Fullstack Engineer",
+      "url": "https://anthonyboffman.com",
+      "email": "mailto:aboffmanengineering@gmail.com",
+      "address": { "@type": "PostalAddress", "addressLocality": "San Diego", "addressRegion": "CA" },
+      "worksFor": { "@type": "Organization", "name": "Qualtrics" },
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Pepperdine University" },
+        { "@type": "CollegeOrUniversity", "name": "UC San Diego Extension" }
+      ],
+      "knowsAbout": ["PHP", "TypeScript", "React", "Node.js", "GraphQL", "Docker", "AWS", "AI-assisted engineering"],
+      "sameAs": [
+        "https://github.com/amboffman",
+        "https://www.linkedin.com/in/anthonymboffman/"
+      ]
+    }
+    </script>
 </head>
 <body>
+
+    <a href="#main" class="skip-link">Skip to content</a>
 
     <!-- Header & Navigation -->
     <header class="site-header" id="site-header">
         <div class="site-header__inner">
-            <a href="#" class="site-header__logo">AB</a>
-            <nav class="site-header__nav">
-                <a href="#case-studies" class="site-header__link">Work</a>
-                <a href="#experience" class="site-header__link">Experience</a>
-                <a href="#skills" class="site-header__link">Expertise</a>
-                <a href="#contact" class="site-header__link">Contact</a>
+            <a href="#" class="site-header__logo" aria-label="Anthony Boffman — home"><span class="tilde">~/</span>anthonyboffman</a>
+            <nav class="site-header__nav" aria-label="Primary">
+                <a href="#work" class="site-header__link"><span class="idx">01</span>Work</a>
+                <a href="#experience" class="site-header__link"><span class="idx">02</span>Experience</a>
+                <a href="#skills" class="site-header__link"><span class="idx">03</span>Skills</a>
+                <a href="#contact" class="site-header__link"><span class="idx">04</span>Contact</a>
             </nav>
-            <div class="site-header__icons">
-                <a href="mailto:aboffmanengineering@gmail.com" class="site-header__icon-link" aria-label="Email Anthony">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75"><path stroke-linecap="round" stroke-linejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" /></svg>
-                </a>
-                <a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer" class="site-header__icon-link" aria-label="GitHub">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.373 0 12c0 5.303 3.438 9.8 8.205 11.387.6.113.82-.258.82-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-                </a>
-                <a href="https://www.linkedin.com/in/anthonymboffman/" target="_blank" rel="noopener noreferrer" class="site-header__icon-link" aria-label="LinkedIn">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-                </a>
+            <div class="site-header__right">
+                <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>OPEN TO WORK</span>
+                <button type="button" class="keycap js-open-palette" aria-label="Open command palette (Ctrl+K)">⌘K</button>
+                <button id="mobile-menu-button" class="site-header__hamburger" aria-label="Toggle navigation" aria-expanded="false">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
             </div>
-            <a href="#contact" class="btn btn--primary site-header__cta">Hire Me</a>
-            <button id="mobile-menu-button" class="site-header__hamburger" aria-label="Toggle navigation">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
-                </svg>
-            </button>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="mobile-menu hidden">
-            <a href="#case-studies" class="mobile-menu__link">Work</a>
-            <a href="#experience" class="mobile-menu__link">Experience</a>
-            <a href="#skills" class="mobile-menu__link">Expertise</a>
-            <a href="#contact" class="mobile-menu__link">Contact</a>
+        <div id="mobile-menu" class="mobile-menu">
+            <a href="#work" class="mobile-menu__link"><span class="idx">01</span>Work</a>
+            <a href="#experience" class="mobile-menu__link"><span class="idx">02</span>Experience</a>
+            <a href="#skills" class="mobile-menu__link"><span class="idx">03</span>Skills</a>
+            <a href="#about" class="mobile-menu__link"><span class="idx">04</span>About</a>
+            <a href="#contact" class="mobile-menu__link"><span class="idx">05</span>Contact</a>
         </div>
     </header>
 
-    <main>
-        <!-- Hero Section -->
+    <main id="main">
+        <!-- Hero -->
         <section id="home" class="hero">
+            <canvas class="hero__canvas" id="hero-canvas" aria-hidden="true"></canvas>
             <div class="hero__inner">
-                <!-- Left: text content -->
                 <div class="hero__content">
-                    <p class="hero__eyebrow"><span class="hero__status-dot"></span>Full Stack Developer</p>
-                    <h1 class="display-lg">Hi, I'm <em class="text-gradient">Anthony Boffman</em></h1>
+                    <p class="mono-label hero__eyebrow"><span class="slashes">//</span> SYS.STATUS: <span class="ok">OPEN_TO_WORK</span> · SAN_DIEGO_CA</p>
+                    <h1 class="hero__title">Senior Fullstack Engineer.<br>Enterprise systems, <span class="text-gradient">shipped with AI leverage.</span></h1>
                     <p class="hero__subtitle">
-                        Crafting Sites and Apps with a Focus on Performance &amp; Human-Centered Design
+                        Six years building enterprise-scale SaaS at <strong>Qualtrics</strong> (formerly Press Ganey) — headless CMS architecture, legacy re-platforms, and Docker/CI-CD standardization — with deep command of AI-assisted engineering.
                     </p>
                     <div class="hero__actions">
-                        <a href="#experience" class="btn btn--primary">View My Experience &rarr;</a>
-                    </div>
-                    <div class="hero__stats">
-                        <div class="hero__stat">
-                            <span class="hero__stat-value">5+</span>
-                            <span class="hero__stat-label">Years Experience</span>
-                        </div>
-                        <div class="hero__stat">
-                            <span class="hero__stat-value">120+</span>
-                            <span class="hero__stat-label">Deployments</span>
-                        </div>
-                        <div class="hero__stat">
-                            <span class="hero__stat-value">99%</span>
-                            <span class="hero__stat-label">Uptime Focus</span>
-                        </div>
+                        <a href="#work" class="btn btn--primary">View work &rarr;</a>
+                        <button type="button" class="btn btn--ghost js-open-palette">⌘K to navigate</button>
                     </div>
                 </div>
-                <!-- Right: portrait -->
-                <div class="hero__portrait">
-                    <img src="https://amboffman.github.io/assets/profile-image.webp" fetchpriority="high" alt="Anthony Boffman" class="hero__photo">
-                </div>
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="section section--surface-low">
-            <div class="section__inner">
-                <div class="about__card">
-                    <div class="about__image-col">
-                        <img src="https://amboffman.github.io/assets/about-me.webp" alt="About Anthony Boffman" class="about__image">
-                    </div>
-                    <div class="about__content">
-                        <h2 class="about__title">About Me</h2>
-                        <p class="section-label">Who I Am</p>
-                        <p class="body-lg">
-                            I'm a results-driven Full-Stack Developer with 5+ years of experience crafting robust web and mobile solutions. I thrive in collaborative environments and excel at translating complex requirements into user-friendly products. My passion for innovation helps me identify and implement cutting-edge technologies to optimize performance and scalability.
-                        </p>
-                        <p class="body-lg">
-                            Here's what I bring to the table: Full-Stack Prowess (MERN/MEAN, Java, React), Cloud &amp; DevOps Fluency (AWS, Firebase, Git), a focus on quality assurance, and a strong design sensibility. Let's connect if you're seeking a developer dedicated to delivering exceptional user experiences.
-                        </p>
-                        <div class="about__links">
-                            <a href="https://linkedin.com/in/anthonymboffman" target="_blank" class="about__link">LinkedIn</a>
-                            <a href="https://github.com/amboffman" target="_blank" class="about__link">GitHub</a>
+                <div class="hero__terminal">
+                    <div class="term" id="hero-term">
+                        <div class="term__bar">
+                            <span class="term__dot term__dot--r"></span><span class="term__dot term__dot--y"></span><span class="term__dot term__dot--g"></span>
+                            <span class="term__title">anthony@boffman:~/portfolio</span>
+                        </div>
+                        <div class="term__body" id="hero-body">
+                            <div id="hero-transcript">
+                                <span class="term__line" data-play="type"><span class="term__prompt">$</span><span class="term__cmd">whoami</span></span>
+                                <span class="term__line term__out" data-play="show"><span class="arrow">›</span>Anthony Boffman — Senior Fullstack Engineer</span>
+                                <span class="term__line term__out" data-play="show"><span class="arrow">›</span>Qualtrics (formerly Press Ganey) · San Diego, CA</span>
+                                <span class="term__gap" aria-hidden="true"></span>
+                                <span class="term__line" data-play="type"><span class="term__prompt">$</span><span class="term__cmd">ship --enterprise --with-ai</span></span>
+                                <span class="term__line term__ok" data-play="show"><span class="check">✓</span>18 enterprise apps deployed</span>
+                                <span class="term__line term__ok" data-play="show"><span class="check">✓</span>$1.1M revenue represented</span>
+                                <span class="term__line term__ok" data-play="show"><span class="check">✓</span>6+ years · 3 engineers mentored</span>
+                                <span class="term__gap" aria-hidden="true"></span>
+                                <span class="term__line term__nojs-end"><span class="term__prompt">$</span><span class="term__caret" aria-hidden="true"></span></span>
+                            </div>
+                            <span class="term__line term__out" id="hero-hint" hidden>// live shell — type <strong style="color:var(--cyan)">help</strong></span>
+                            <div id="hero-live" aria-live="polite"></div>
+                            <div class="iterm__line-in" id="hero-line-in" hidden>
+                                <span class="term__prompt">$</span>
+                                <label for="hero-input" style="position:absolute;left:-9999px;">Terminal command input</label>
+                                <input id="hero-input" class="iterm__input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send">
+                                <span class="term__caret" aria-hidden="true"></span>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Commitment to Quality Section -->
-        <section id="quality" class="section section--surface">
+        <!-- System metrics -->
+        <section id="metrics" class="section section--flush cv-auto">
             <div class="section__inner">
-                <h2 class="section-title">Commitment to Quality</h2>
-                <p class="section-intro">I build websites that are not only beautiful but also high-performing, accessible, and SEO-friendly. This section demonstrates the built-in quality of this very page.</p>
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>System Metrics</h2>
+                    <p class="section__meta"><span class="ok">●</span> ALL_SYSTEMS_NOMINAL · UPTIME 6Y+</p>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card reveal">
+                        <p class="stat-card__label">Years_Experience</p>
+                        <p class="stat-card__value">6<span class="accent">+</span></p>
+                        <svg class="stat-card__spark" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,30 20,27 40,28 60,21 80,17 100,12 120,6"/></svg>
+                        <p class="stat-card__note"><span class="up">▲ compounding</span> · since 2020</p>
+                    </div>
+                    <div class="stat-card reveal reveal--d1">
+                        <p class="stat-card__label">Enterprise_Apps_Shipped</p>
+                        <p class="stat-card__value">18</p>
+                        <svg class="stat-card__spark" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,32 20,28 40,24 60,22 80,15 100,11 120,5"/></svg>
+                        <p class="stat-card__note"><span class="up">▲ in production</span> · distinct brands</p>
+                    </div>
+                    <div class="stat-card reveal reveal--d2">
+                        <p class="stat-card__label">Revenue_Represented</p>
+                        <p class="stat-card__value"><span class="accent">$</span>1.1M</p>
+                        <svg class="stat-card__spark" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,33 20,30 40,25 60,26 80,18 100,10 120,7"/></svg>
+                        <p class="stat-card__note"><span class="up">▲ client portfolio</span> · enterprise</p>
+                    </div>
+                    <div class="stat-card reveal reveal--d3">
+                        <p class="stat-card__label">Engineers_Mentored</p>
+                        <p class="stat-card__value">5</p>
+                        <svg class="stat-card__spark" viewBox="0 0 120 36" preserveAspectRatio="none" aria-hidden="true"><polyline points="0,31 20,31 40,24 60,24 80,16 100,16 120,8"/></svg>
+                        <p class="stat-card__note"><span class="up">▲ onboarded</span> · design-to-dev workflow</p>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <div class="quality__grid">
-                    <!-- Core Web Vitals -->
-                    <div class="card">
-                        <h3 class="quality-card__title">Core Web Vitals</h3>
-                        <p class="quality-card__desc">This page is optimized for a fast, responsive user experience. The scores below are simulated to reflect best practices.</p>
+        <!-- Work / impact reports -->
+        <section id="work" class="section cv-auto">
+            <div class="section__inner">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Impact Reports</h2>
+                    <p class="section__meta">ANONYMIZED_CLIENT_DATA · VERIFIED</p>
+                </div>
+                <p class="section__intro">Enterprise brands on a high-traffic SaaS platform. Clients anonymized; the numbers are real.</p>
+
+                <div class="featured-card reveal">
+                    <div>
+                        <p class="mono-label featured-card__label"><span class="slashes">//</span> FEATURED_BUILD</p>
+                        <h3 class="featured-card__title">Headless CMS for multi-location enterprise brands</h3>
+                        <p class="featured-card__desc">Built and launched a headless CMS architecture that lets clients manage every business location at a regional level — one schema, dozens of branded frontends, zero-downtime deploys through standardized Docker/CI-CD pipelines.</p>
+                        <p class="featured-card__tags">React<span class="sep">·</span>GraphQL<span class="sep">·</span>PHP services<span class="sep">·</span>Docker / CI-CD</p>
+                    </div>
+                    <a href="#contact" class="mono-link">ask me about it →</a>
+                </div>
+
+                <div class="case-grid">
+                    <article class="case-card reveal">
+                        <p class="case-card__report">Impact_Report_01</p>
+                        <h3 class="case-card__title">A Leading National Mortgage Lender</h3>
+                        <p class="case-card__challenge"><span class="k">CHALLENGE:</span> Low search visibility and user engagement for local branches.</p>
+                        <p class="case-card__solution"><span class="k">RESOLVED:</span> Deployed a scalable local pages strategy, optimizing each branch for performance and local SEO to capture high-intent traffic.</p>
+                        <div class="case-card__metrics">
+                            <div><span class="case-card__metric-value"><span data-count="52">52</span>%</span><span class="case-card__metric-label">Increase in Searches</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="56">56</span>%</span><span class="case-card__metric-label">Increase in Views</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="19">19</span>%</span><span class="case-card__metric-label">Increase in Actions</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="26">26</span>%</span><span class="case-card__metric-label">Increase in Map Views</span></div>
+                        </div>
+                    </article>
+
+                    <article class="case-card reveal reveal--d1">
+                        <p class="case-card__report">Impact_Report_02</p>
+                        <h3 class="case-card__title">A Major National Pet Supplies Retailer</h3>
+                        <p class="case-card__challenge"><span class="k">CHALLENGE:</span> Difficulty converting online searches into in-store sales across hundreds of locations.</p>
+                        <p class="case-card__solution"><span class="k">RESOLVED:</span> Architected a comprehensive local pages program, providing each store with an optimized digital storefront to drive local conversions.</p>
+                        <div class="case-card__metrics">
+                            <div><span class="case-card__metric-value"><span data-count="60">60</span>%</span><span class="case-card__metric-label">Increase in Local Traffic</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="112">112</span>%</span><span class="case-card__metric-label">Increase in Website Clicks</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="45">45</span>%</span><span class="case-card__metric-label">Increase in Phone Calls</span></div>
+                        </div>
+                    </article>
+
+                    <article class="case-card reveal">
+                        <p class="case-card__report">Impact_Report_03</p>
+                        <h3 class="case-card__title">A Renowned Women's Retailer</h3>
+                        <p class="case-card__challenge"><span class="k">CHALLENGE:</span> Needed to drive local foot traffic and online engagement for individual store locations.</p>
+                        <p class="case-card__solution"><span class="k">RESOLVED:</span> Implemented a scalable local pages strategy to create a unique, optimized online presence for each store, capturing local search interest.</p>
+                        <div class="case-card__metrics">
+                            <div><span class="case-card__metric-value"><span data-count="96">96</span>%</span><span class="case-card__metric-label">Increase in Total Clicks</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="115">115</span>%</span><span class="case-card__metric-label">Increase in Website Clicks</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="95">95</span>%</span><span class="case-card__metric-label">Increase in Map Views</span></div>
+                        </div>
+                    </article>
+
+                    <article class="case-card reveal reveal--d1">
+                        <p class="case-card__report">Impact_Report_04</p>
+                        <h3 class="case-card__title">A Premier Beauty &amp; Waxing Franchise</h3>
+                        <p class="case-card__challenge"><span class="k">CHALLENGE:</span> Needed to boost local appointment bookings and brand visibility for individual franchise locations.</p>
+                        <p class="case-card__solution"><span class="k">RESOLVED:</span> Rolled out an optimized local pages strategy to capture local search intent and drive appointment conversions directly from search results.</p>
+                        <div class="case-card__metrics">
+                            <div><span class="case-card__metric-value"><span data-count="41">41</span>%</span><span class="case-card__metric-label">Increase in Clicks for Directions</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="22">22</span>%</span><span class="case-card__metric-label">Increase in Website Clicks</span></div>
+                            <div><span class="case-card__metric-value"><span data-count="20">20</span>%</span><span class="case-card__metric-label">Increase in Calls</span></div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience: git log -->
+        <section id="experience" class="section cv-auto">
+            <div class="section__inner">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Experience</h2>
+                    <p class="section__meta">$ git log --career</p>
+                </div>
+
+                <div class="gitlog">
+                    <article class="commit commit--head reveal">
+                        <span class="commit__node" aria-hidden="true"></span>
+                        <p class="commit__meta"><span class="commit__hash">commit f81c2e4</span><span class="commit__ref">HEAD → present</span><span class="commit__date">Jun 2021 — Present</span></p>
+                        <h3 class="commit__title">Application Developer III</h3>
+                        <p class="commit__org">Qualtrics (formerly Press Ganey) · San Diego, CA</p>
+                        <ul class="commit__list">
+                            <li>Architected and shipped <strong>18 data-driven web applications</strong> for distinct enterprise brands on a high-traffic SaaS platform, representing <strong>$1.1M in revenue</strong>.</li>
+                            <li>Build and maintain backend services in PHP supporting client reputation and location-management workflows, with a focus on performance and scalability.</li>
+                            <li>Containerized development and deployment with Docker, standardizing local environments across the team and streamlining CI/CD.</li>
+                            <li>Re-architected and refactored legacy code toward modern standards, maintaining reliability throughout incremental migration.</li>
+                            <li>Built and launched a <strong>headless CMS architecture (React, GraphQL)</strong> enabling clients to manage all business locations at a regional level.</li>
+                            <li>Mentored and onboarded 3 engineers, establishing a standardized design-to-development workflow that improved code consistency across teams.</li>
+                        </ul>
+                    </article>
+
+                    <article class="commit reveal">
+                        <span class="commit__node" aria-hidden="true"></span>
+                        <p class="commit__meta"><span class="commit__hash">commit c47d9a1</span><span class="commit__date">Jan 2021 — Jun 2021</span></p>
+                        <h3 class="commit__title">Software Engineer</h3>
+                        <p class="commit__org">Freelance · San Diego, CA</p>
+                        <ul class="commit__list">
+                            <li>Led the replatforming of a legacy AngularJS application to <strong>React Native</strong>, ensuring seamless data migration and uninterrupted cross-platform performance.</li>
+                            <li>Architected backend data storage and end-to-end authentication, strengthening data security and workflow management.</li>
+                            <li>Built native iOS and Android applications using React Native, Java, and TypeScript.</li>
+                            <li>Designed scalable SQL/NoSQL data models and built cross-platform applications on Node.js and AWS.</li>
+                            <li>Authored unit and functional tests with Mockito and Robolectric for test-driven development.</li>
+                        </ul>
+                    </article>
+
+                    <article class="commit reveal">
+                        <span class="commit__node" aria-hidden="true"></span>
+                        <p class="commit__meta"><span class="commit__hash">commit 9b3e017</span><span class="commit__date">Jun 2020 — Dec 2020</span></p>
+                        <h3 class="commit__title">Full Stack Software Engineer — Internship</h3>
+                        <p class="commit__org">Ajnea Corp · San Diego, CA</p>
+                        <ul class="commit__list">
+                            <li>Built and shipped full-stack features for an early-stage product across frontend and backend — the foundation for everything above.</li>
+                        </ul>
+                    </article>
+
+                    <article class="commit reveal">
+                        <span class="commit__node" aria-hidden="true"></span>
+                        <p class="commit__meta"><span class="commit__hash">commit 2a90cf3</span><span class="commit__date">Nov 2018 — Mar 2020</span></p>
+                        <h3 class="commit__title">Enterprise Communications Coordinator</h3>
+                        <p class="commit__org">ICW Group · San Diego, CA</p>
+                        <ul class="commit__list">
+                            <li>Implemented a communication automation program that directly <strong>increased customer retention by 18%</strong> — the project where code met business, and the reason I became an engineer.</li>
+                            <li>Developed site pages, debugged errors, and built technical solutions that expanded team capacity and reporting insight.</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- About / profile -->
+        <section id="about" class="section cv-auto">
+            <div class="section__inner">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Profile</h2>
+                    <p class="section__meta">$ cat ./about.md</p>
+                </div>
+                <div class="about-grid">
+                    <figure class="about-photo reveal">
+                        <img src="./assets/about-me.webp" alt="Anthony Boffman" width="680" height="850" loading="lazy" decoding="async">
+                        <figcaption class="about-photo__tag">boffman.webp — SAN_DIEGO_CA</figcaption>
+                    </figure>
+                    <div class="about-copy reveal reveal--d1">
+                        <p>I'm a <strong>Senior Fullstack Engineer</strong> with 6+ years building and scaling data-driven web applications across PHP and the modern JavaScript ecosystem. At Qualtrics I own projects end to end — from backend services and REST/GraphQL APIs to the React frontends they power — on a SaaS platform serving enterprise brands at high traffic.</p>
+                        <p>My specialty is the unglamorous, high-stakes work: <strong>migrating legacy systems to modern, maintainable architectures</strong> without breaking what's already in production. Incremental re-architecture, containerized environments, standardized CI/CD — reliability as a feature.</p>
+                        <p>I treat <strong>AI as a force multiplier</strong> across the whole lifecycle — code generation, review, test scaffolding, refactoring — while keeping human judgment on architecture and product. This site is the proof: hand-built, zero frameworks, shipped with AI in the loop.</p>
+                        <p>The rest of the job is people: mentoring engineers through code review and pair programming, and translating requirements into software that ships.</p>
+                        <div class="about-edu">
+                            <p class="mono-label about-edu__label"><span class="slashes">//</span> EDUCATION</p>
+                            <ul>
+                                <li><strong>Full Stack Web Development Certification</strong>UC San Diego Extension, San Diego, CA</li>
+                                <li><strong>B.A., Advertising &amp; Multimedia Design</strong>Pepperdine University, Malibu, CA</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills -->
+        <section id="skills" class="section cv-auto">
+            <div class="section__inner">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Runtime Dependencies</h2>
+                    <p class="section__meta">$ composer show &amp;&amp; npm ls</p>
+                </div>
+                <div class="skills-groups">
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Languages</p>
+                        <div class="skill-group__chips"><span class="chip">PHP</span><span class="chip">JavaScript</span><span class="chip">TypeScript</span><span class="chip">Java</span><span class="chip">Kotlin</span><span class="chip">SQL</span><span class="chip">Python</span><span class="chip">HTML</span><span class="chip">CSS</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Frontend</p>
+                        <div class="skill-group__chips"><span class="chip">React</span><span class="chip">React Native</span><span class="chip">Next.js</span><span class="chip">Redux</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Backend</p>
+                        <div class="skill-group__chips"><span class="chip">Node.js</span><span class="chip">Express</span><span class="chip">Spring Boot</span><span class="chip">REST APIs</span><span class="chip">GraphQL</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Databases</p>
+                        <div class="skill-group__chips"><span class="chip">MySQL</span><span class="chip">MongoDB</span><span class="chip">Indexing &amp; query optimization</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Infrastructure</p>
+                        <div class="skill-group__chips"><span class="chip">Docker</span><span class="chip">AWS</span><span class="chip">Git</span><span class="chip">CI/CD workflows</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Testing</p>
+                        <div class="skill-group__chips"><span class="chip">Jest</span><span class="chip">JUnit</span><span class="chip">Mockito</span><span class="chip">Robolectric</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">AI Leverage</p>
+                        <div class="skill-group__chips"><span class="chip">AI-assisted development</span><span class="chip">LLM integration</span><span class="chip">Prompt engineering</span><span class="chip">AI code review</span></div>
+                    </div>
+                    <div class="skill-group reveal">
+                        <p class="skill-group__name">Ways of Working</p>
+                        <div class="skill-group__chips"><span class="chip">Agile / Scrum</span><span class="chip">Code review</span><span class="chip">Pair programming</span><span class="chip">Technical documentation</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Diagnostics -->
+        <section id="diagnostics" class="section cv-auto">
+            <div class="section__inner">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Diagnostics</h2>
+                    <p class="section__meta">$ npm run audit -- --target=this_page</p>
+                </div>
+                <p class="section__intro">Quality isn't claimed, it's measured. These are the live standards this page is built to.</p>
+                <div class="diag-grid">
+                    <div class="diag-card reveal">
+                        <h3 class="diag-card__title">Core Web Vitals</h3>
+                        <p class="diag-card__desc">Self-hosted fonts, no framework payloads, zero render-blocking third parties.</p>
                         <div class="gauge-row">
-                            <div class="gauge-label">
-                                <span>Largest Contentful Paint (Load Speed)</span>
-                                <span>Excellent</span>
-                            </div>
+                            <div class="gauge-label"><span>LCP — load speed</span><span class="val">excellent</span></div>
                             <div class="gauge-track"><div class="gauge-bar" style="--gauge-width: 100%;"></div></div>
                         </div>
                         <div class="gauge-row">
-                            <div class="gauge-label">
-                                <span>First Input Delay (Responsiveness)</span>
-                                <span>Excellent</span>
-                            </div>
+                            <div class="gauge-label"><span>INP — responsiveness</span><span class="val">excellent</span></div>
                             <div class="gauge-track"><div class="gauge-bar" style="--gauge-width: 100%;"></div></div>
                         </div>
                         <div class="gauge-row">
-                            <div class="gauge-label">
-                                <span>Cumulative Layout Shift (Visual Stability)</span>
-                                <span>Excellent</span>
-                            </div>
+                            <div class="gauge-label"><span>CLS — visual stability</span><span class="val">excellent</span></div>
                             <div class="gauge-track"><div class="gauge-bar" style="--gauge-width: 100%;"></div></div>
                         </div>
                     </div>
-
-                    <!-- Accessibility -->
-                    <div class="card">
-                        <h3 class="quality-card__title">Accessibility</h3>
-                        <p class="quality-card__desc">A great website is usable by everyone. This site includes features to ensure accessibility.</p>
-                        <div class="contrast-toggle-row">
-                            <span>High Contrast Mode</span>
-                            <label for="contrast-toggle" style="position:relative;display:inline-flex;align-items:center;cursor:pointer;">
-                                <input aria-label="Contrast toggle" type="checkbox" id="contrast-toggle" class="sr-only peer" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;">
-                                <div class="w-11 h-6 bg-gray-600 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-0.5 after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-600"></div>
-                            </label>
+                    <div class="diag-card reveal reveal--d1">
+                        <h3 class="diag-card__title">Accessibility</h3>
+                        <p class="diag-card__desc">Usable by everyone, keyboard first.</p>
+                        <div class="contrast-row">
+                            <span id="contrast-label">High contrast mode</span>
+                            <span class="switch">
+                                <input type="checkbox" id="contrast-toggle" aria-labelledby="contrast-label">
+                                <span class="switch__track" aria-hidden="true"></span>
+                            </span>
                         </div>
-                        <ul class="access-list">
-                            <li>WCAG 2.1 AA Compliance</li>
-                            <li>Full Keyboard Navigation</li>
-                            <li>Semantic HTML &amp; ARIA Labels</li>
-                            <li>Screen Reader Friendly</li>
+                        <ul class="diag-list">
+                            <li>WCAG 2.1 AA compliance</li>
+                            <li>Full keyboard navigation</li>
+                            <li>Semantic HTML &amp; ARIA labels</li>
+                            <li>prefers-reduced-motion support</li>
                         </ul>
                     </div>
-
-                    <!-- SEO -->
-                    <div class="card">
-                        <h3 class="quality-card__title">SEO Audit</h3>
-                        <div class="seo-score">
-                            <span class="seo-score__value">100</span>
-                            <span class="seo-score__denom">/100</span>
-                        </div>
-                        <p class="quality-card__desc">Built with a solid SEO foundation to ensure maximum visibility on search engines.</p>
-                        <ul class="seo-list">
-                            <li>
-                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span>Optimized Meta Tags</span>
-                            </li>
-                            <li>
-                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span>Image Alt Attributes</span>
-                            </li>
-                            <li>
-                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span>Mobile-First Design</span>
-                            </li>
-                            <li>
-                                <svg width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" /></svg>
-                                <span>Clean URL Structure</span>
-                            </li>
+                    <div class="diag-card reveal reveal--d2">
+                        <h3 class="diag-card__title">SEO Audit</h3>
+                        <p class="seo-score"><span class="seo-score__value">100</span><span class="seo-score__denom">/100</span></p>
+                        <ul class="diag-list">
+                            <li>Optimized meta &amp; OG tags</li>
+                            <li>Structured data (JSON-LD)</li>
+                            <li>Image alt attributes</li>
+                            <li>Mobile-first design</li>
                         </ul>
                     </div>
                 </div>
-
-                <h3 class="profit-subtitle"><em>From Performance to Profit</em></h3>
-                <p class="profit-intro">Elite performance and accessibility are critical business drivers that deliver a tangible return on investment.</p>
-
-                <div class="profit-grid">
-                    <div class="profit-card">
-                        <svg class="profit-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M160-200h160v-320H160v320Zm240 0h160v-560H400v560Zm240 0h160v-240H640v240ZM80-120v-480h240v-240h320v320h240v400H80Z"/></svg>
-                        <h3 class="profit-card__title"><em>Dominate Search Rankings</em></h3>
-                        <p class="profit-card__body">Google's algorithm explicitly rewards sites with excellent Core Web Vitals, leading to increased organic traffic and stronger market presence.</p>
-                    </div>
-
-                    <div class="profit-card">
-                        <svg class="profit-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M80-480v-80h120v80H80Zm136 222-56-58 84-84 58 56-86 86Zm28-382-84-84 56-58 86 86-58 56Zm476 480L530-350l-50 150-120-400 400 120-148 52 188 188-80 80ZM400-720v-120h80v120h-80Zm236 80-58-56 86-86 56 56-84 86Z"/></svg>
-                        <h3 class="profit-card__title"><em>Maximize User Conversion</em></h3>
-                        <p class="profit-card__body">A 1-second delay in page load can decrease conversions by up to 7%. I build lightning-fast sites that guide users smoothly toward conversion goals.</p>
-                    </div>
-
-                    <div class="profit-card">
-                        <svg class="profit-card__icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 -960 960 960"><path d="M660-570q-25 0-42.5-17.5T600-630q0-25 17.5-42.5T660-690q25 0 42.5 17.5T720-630q0 25-17.5 42.5T660-570Zm-360 0q-25 0-42.5-17.5T240-630q0-25 17.5-42.5T300-690q25 0 42.5 17.5T360-630q0 25-17.5 42.5T300-570Zm180 110q-25 0-42.5-17.5T420-520q0-25 17.5-42.5T480-580q25 0 42.5 17.5T540-520q0 25-17.5 42.5T480-460Zm0-220q-25 0-42.5-17.5T420-740q0-25 17.5-42.5T480-800q25 0 42.5 17.5T540-740q0 25-17.5 42.5T480-680Zm0 520q-20 0-40.5-3t-39.5-8v-143q0-35 23.5-60.5T480-400q33 0 56.5 25.5T560-314v143q-19 5-39.5 8t-40.5 3Zm-140-32q-20-8-38.5-18T266-232q-28-20-44.5-52T205-352q0-26-5.5-48.5T180-443q-10-13-37.5-39.5T92-532q-11-11-11-28t11-28q11-11 28-11t28 11l153 145q20 18 29.5 42.5T340-350v158Zm280 0v-158q0-26 10-51t29-42l153-145q12-11 28.5-11t27.5 11q11 11 11 28t-11 28q-23 23-50.5 49T780-443q-14 20-19.5 42.5T755-352q0 36-16.5 68.5T693-231q-16 11-34.5 21T620-192Z"/></svg>
-                        <h3 class="profit-card__title"><em>Expand Audience &amp; Compliance</em></h3>
-                        <p class="profit-card__body">Adhering to WCAG standards ensures your experience is usable for all users, broadening market reach and protecting brand reputation.</p>
-                    </div>
-                </div>
             </div>
         </section>
 
-
-        <!-- Experience Section -->
-        <section id="experience" class="section section--surface-low">
+        <!-- Peer reviews -->
+        <section id="reviews" class="section cv-auto">
             <div class="section__inner">
-                <h2 class="section-title experience__section-title">Professional Experience</h2>
-                <div class="experience-timeline">
-
-                    <div class="timeline-item">
-                        <div class="timeline-item__marker">
-                            <div class="timeline-item__dot"></div>
-                        </div>
-                        <div class="timeline-item__body">
-                            <div class="timeline-item__header">
-                                <h3 class="timeline-item__title">Application Developer III</h3>
-                                <span class="timeline-item__date">Jun 2021 &ndash; Present</span>
-                            </div>
-                            <p class="timeline-item__company">Press Ganey</p>
-                            <ul class="timeline-item__list">
-                                <li>Led design and development of 15+ high-traffic web apps, improving performance and user engagement, resulting in an average of <strong>56% increase in total views</strong> and <strong>19% increase in total action</strong>.</li>
-                                <li>Developed and implemented a custom Next.js and WordPress CMS solution, empowering marketing teams to deploy new pages and campaign updates without developer bandwidth.</li>
-                                <li>Acted as primary liaison between the development team and stakeholders, effectively translating requirements into effective UI/UX designs and user stories.</li>
-                                <li>Engineered custom WordPress solutions, including plugins and Gutenberg blocks, to provide tailored functionality.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item timeline-item--inactive">
-                        <div class="timeline-item__marker">
-                            <div class="timeline-item__dot"></div>
-                        </div>
-                        <div class="timeline-item__body">
-                            <div class="timeline-item__header">
-                                <h3 class="timeline-item__title">Software Engineer</h3>
-                                <span class="timeline-item__date">Mar 2020 &ndash; Jun 2021</span>
-                            </div>
-                            <p class="timeline-item__company">Freelance</p>
-                            <ul class="timeline-item__list">
-                                <li>Crafted cross-platform mobile experiences by developing native iOS and Android applications with React Native.</li>
-                                <li>Championed code quality by building clean, reusable code to enhance maintainability and streamline future development.</li>
-                                <li>Embraced a test-driven approach, designing functional and unit tests to improve code reliability and reduce defects.</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item timeline-item--inactive">
-                        <div class="timeline-item__marker">
-                            <div class="timeline-item__dot"></div>
-                        </div>
-                        <div class="timeline-item__body">
-                            <div class="timeline-item__header">
-                                <h3 class="timeline-item__title">Enterprise Communications Coordinator</h3>
-                                <span class="timeline-item__date">Nov 2018 &ndash; Mar 2020</span>
-                            </div>
-                            <p class="timeline-item__company">ICW Group</p>
-                            <ul class="timeline-item__list">
-                                <li>Drove customer retention by implementing a communication automation program, directly <strong>increasing retention rates by 18%</strong>.</li>
-                                <li>Enhanced web presence by developing site pages and debugging errors, ensuring an optimal user experience.</li>
-                                <li>Optimized team efficiency by identifying and implementing technical solutions, enhancing team capacity and generating insightful reporting.</li>
-                            </ul>
-                        </div>
-                    </div>
-
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Peer Reviews</h2>
+                    <p class="section__meta"><span class="ok">4 APPROVED</span> · 0 CHANGES_REQUESTED</p>
                 </div>
-            </div>
-        </section>
-
-        <!-- Case Studies Section -->
-        <section id="case-studies" class="section section--surface">
-            <div class="section__inner">
-                <h2 class="section-title">Impact Highlights: Case Studies</h2>
-                <div class="case-studies__grid">
-
-                    <!-- Case Study 1: Mortgage Lender -->
-                    <div class="case-study-card">
-                        <h3 class="case-study-card__title">A Leading National Mortgage Lender</h3>
-                        <p class="case-study-card__challenge">The Challenge: Low search visibility and user engagement for local branches.</p>
-                        <p class="case-study-card__solution">Solution: Deployed a scalable local pages strategy, optimizing each branch for performance and local SEO to capture high-intent traffic.</p>
-                        <div class="case-study-metrics">
-                            <div><span class="case-study-metrics__value" data-count="52">0%</span><span class="case-study-metrics__label">Increase in Searches</span></div>
-                            <div><span class="case-study-metrics__value" data-count="56">0%</span><span class="case-study-metrics__label">Increase in Views</span></div>
-                            <div><span class="case-study-metrics__value" data-count="19">0%</span><span class="case-study-metrics__label">Increase in Actions</span></div>
-                            <div><span class="case-study-metrics__value" data-count="26">0%</span><span class="case-study-metrics__label">Increase in Map Views</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Case Study 2: Pet Retailer -->
-                    <div class="case-study-card">
-                        <h3 class="case-study-card__title">A Major National Pet Supplies Retailer</h3>
-                        <p class="case-study-card__challenge">The Challenge: Difficulty converting online searches into in-store sales across hundreds of locations.</p>
-                        <p class="case-study-card__solution">Solution: Architected a comprehensive local pages program, providing each store with an optimized digital storefront to drive local conversions.</p>
-                        <div class="case-study-metrics">
-                            <div><span class="case-study-metrics__value" data-count="60">0%</span><span class="case-study-metrics__label">Increase in Local Traffic</span></div>
-                            <div><span class="case-study-metrics__value" data-count="112">0%</span><span class="case-study-metrics__label">Increase in Website Clicks</span></div>
-                            <div><span class="case-study-metrics__value" data-count="45">0%</span><span class="case-study-metrics__label">Increase in Phone Calls</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Case Study 3: Women's Retailer -->
-                    <div class="case-study-card">
-                        <h3 class="case-study-card__title">A Renowned Women's Retailer</h3>
-                        <p class="case-study-card__challenge">The Challenge: Needed to drive local foot traffic and online engagement for individual store locations.</p>
-                        <p class="case-study-card__solution">Solution: Implemented a scalable local pages strategy to create a unique, optimized online presence for each store, capturing local search interest.</p>
-                        <div class="case-study-metrics">
-                            <div><span class="case-study-metrics__value" data-count="96">0%</span><span class="case-study-metrics__label">Increase in Total Clicks</span></div>
-                            <div><span class="case-study-metrics__value" data-count="115">0%</span><span class="case-study-metrics__label">Increase in Website Clicks</span></div>
-                            <div><span class="case-study-metrics__value" data-count="95">0%</span><span class="case-study-metrics__label">Increase in Map Views</span></div>
-                        </div>
-                    </div>
-
-                    <!-- Case Study 4: Beauty Franchise -->
-                    <div class="case-study-card">
-                        <h3 class="case-study-card__title">A Premier Beauty &amp; Waxing Franchise</h3>
-                        <p class="case-study-card__challenge">The Challenge: Needed to boost local appointment bookings and brand visibility for individual franchise locations.</p>
-                        <p class="case-study-card__solution">Solution: Rolled out an optimized local pages strategy to capture local search intent and drive appointment conversions directly from search results.</p>
-                        <div class="case-study-metrics">
-                            <div><span class="case-study-metrics__value" data-count="41">0%</span><span class="case-study-metrics__label">Increase in Clicks for Directions</span></div>
-                            <div><span class="case-study-metrics__value" data-count="22">0%</span><span class="case-study-metrics__label">Increase in Website Clicks</span></div>
-                            <div><span class="case-study-metrics__value" data-count="20">0%</span><span class="case-study-metrics__label">Increase in Calls</span></div>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Skills Section -->
-        <section id="skills" class="section section--surface-low">
-            <div class="section__inner">
-                <h2 class="section-title">Technical Skills</h2>
-                <div class="skills__grid">
-                    <div class="chip">PHP</div>
-                    <div class="chip">MySQL</div>
-                    <div class="chip">CSS</div>
-                    <div class="chip">JavaScript</div>
-                    <div class="chip">WordPress</div>
-                    <div class="chip">Angular JS</div>
-                    <div class="chip">React JS</div>
-                    <div class="chip">Next.js</div>
-                    <div class="chip">Node.js</div>
-                    <div class="chip">Java</div>
-                    <div class="chip">AWS</div>
-                    <div class="chip">Firebase</div>
-                    <div class="chip">Git</div>
-                    <div class="chip">Figma</div>
-                    <div class="chip">Tailwind CSS</div>
-                    <div class="chip">Bootstrap</div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Peer Endorsements -->
-        <section id="testimonials" class="section section--surface-low">
-            <div class="section__inner">
-                <h2 class="section-title testimonials__section-title">Peer Endorsements</h2>
-                <div class="testimonials__grid">
-
-                    <div class="testimonial-card">
-                        <p class="testimonial__text">&ldquo;I worked with Anthony for a year at ICW Group, and in that year I watched him quickly take on new responsibilities &ndash; all with a positive attitude. He always went the extra mile and utilized his strong communication skills to quickly solve problems.&rdquo;</p>
-                        <div class="testimonial__author">
-                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/D5603AQHEmDYrOaijGg/profile-displayphoto-scale_100_100/B56ZqUAg2FHIAc-/0/1763419754601?e=1775692800&v=beta&t=y8n0fMSYTSO1fObRx_4HyCr1xBt5KMYEi_h6gfeL7c0" alt="Trisha Rule">
+                <div class="reviews-grid">
+                    <article class="review-card reveal">
+                        <p class="review-card__status">APPROVED</p>
+                        <p class="review-card__text">&ldquo;I worked with Anthony for a year at ICW Group, and in that year I watched him quickly take on new responsibilities &ndash; all with a positive attitude. He always went the extra mile and utilized his strong communication skills to quickly solve problems.&rdquo;</p>
+                        <div class="review-card__author">
+                            <span class="review-card__avatar" aria-hidden="true">TR</span>
                             <div>
-                                <p class="testimonial__name">Trisha Rule</p>
-                                <p class="testimonial__role">Senior PR Specialist,<br> ICW Group</p>
+                                <p class="review-card__name">Trisha Rule</p>
+                                <p class="review-card__role">Senior PR Specialist, ICW Group</p>
                             </div>
                         </div>
-                    </div>
-
-                    <div class="testimonial-card">
-                        <p class="testimonial__text">&ldquo;It&rsquo;s rare that you come across standout talent like Anthony. His digital marketing skills are highly developed and come naturally to him. No matter what the task, he always took on the challenge with a smile. Any employer would be lucky to have him.&rdquo;</p>
-                        <div class="testimonial__author">
-                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/C5603AQGj6U06LBt-TA/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1659384174723?e=1775692800&v=beta&t=fCyAX-oMRAuK0USxj6KyqIzOTIPu5TA-WqMiXXIPKcs" alt="Chris Acevedo">
+                    </article>
+                    <article class="review-card reveal reveal--d1">
+                        <p class="review-card__status">APPROVED</p>
+                        <p class="review-card__text">&ldquo;It&rsquo;s rare that you come across standout talent like Anthony. His digital marketing skills are highly developed and come naturally to him. No matter what the task, he always took on the challenge with a smile. Any employer would be lucky to have him.&rdquo;</p>
+                        <div class="review-card__author">
+                            <span class="review-card__avatar" aria-hidden="true">CA</span>
                             <div>
-                                <p class="testimonial__name">Chris Acevedo</p>
-                                <p class="testimonial__role">Digital Marketing Manager,<br> ICW Group</p>
+                                <p class="review-card__name">Chris Acevedo</p>
+                                <p class="review-card__role">Digital Marketing Manager, ICW Group</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial__text">&ldquo;If I could describe Anthony&rsquo;s work ethic in two words, it would be perseverant and punctual. Anyone who has worked with Anthony will tell you he is not a time-waster &mdash; he will undoubtedly make any team he is placed in more cohesive, more effective, and more efficient.&rdquo;</p>
-                        <div class="testimonial__author">
-                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/D5603AQGFxNx4OPhZBg/profile-displayphoto-shrink_100_100/profile-displayphoto-shrink_100_100/0/1718212108921?e=1775692800&v=beta&t=oZVooait5oRJCAShRethm4gqmH62JNdzRieVYocdmkA" alt="Jake Williams">
+                    </article>
+                    <article class="review-card reveal">
+                        <p class="review-card__status">APPROVED</p>
+                        <p class="review-card__text">&ldquo;If I could describe Anthony&rsquo;s work ethic in two words, it would be perseverant and punctual. Anyone who has worked with Anthony will tell you he is not a time-waster &mdash; he will undoubtedly make any team he is placed in more cohesive, more effective, and more efficient.&rdquo;</p>
+                        <div class="review-card__author">
+                            <span class="review-card__avatar" aria-hidden="true">JW</span>
                             <div>
-                                <p class="testimonial__name">Jake Williams</p>
-                                <p class="testimonial__role">Software Engineer, <br>Insulet Corporation</p>
+                                <p class="review-card__name">Jake Williams</p>
+                                <p class="review-card__role">Software Engineer, Insulet Corporation</p>
                             </div>
                         </div>
-                    </div>
-                    
-                    <div class="testimonial-card">
-                        <p class="testimonial__text">&ldquo;Anthony is a gifted problem solver with a rare combination of tenacity, research skills, and articulate communication. His commitment, dependability, and &lsquo;student for life&rsquo; mentality position him to overcome any challenge. As an employee and an individual, Anthony earns my highest recommendation.&rdquo;</p>
-                        <div class="testimonial__author">
-                            <img class="testimonial__avatar" src="https://media.licdn.com/dms/image/v2/D5603AQGKQKuasqEzEA/profile-displayphoto-scale_100_100/B56ZfrSEPIGQAg-/0/1751999071609?e=1775692800&v=beta&t=55VzsTet_qHqQPQG_JoX-3FaEt-Qvwhdf0aJ7xUSLB4" alt="Todd Sarkaria">
+                    </article>
+                    <article class="review-card reveal reveal--d1">
+                        <p class="review-card__status">APPROVED</p>
+                        <p class="review-card__text">&ldquo;Anthony is a gifted problem solver with a rare combination of tenacity, research skills, and articulate communication. His commitment, dependability, and &lsquo;student for life&rsquo; mentality position him to overcome any challenge. As an employee and an individual, Anthony earns my highest recommendation.&rdquo;</p>
+                        <div class="review-card__author">
+                            <span class="review-card__avatar" aria-hidden="true">TS</span>
                             <div>
-                                <p class="testimonial__name">Todd Sarkaria</p>
-                                <p class="testimonial__role">SVP Operations, <br>Waterworks Aquatics</p>
+                                <p class="review-card__name">Todd Sarkaria</p>
+                                <p class="review-card__role">SVP Operations, Waterworks Aquatics</p>
                             </div>
                         </div>
-                    </div>
-                    
-                </div>
-                <div class="carousel-dots" aria-label="Testimonial navigation">
-                    <button class="carousel-dot active" aria-label="Go to testimonial 1"></button>
-                    <button class="carousel-dot" aria-label="Go to testimonial 2"></button>
-                    <button class="carousel-dot" aria-label="Go to testimonial 3"></button>
-                    <button class="carousel-dot" aria-label="Go to testimonial 4"></button>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="section section--surface">
+        <!-- Contact -->
+        <section id="contact" class="section cv-auto">
             <div class="section__inner">
-                <h2 class="section-title">Contact Me</h2>
-                <p class="section-intro">I'm currently open to new opportunities. Feel free to reach out via the form below or directly at <a href="mailto:aboffmanengineering@gmail.com" class="contact-form__link">aboffmanengineering@gmail.com</a>.</p>
-                <form id="contact-form" class="contact-form" action="3977e0c9c28486ab6170e889519ac739" method="POST">
-                    <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
-                    <div class="contact-form__field">
-                        <label for="name" class="contact-form__label">Full Name</label>
-                        <input type="text" aria-label="Name" name="name" id="name" required class="contact-form__input">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>Open Channel</h2>
+                    <p class="section__meta">REPLIES_WITHIN_24H</p>
+                </div>
+                <p class="section__intro">Currently open to senior roles. Use the form, the terminal, or email me directly at <a href="mailto:aboffmanengineering@gmail.com" class="mono-link">aboffmanengineering@gmail.com</a>.</p>
+
+                <div class="contact-grid">
+                    <div>
+                        <div class="term iterm" id="iterm">
+                            <div class="term__bar">
+                                <span class="term__dot term__dot--r"></span><span class="term__dot term__dot--y"></span><span class="term__dot term__dot--g"></span>
+                                <span class="term__title">guest@anthonyboffman:~</span>
+                            </div>
+                            <div class="term__body" id="iterm-body">
+                                <div id="iterm-out" aria-live="polite">
+                                    <span class="term__line term__out">AB Shell v6.0 — an actual working terminal.</span>
+                                    <span class="term__line term__out">Type <strong style="color:var(--cyan)">help</strong> to see available commands.</span>
+                                    <span class="term__gap"></span>
+                                </div>
+                                <div class="iterm__line-in">
+                                    <span class="term__prompt">$</span>
+                                    <label for="iterm-input" style="position:absolute;left:-9999px;">Terminal command input</label>
+                                    <input id="iterm-input" class="iterm__input" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="send">
+                                    <span class="term__caret" aria-hidden="true"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="iterm__hint">try: <span class="cmd">help</span> · <span class="cmd">skills</span> · <span class="cmd">resume</span> · <span class="cmd">email</span> · <span class="cmd">sudo hire</span></p>
                     </div>
-                    <div class="contact-form__field">
-                        <label for="email" class="contact-form__label">Email Address</label>
-                        <input type="email" aria-label="Email" name="email" id="email" required class="contact-form__input">
+
+                    <div>
+                        <form id="contact-form" class="contact-form" action="https://formsubmit.co/aboffmanengineering@gmail.com" method="POST">
+                            <p class="contact-form__title"><span style="color:var(--cyan)">//</span> Send_Message</p>
+                            <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                            <div class="contact-form__field">
+                                <label for="name" class="contact-form__label">--name</label>
+                                <input type="text" name="name" id="name" required class="contact-form__input" autocomplete="name">
+                            </div>
+                            <div class="contact-form__field">
+                                <label for="email" class="contact-form__label">--email</label>
+                                <input type="email" name="email" id="email" required class="contact-form__input" autocomplete="email">
+                            </div>
+                            <div class="contact-form__field">
+                                <label for="message" class="contact-form__label">--message</label>
+                                <textarea id="message" name="message" rows="5" required class="contact-form__input"></textarea>
+                            </div>
+                            <button id="submit-button" type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">Send message →</button>
+                            <div id="form-status" class="contact-form__status" role="status" aria-live="polite"></div>
+                        </form>
+                        <p class="contact-aside">Prefer directly? <a href="mailto:aboffmanengineering@gmail.com">aboffmanengineering@gmail.com</a> · <a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/anthonymboffman/" target="_blank" rel="noopener noreferrer">LinkedIn</a></p>
                     </div>
-                    <div class="contact-form__field">
-                        <label for="message" class="contact-form__label">Message</label>
-                        <textarea id="message" aria-label="Message" name="message" rows="5" required class="contact-form__input"></textarea>
-                    </div>
-                    <button id="submit-button" type="submit" class="btn btn--primary" style="width:100%;justify-content:center;">
-                        Send Message
-                    </button>
-                </form>
-                <div id="form-status" class="contact-form__status" style="margin-top:1rem;"></div>
+                </div>
             </div>
         </section>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <p>&copy; 2026 Anthony Boffman. All Rights Reserved.</p>
+        <div class="site-footer__inner">
+            <p>© 2026 Anthony Boffman · built by hand in San Diego, CA · <span style="color:var(--green)">zero frameworks, AI in the loop</span></p>
+            <div class="site-footer__links">
+                <a href="mailto:aboffmanengineering@gmail.com">email</a>
+                <a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer">github</a>
+                <a href="https://www.linkedin.com/in/anthonymboffman/" target="_blank" rel="noopener noreferrer">linkedin</a>
+            </div>
+        </div>
     </footer>
 
+    <!-- Command palette -->
+    <div class="palette" id="palette" hidden role="dialog" aria-modal="true" aria-label="Command palette">
+        <div class="palette__panel">
+            <div class="palette__input-row">
+                <span class="palette__chevron" aria-hidden="true">❯</span>
+                <input id="palette-input" class="palette__input" type="text" placeholder="Type a command or section…" autocomplete="off" spellcheck="false">
+                <span class="palette__esc" aria-hidden="true">ESC</span>
+            </div>
+            <div class="palette__list" id="palette-list" role="listbox" aria-label="Commands"></div>
+        </div>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Glassmorphism nav on scroll
-            const siteHeader = document.getElementById('site-header');
-            window.addEventListener('scroll', () => {
-                siteHeader.classList.toggle('scrolled', window.scrollY > 50);
+    (function () {
+      'use strict';
+
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var EMAIL = 'aboffmanengineering@gmail.com';
+
+      /* ---------- Toast ---------- */
+      var toastEl = document.getElementById('toast');
+      var toastTimer = null;
+      function toast(msg) {
+        toastEl.innerHTML = '<span class="check">✓</span>' + msg;
+        toastEl.classList.add('show');
+        clearTimeout(toastTimer);
+        toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2200);
+      }
+
+      function copyEmail() {
+        function fallback() {
+          var ta = document.createElement('textarea');
+          ta.value = EMAIL;
+          document.body.appendChild(ta);
+          ta.select();
+          try { document.execCommand('copy'); toast('Email copied'); } catch (e) { toast('Email: ' + EMAIL); }
+          document.body.removeChild(ta);
+        }
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(EMAIL).then(function () { toast('Email copied'); }, fallback);
+        } else { fallback(); }
+      }
+
+      /* ---------- Header ---------- */
+      var siteHeader = document.getElementById('site-header');
+      window.addEventListener('scroll', function () {
+        siteHeader.classList.toggle('scrolled', window.scrollY > 24);
+      }, { passive: true });
+
+      /* ---------- Mobile menu ---------- */
+      var menuBtn = document.getElementById('mobile-menu-button');
+      var mobileMenu = document.getElementById('mobile-menu');
+      menuBtn.addEventListener('click', function () {
+        var open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      mobileMenu.addEventListener('click', function (e) {
+        if (e.target.closest('a')) {
+          mobileMenu.classList.remove('open');
+          menuBtn.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      /* ---------- High contrast (persisted) ---------- */
+      var contrastToggle = document.getElementById('contrast-toggle');
+      function setContrast(on, persist) {
+        document.body.classList.toggle('high-contrast', on);
+        if (contrastToggle) contrastToggle.checked = on;
+        if (persist) { try { localStorage.setItem('hc', on ? '1' : '0'); } catch (e) {} }
+      }
+      var hcSaved = null;
+      try { hcSaved = localStorage.getItem('hc'); } catch (e) {}
+      if (hcSaved === '1') setContrast(true, false);
+      if (contrastToggle) {
+        contrastToggle.addEventListener('change', function () { setContrast(contrastToggle.checked, true); });
+      }
+
+      /* ---------- Reveal on scroll ---------- */
+      var revealEls = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !reducedMotion) {
+        var revealObs = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('revealed');
+              revealObs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -8% 0px' });
+        revealEls.forEach(function (el) { revealObs.observe(el); });
+      } else {
+        revealEls.forEach(function (el) { el.classList.add('revealed'); });
+      }
+
+      /* ---------- Gauges ---------- */
+      var diagSection = document.getElementById('diagnostics');
+      function fillGauges() {
+        document.querySelectorAll('.gauge-bar').forEach(function (bar) { bar.classList.add('animated'); });
+      }
+      if (diagSection && 'IntersectionObserver' in window && !reducedMotion) {
+        var gaugeObs = new IntersectionObserver(function (entries) {
+          if (entries[0].isIntersecting) { fillGauges(); gaugeObs.disconnect(); }
+        }, { threshold: 0.35 });
+        gaugeObs.observe(diagSection);
+      } else {
+        fillGauges();
+      }
+
+      /* ---------- Animated counters (values are real in HTML; JS re-plays them) ---------- */
+      var workSection = document.getElementById('work');
+      function animateCount(el) {
+        var target = parseInt(el.dataset.count, 10);
+        var start = null;
+        function step(ts) {
+          if (start === null) start = ts;
+          var p = Math.min((ts - start) / 1300, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(target * eased);
+          if (p < 1) requestAnimationFrame(step);
+        }
+        el.textContent = '0';
+        requestAnimationFrame(step);
+      }
+      if (workSection && 'IntersectionObserver' in window && !reducedMotion) {
+        var countObs = new IntersectionObserver(function (entries, obs) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.querySelectorAll('[data-count]').forEach(animateCount);
+              obs.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.2 });
+        workSection.querySelectorAll('.case-card').forEach(function (card) { countObs.observe(card); });
+      }
+
+      /* ---------- Hero canvas: drifting grid + particles ---------- */
+      var canvas = document.getElementById('hero-canvas');
+      if (canvas && canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var dpr = Math.min(window.devicePixelRatio || 1, 2);
+        var W = 0, H = 0, particles = [], pulses = [], running = false, rafId = null;
+
+        function sizeCanvas() {
+          var rect = canvas.parentElement.getBoundingClientRect();
+          W = rect.width; H = rect.height;
+          canvas.width = W * dpr; canvas.height = H * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+        function initParticles() {
+          particles = [];
+          var n = Math.min(46, Math.floor(W / 34));
+          for (var i = 0; i < n; i++) {
+            particles.push({
+              x: Math.random() * W, y: Math.random() * H,
+              r: Math.random() * 1.6 + 0.4,
+              vx: (Math.random() - 0.5) * 0.18, vy: (Math.random() - 0.5) * 0.14,
+              a: Math.random() * 0.5 + 0.15
             });
-
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            const mobileMenuLinks = mobileMenu.querySelectorAll('a');
-            for (let link of mobileMenuLinks) {
-                link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+          }
+        }
+        function spawnPulse() {
+          var horizontal = Math.random() > 0.5;
+          pulses.push({
+            horizontal: horizontal,
+            fixed: Math.floor(Math.random() * 12) * 64 + 32,
+            pos: horizontal ? -60 : -60,
+            speed: Math.random() * 2.2 + 1.6,
+            len: Math.random() * 60 + 50
+          });
+        }
+        function draw() {
+          ctx.clearRect(0, 0, W, H);
+          // grid
+          ctx.strokeStyle = 'rgba(34, 211, 238, 0.05)';
+          ctx.lineWidth = 1;
+          for (var gx = 0.5; gx < W; gx += 64) {
+            ctx.beginPath(); ctx.moveTo(gx, 0); ctx.lineTo(gx, H); ctx.stroke();
+          }
+          for (var gy = 0.5; gy < H; gy += 64) {
+            ctx.beginPath(); ctx.moveTo(0, gy); ctx.lineTo(W, gy); ctx.stroke();
+          }
+          // particles
+          particles.forEach(function (p) {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+            if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = 'rgba(34, 211, 238, ' + p.a + ')';
+            ctx.fill();
+          });
+          // signal pulses
+          for (var i = pulses.length - 1; i >= 0; i--) {
+            var s = pulses[i];
+            s.pos += s.speed;
+            var grad;
+            if (s.horizontal) {
+              grad = ctx.createLinearGradient(s.pos - s.len, 0, s.pos, 0);
+              grad.addColorStop(0, 'rgba(74, 222, 128, 0)');
+              grad.addColorStop(1, 'rgba(74, 222, 128, 0.5)');
+              ctx.strokeStyle = grad;
+              ctx.beginPath(); ctx.moveTo(s.pos - s.len, s.fixed + 0.5); ctx.lineTo(s.pos, s.fixed + 0.5); ctx.stroke();
+              if (s.pos - s.len > W) pulses.splice(i, 1);
+            } else {
+              grad = ctx.createLinearGradient(0, s.pos - s.len, 0, s.pos);
+              grad.addColorStop(0, 'rgba(34, 211, 238, 0)');
+              grad.addColorStop(1, 'rgba(34, 211, 238, 0.5)');
+              ctx.strokeStyle = grad;
+              ctx.beginPath(); ctx.moveTo(s.fixed + 0.5, s.pos - s.len); ctx.lineTo(s.fixed + 0.5, s.pos); ctx.stroke();
+              if (s.pos - s.len > H) pulses.splice(i, 1);
             }
+          }
+          if (Math.random() < 0.008 && pulses.length < 3) spawnPulse();
+        }
+        function loop() {
+          if (!running) return;
+          draw();
+          rafId = requestAnimationFrame(loop);
+        }
+        function start() { if (!running && !reducedMotion) { running = true; rafId = requestAnimationFrame(loop); } }
+        function stop() { running = false; if (rafId) cancelAnimationFrame(rafId); }
 
-
-            // Core Web Vitals Gauge Animation
-            const qualitySection = document.getElementById('quality');
-            const observer = new IntersectionObserver((entries) => {
-                if (entries[0].isIntersecting) {
-                    document.querySelectorAll('.gauge-bar').forEach(bar => {
-                        bar.classList.add('animated');
-                    });
-                    observer.disconnect();
-                }
-            }, { threshold: 0.5 });
-            
-            if (qualitySection) {
-                observer.observe(qualitySection);
-            }
-
-            // High Contrast Toggle
-            const contrastToggle = document.getElementById('contrast-toggle');
-            if (contrastToggle) {
-                contrastToggle.addEventListener('change', () => {
-                    document.body.classList.toggle('high-contrast');
-                });
-            }
-
-             //Contact Form Submission with Fetch API
-            const contactForm = document.getElementById('contact-form');
-            const submitButton = document.getElementById('submit-button');
-            const formStatus = document.getElementById('form-status');
-
-            if (contactForm) {
-                contactForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    const formData = new FormData(this);
-                    const action = "https://formsubmit.co/aboffmanengineering@gmail.com";
-                    
-                    submitButton.disabled = true;
-                    submitButton.textContent = 'Sending...';
-                    formStatus.innerHTML = '';
-
-                    fetch(action, {
-                        method: 'POST',
-                        body: formData,
-                        headers: {
-                            'Accept': 'application/json'
-                        }
-                    }).then(response => {
-                        const contentType = response.headers.get('content-type');
-                        if (contentType && contentType.indexOf('application/json') !== -1) {
-                            return response.json();
-                        } else {
-                            return { isHtml: true };
-                        }
-                    }).then(data => {
-                        if (data.isHtml) {
-                             formStatus.innerHTML = "<p class='text-green-400'>Thank you! Your message has been sent successfully.</p>";
-                        } else {
-                             formStatus.innerHTML = "<p class='text-green-400'>Thank you! Your message has been sent successfully.</p>";
-                        }
-                        contactForm.reset();
-                    }).catch(error => {
-                        formStatus.innerHTML = `<p class='text-red-400'>Oops! There was a problem submitting your form.</p>`;
-                        console.error(error);
-                    }).finally(() => {
-                        submitButton.disabled = false;
-                        submitButton.textContent = 'Send Message';
-                    });
-                });
-            }
-            // 3. Case Study Number Animation
-            const caseStudiesSection = document.getElementById('case-studies');
-            const animateCount = (el) => {
-                const target = +el.dataset.count;
-                el.innerText = '0%';
-                const duration = 1500; // 1.5 seconds
-                const stepTime = Math.abs(Math.floor(duration / target));
-                let current = 0;
-                const timer = setInterval(() => {
-                    current += 1;
-                    el.innerText = current + '%';
-                    if (current == target) {
-                        clearInterval(timer);
-                    }
-                }, stepTime);
-            };
-
-            const caseStudiesObserver = new IntersectionObserver((entries, observer) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const counters = entry.target.querySelectorAll('[data-count]');
-                        counters.forEach(counter => {
-                            animateCount(counter);
-                        });
-                        observer.unobserve(entry.target); // Animate only once
-                    }
-                });
-            }, { threshold: 0.2 });
-
-            if (caseStudiesSection) {
-                caseStudiesObserver.observe(caseStudiesSection);
-            }
-
-            // Testimonials carousel dots
-            const testimonialsGrid = document.querySelector('.testimonials__grid');
-            const carouselDots = document.querySelectorAll('.carousel-dot');
-            if (testimonialsGrid && carouselDots.length) {
-                const updateDots = () => {
-                    const cards = testimonialsGrid.querySelectorAll('.testimonial-card');
-                    const scrollLeft = testimonialsGrid.scrollLeft;
-                    let activeIndex = 0;
-                    cards.forEach((card, i) => {
-                        if (scrollLeft >= card.offsetLeft - 20) activeIndex = i;
-                    });
-                    carouselDots.forEach((dot, i) => dot.classList.toggle('active', i === activeIndex));
-                };
-                testimonialsGrid.addEventListener('scroll', updateDots, { passive: true });
-                carouselDots.forEach((dot, i) => {
-                    dot.addEventListener('click', () => {
-                        const cards = testimonialsGrid.querySelectorAll('.testimonial-card');
-                        if (cards[i]) cards[i].scrollIntoView({ behavior: 'smooth', inline: 'start', block: 'nearest' });
-                    });
-                });
-            }
+        sizeCanvas(); initParticles();
+        if (reducedMotion) { draw(); }
+        else {
+          if ('IntersectionObserver' in window) {
+            new IntersectionObserver(function (entries) {
+              entries[0].isIntersecting ? start() : stop();
+            }, { threshold: 0.05 }).observe(canvas);
+          } else { start(); }
+          document.addEventListener('visibilitychange', function () {
+            document.hidden ? stop() : start();
+          });
+        }
+        var resizeT = null;
+        window.addEventListener('resize', function () {
+          clearTimeout(resizeT);
+          resizeT = setTimeout(function () { sizeCanvas(); initParticles(); if (reducedMotion) draw(); }, 150);
         });
+      }
+
+      /* ---------- Command palette ---------- */
+      var palette = document.getElementById('palette');
+      var paletteInput = document.getElementById('palette-input');
+      var paletteList = document.getElementById('palette-list');
+      var lastFocus = null;
+
+      var COMMANDS = [
+        { idx: '01', label: 'Go to: Work', run: function () { location.hash = '#work'; } },
+        { idx: '02', label: 'Go to: Experience', run: function () { location.hash = '#experience'; } },
+        { idx: '03', label: 'Go to: Skills', run: function () { location.hash = '#skills'; } },
+        { idx: '04', label: 'Go to: About', run: function () { location.hash = '#about'; } },
+        { idx: '05', label: 'Go to: Diagnostics', run: function () { location.hash = '#diagnostics'; } },
+        { idx: '06', label: 'Go to: Peer Reviews', run: function () { location.hash = '#reviews'; } },
+        { idx: '07', label: 'Go to: Contact', run: function () { location.hash = '#contact'; } },
+        { idx: '>_', label: 'Focus the terminal', run: function () { location.hash = '#home'; setTimeout(function () { document.getElementById('hero-input').focus(); }, 400); } },
+        { idx: '@', label: 'Copy email address', run: copyEmail },
+        { idx: '↗', label: 'Open GitHub — github.com/amboffman', run: function () { window.open('https://github.com/amboffman', '_blank', 'noopener'); } },
+        { idx: '↗', label: 'Open LinkedIn', run: function () { window.open('https://www.linkedin.com/in/anthonymboffman/', '_blank', 'noopener'); } },
+        { idx: 'A11Y', label: 'Toggle high contrast mode', run: function () { setContrast(!document.body.classList.contains('high-contrast'), true); } }
+      ];
+      var filtered = COMMANDS.slice();
+      var activeIdx = 0;
+
+      function renderPalette() {
+        paletteList.innerHTML = '';
+        if (!filtered.length) {
+          var empty = document.createElement('div');
+          empty.className = 'palette__empty';
+          empty.textContent = 'command not found — try "work" or "email"';
+          paletteList.appendChild(empty);
+          return;
+        }
+        filtered.forEach(function (cmd, i) {
+          var btn = document.createElement('button');
+          btn.type = 'button';
+          btn.className = 'palette__item' + (i === activeIdx ? ' active' : '');
+          btn.setAttribute('role', 'option');
+          btn.setAttribute('aria-selected', i === activeIdx ? 'true' : 'false');
+          var idx = document.createElement('span');
+          idx.className = 'idx';
+          idx.textContent = cmd.idx;
+          btn.appendChild(idx);
+          btn.appendChild(document.createTextNode(cmd.label));
+          btn.addEventListener('click', function () { execPalette(cmd); });
+          btn.addEventListener('mouseenter', function () {
+            if (activeIdx !== i) { activeIdx = i; renderPalette(); }
+          });
+          paletteList.appendChild(btn);
+        });
+      }
+      function execPalette(cmd) {
+        closePalette();
+        cmd.run();
+      }
+      function openPalette() {
+        lastFocus = document.activeElement;
+        palette.hidden = false;
+        paletteInput.value = '';
+        filtered = COMMANDS.slice();
+        activeIdx = 0;
+        renderPalette();
+        paletteInput.focus();
+      }
+      function closePalette() {
+        palette.hidden = true;
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+      paletteInput.addEventListener('input', function () {
+        var q = paletteInput.value.trim().toLowerCase();
+        filtered = COMMANDS.filter(function (c) { return c.label.toLowerCase().indexOf(q) !== -1; });
+        activeIdx = 0;
+        renderPalette();
+      });
+      paletteInput.addEventListener('keydown', function (e) {
+        if (e.key === 'ArrowDown') { e.preventDefault(); if (filtered.length) { activeIdx = (activeIdx + 1) % filtered.length; renderPalette(); } }
+        else if (e.key === 'ArrowUp') { e.preventDefault(); if (filtered.length) { activeIdx = (activeIdx - 1 + filtered.length) % filtered.length; renderPalette(); } }
+        else if (e.key === 'Enter') { e.preventDefault(); if (filtered[activeIdx]) execPalette(filtered[activeIdx]); }
+      });
+      palette.addEventListener('mousedown', function (e) {
+        if (e.target === palette) closePalette();
+      });
+      document.addEventListener('keydown', function (e) {
+        if ((e.ctrlKey || e.metaKey) && (e.key === 'k' || e.key === 'K')) {
+          e.preventDefault();
+          palette.hidden ? openPalette() : closePalette();
+        } else if (e.key === 'Escape' && !palette.hidden) {
+          closePalette();
+        }
+      });
+      document.querySelectorAll('.js-open-palette').forEach(function (btn) {
+        btn.addEventListener('click', openPalette);
+      });
+
+      /* ---------- Contact form ---------- */
+      var contactForm = document.getElementById('contact-form');
+      var submitButton = document.getElementById('submit-button');
+      var formStatus = document.getElementById('form-status');
+      contactForm.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var formData = new FormData(contactForm);
+        submitButton.disabled = true;
+        submitButton.textContent = 'Sending…';
+        formStatus.innerHTML = '';
+        fetch(contactForm.action, {
+          method: 'POST',
+          body: formData,
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          formStatus.innerHTML = '<span class="ok">✓ message sent — I\'ll get back to you within 24h.</span>';
+          contactForm.reset();
+        }).catch(function (err) {
+          formStatus.innerHTML = '<span class="err">✗ transmission failed — email me directly instead.</span>';
+          console.error(err);
+        }).finally(function () {
+          submitButton.disabled = false;
+          submitButton.textContent = 'Send message →';
+        });
+      });
+
+      /* ---------- Terminal engine (hero + contact share one shell) ---------- */
+      function attachShell(cfg) {
+        // cfg: { liveEl (output target), bodyEl (scroll container), inputEl, clearEls }
+        var shell = {
+          print: function (html, cls) {
+            var line = document.createElement('span');
+            line.className = 'term__line ' + (cls || 'term__out');
+            line.innerHTML = html;
+            cfg.liveEl.appendChild(line);
+          },
+          echo: function (cmdText) {
+            var line = document.createElement('span');
+            line.className = 'term__line';
+            var prompt = document.createElement('span');
+            prompt.className = 'term__prompt';
+            prompt.textContent = '$';
+            var cmd = document.createElement('span');
+            cmd.className = 'term__cmd';
+            cmd.textContent = cmdText; // textContent: never render user input as HTML
+            line.appendChild(prompt);
+            line.appendChild(cmd);
+            cfg.liveEl.appendChild(line);
+          },
+          gap: function () {
+            var gap = document.createElement('span');
+            gap.className = 'term__gap';
+            cfg.liveEl.appendChild(gap);
+          },
+          scroll: function () { cfg.bodyEl.scrollTop = cfg.bodyEl.scrollHeight; },
+          clear: function () {
+            cfg.clearEls.forEach(function (el) { el.innerHTML = ''; });
+          }
+        };
+
+        var commands = {
+          help: function () {
+            shell.print('available commands:');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;who is this guy');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;core stack');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">experience</strong>&nbsp;career log');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">resume</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the highlights');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">email</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy my address');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">github</strong> / <strong style="color:var(--cyan)">linkedin</strong>&nbsp;&nbsp;links');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">contact</strong>&nbsp;&nbsp;&nbsp;&nbsp;open the form');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">clear</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;wipe the screen');
+          },
+          whoami: function () {
+            shell.print('guest — but you\'re probably here about <strong style="color:var(--text)">Anthony</strong>. try <strong style="color:var(--cyan)">about</strong>');
+          },
+          about: function () {
+            shell.print('<span class="arrow">›</span>Anthony Boffman — Senior Fullstack Engineer, San Diego, CA');
+            shell.print('<span class="arrow">›</span>6+ years · enterprise SaaS at Qualtrics (fmr. Press Ganey)');
+            shell.print('<span class="arrow">›</span>PHP + modern JS · legacy migrations · AI-accelerated delivery');
+          },
+          skills: function () {
+            shell.print('<span class="check" style="color:var(--green)">✓</span>PHP · JavaScript · TypeScript · Java · SQL · Python');
+            shell.print('<span class="check" style="color:var(--green)">✓</span>React · React Native · Next.js · Node.js · GraphQL');
+            shell.print('<span class="check" style="color:var(--green)">✓</span>Docker · AWS · CI/CD · MySQL · MongoDB');
+            shell.print('<span class="check" style="color:var(--green)">✓</span>AI-assisted development, end to end');
+          },
+          experience: function () {
+            shell.print('f81c2e4 <strong style="color:var(--text)">Qualtrics</strong> — Application Developer III (2021–now)');
+            shell.print('c47d9a1 <strong style="color:var(--text)">Freelance</strong> — Software Engineer (2021)');
+            shell.print('9b3e017 <strong style="color:var(--text)">Ajnea Corp</strong> — Full Stack Intern (2020)');
+            shell.print('2a90cf3 <strong style="color:var(--text)">ICW Group</strong> — where code met business (2018–20)');
+            shell.print('full log: <a href="#experience">#experience</a>');
+          },
+          resume: function () {
+            shell.print('<span class="check" style="color:var(--green)">✓</span>18 enterprise apps · $1.1M revenue · 3 engineers mentored');
+            shell.print('<span class="check" style="color:var(--green)">✓</span>headless CMS architecture (React/GraphQL)');
+            shell.print('<span class="check" style="color:var(--green)">✓</span>legacy → modern replatforms, zero drama');
+            shell.print('details: <a href="https://www.linkedin.com/in/anthonymboffman/" target="_blank" rel="noopener noreferrer">linkedin.com/in/anthonymboffman</a>');
+          },
+          email: function () {
+            copyEmail();
+            shell.print('<span class="check" style="color:var(--green)">✓</span>copied: <a href="mailto:' + EMAIL + '">' + EMAIL + '</a>');
+          },
+          github: function () {
+            shell.print('<a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer">github.com/amboffman</a>');
+          },
+          linkedin: function () {
+            shell.print('<a href="https://www.linkedin.com/in/anthonymboffman/" target="_blank" rel="noopener noreferrer">linkedin.com/in/anthonymboffman</a>');
+          },
+          contact: function () {
+            shell.print('opening channel…');
+            location.hash = '#contact';
+            setTimeout(function () { document.getElementById('name').focus(); }, 400);
+          },
+          ai: function () {
+            shell.print('this site: hand-coded, zero frameworks — designed and shipped with AI in the loop.');
+            shell.print('that\'s the whole point.');
+          },
+          'sudo hire': function () {
+            shell.print('<span style="color:var(--green)">PERMISSION GRANTED</span> — routing to contact form…');
+            location.hash = '#contact';
+            setTimeout(function () { document.getElementById('name').focus(); }, 600);
+          },
+          clear: function () {
+            shell.clear();
+            return true; // suppress trailing gap
+          }
+        };
+
+        var history = [];
+        var histPos = 0;
+        function autosize() {
+          cfg.inputEl.style.width = Math.max(1, cfg.inputEl.value.length) + 'ch';
+        }
+        cfg.inputEl.addEventListener('input', autosize);
+        cfg.inputEl.addEventListener('keydown', function (e) {
+          if (e.key === 'Enter') {
+            var raw = cfg.inputEl.value.trim();
+            cfg.inputEl.value = '';
+            autosize();
+            shell.echo(raw);
+            if (raw) {
+              history.push(raw);
+              histPos = history.length;
+              var key = raw.toLowerCase();
+              var handler = commands[key];
+              if (handler) {
+                if (!handler()) shell.gap();
+              } else {
+                shell.print('command not found: <strong>' + key.replace(/[&<>"']/g, '') + '</strong> — try <strong style="color:var(--cyan)">help</strong>', 'term__out term__out--error');
+                shell.gap();
+              }
+            }
+            shell.scroll();
+          } else if (e.key === 'ArrowUp') {
+            if (history.length && histPos > 0) { histPos--; cfg.inputEl.value = history[histPos]; autosize(); e.preventDefault(); }
+          } else if (e.key === 'ArrowDown') {
+            if (histPos < history.length - 1) { histPos++; cfg.inputEl.value = history[histPos]; }
+            else { histPos = history.length; cfg.inputEl.value = ''; }
+            autosize();
+          }
+        });
+        cfg.bodyEl.addEventListener('click', function (e) {
+          if (!e.target.closest('a')) cfg.inputEl.focus();
+        });
+        autosize();
+        return shell;
+      }
+
+      /* Contact terminal: live immediately */
+      attachShell({
+        liveEl: document.getElementById('iterm-out'),
+        bodyEl: document.getElementById('iterm-body'),
+        inputEl: document.getElementById('iterm-input'),
+        clearEls: [document.getElementById('iterm-out')]
+      });
+
+      /* Hero terminal: scripted intro replay, then the prompt goes live */
+      var heroTerm = document.getElementById('hero-term');
+      if (heroTerm) {
+        var heroBody = document.getElementById('hero-body');
+        var heroTranscript = document.getElementById('hero-transcript');
+        var heroLive = document.getElementById('hero-live');
+        var heroHint = document.getElementById('hero-hint');
+        var heroRow = document.getElementById('hero-line-in');
+        var heroInput = document.getElementById('hero-input');
+        var nojsEnd = heroTerm.querySelector('.term__nojs-end');
+
+        attachShell({
+          liveEl: heroLive,
+          bodyEl: heroBody,
+          inputEl: heroInput,
+          clearEls: [heroTranscript, heroLive]
+        });
+
+        function goLive() {
+          if (nojsEnd) { nojsEnd.remove(); nojsEnd = null; }
+          heroHint.hidden = false;
+          heroRow.hidden = false;
+        }
+
+        if (reducedMotion) {
+          goLive();
+        } else {
+          try {
+            nojsEnd.style.display = 'none';
+            var lines = Array.prototype.slice.call(heroTranscript.querySelectorAll('.term__line, .term__gap'))
+              .filter(function (l) { return l !== nojsEnd; });
+            lines.forEach(function (l) { l.style.display = 'none'; });
+            var i = 0;
+            function nextLine() {
+              if (i >= lines.length) { goLive(); return; }
+              var line = lines[i++];
+              line.style.display = '';
+              if (line.classList.contains('term__gap')) { nextLine(); return; }
+              if (line.dataset.play === 'type') {
+                var cmdEl = line.querySelector('.term__cmd');
+                var full = cmdEl.textContent;
+                cmdEl.textContent = '';
+                var caret = document.createElement('span');
+                caret.className = 'term__caret';
+                cmdEl.after(caret);
+                var c = 0;
+                var typer = setInterval(function () {
+                  c++;
+                  cmdEl.textContent = full.slice(0, c);
+                  if (c >= full.length) {
+                    clearInterval(typer);
+                    caret.remove();
+                    setTimeout(nextLine, 140);
+                  }
+                }, 26);
+              } else {
+                setTimeout(nextLine, 110);
+              }
+            }
+            setTimeout(nextLine, 350);
+          } catch (err) {
+            heroTranscript.querySelectorAll('.term__line, .term__gap').forEach(function (l) { l.style.display = ''; });
+            goLive();
+          }
+        }
+      }
+    })();
     </script>
 
 </body>
