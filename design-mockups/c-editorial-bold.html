@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony Boffman® — Senior Fullstack Engineer</title>
+<meta name="description" content="Anthony Boffman — Senior Fullstack Engineer, San Diego, CA. Enterprise-scale SaaS and AI-assisted engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900&family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* ============ RESET / TOKENS ============ */
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --paper:  #F7F3EC;
+    --ink:    #14120F;
+    --accent: #FF4D00;
+    --pad: clamp(20px, 3.5vw, 48px);
+    --rule: 1px solid var(--ink);
+    --ease-out: cubic-bezier(.16, 1, .3, 1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', 'Helvetica Neue', Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection { background: var(--accent); color: var(--paper); }
+
+  a { color: inherit; text-decoration: none; }
+  button { background: none; border: 0; color: inherit; font: inherit; cursor: pointer; }
+  ul { list-style: none; }
+  [hidden] { display: none !important; }
+
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+  .container { padding-left: var(--pad); padding-right: var(--pad); }
+
+  /* mono micro-label */
+  .micro {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .x { color: var(--accent); font-style: normal; }
+
+  /* ============ TOP BAR ============ */
+  .topbar {
+    border-top: var(--rule);
+    border-bottom: var(--rule);
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2.4vw, 34px);
+    height: 58px;
+  }
+  .brand {
+    font-weight: 900;
+    font-stretch: 115%;
+    font-size: 15px;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+  .brand sup { font-size: 0.55em; vertical-align: super; }
+  .topnav { margin-left: auto; display: flex; gap: clamp(16px, 2.4vw, 34px); }
+  .topnav a { position: relative; }
+  .topnav a:hover { color: var(--accent); }
+  .kbtn:hover, .menubtn:hover { color: var(--accent); }
+
+  /* ============ HERO ============ */
+  .hero { padding-top: clamp(48px, 6vw, 92px); padding-bottom: clamp(40px, 5vw, 72px); }
+
+  .hero-marg-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(28px, 4vw, 64px);
+    animation: fadeUp .6s var(--ease-out) .85s both;
+  }
+
+  .display { font-size: clamp(38px, 9.6vw, 148px); line-height: 0.95; }
+  .display .line { overflow: hidden; }
+  .display .line-in {
+    display: flex;
+    align-items: center;
+    gap: 0.16em;
+    font-weight: 900;
+    font-stretch: 115%;
+    text-transform: uppercase;
+    letter-spacing: -0.025em;
+    animation: rise .9s var(--ease-out) both;
+  }
+  .display .line:nth-child(1) .line-in { animation-delay: .12s; }
+  .display .line:nth-child(2) .line-in { animation-delay: .3s; }
+  .display .line:nth-child(3) .line-in { animation-delay: .48s; }
+
+  .dashrule { flex: 1 1 auto; min-width: 24px; height: 0.05em; background: var(--ink); }
+  .display .idx {
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    font-size: 0.2em;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    white-space: nowrap;
+  }
+  .display .x { font-weight: 900; }
+
+  @keyframes rise {
+    from { transform: translateY(70%); clip-path: inset(100% 0 0 0); }
+    to   { transform: translateY(0);   clip-path: inset(-15% 0 -15% 0); }
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .hero-marg-bottom {
+    margin-top: clamp(30px, 4vw, 56px);
+    padding-top: 22px;
+    border-top: var(--rule);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 24px;
+    flex-wrap: wrap;
+    animation: fadeUp .6s var(--ease-out) 1.05s both;
+  }
+  .hero-quote {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(19px, 1.9vw, 27px);
+    max-width: 30ch;
+    text-align: right;
+  }
+
+  /* ============ STATS STRIP ============ */
+  .stats {
+    border-top: var(--rule);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+  .stat { padding: clamp(20px, 2.4vw, 34px) clamp(14px, 1.8vw, 26px); }
+  .stat + .stat { border-left: var(--rule); }
+  .stat-num {
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: clamp(26px, 3.2vw, 46px);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 10px;
+  }
+  .stat-label { opacity: 0.72; }
+
+  /* ============ INTERVIEW ============ */
+  .interview {
+    border-top: var(--rule);
+    padding-top: clamp(28px, 3.4vw, 48px);
+    padding-bottom: clamp(52px, 6vw, 96px);
+  }
+  .sec-head {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: clamp(32px, 4vw, 60px);
+  }
+  .sec-head .dim { opacity: 0.55; }
+  .q-line { margin-bottom: clamp(20px, 2.4vw, 34px); }
+  .q-line .q { color: var(--accent); }
+  .answer {
+    font-family: 'Instrument Serif', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(24px, 2.4vw, 34px);
+    line-height: 1.35;
+    max-width: 34ch;
+    margin-left: clamp(0px, 22vw - 100px, 30vw);
+    min-height: 3.9em;
+  }
+  .caret {
+    display: inline-block;
+    width: 0.55em;
+    border-bottom: 3px solid var(--accent);
+    margin-left: 3px;
+    transform: translateY(-0.1em);
+    animation: blink 0.9s steps(2, start) infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* ============ SELECTED WORK ============ */
+  .work { border-top: var(--rule); padding-top: clamp(28px, 3.4vw, 48px); }
+  .work .sec-head { margin-bottom: clamp(24px, 3vw, 44px); }
+
+  .wrow {
+    position: relative;
+    isolation: isolate;
+    display: grid;
+    grid-template-columns: clamp(48px, 6vw, 90px) 1fr auto clamp(36px, 4vw, 64px);
+    align-items: center;
+    gap: 0 18px;
+    border-top: var(--rule);
+    padding: clamp(20px, 2.6vw, 34px) var(--pad);
+    margin-left: calc(var(--pad) * -1);
+    margin-right: calc(var(--pad) * -1);
+    cursor: pointer;
+  }
+  .wrow:last-of-type { border-bottom: var(--rule); }
+  .wrow::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--ink);
+    transform: scaleY(0);
+    transform-origin: bottom;
+    transition: transform .18s cubic-bezier(.4, 0, .2, 1);
+    z-index: -1;
+  }
+  .wrow:hover::after, .wrow:focus-visible::after { transform: scaleY(1); transform-origin: top; }
+
+  .wrow .widx {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    color: var(--accent);
+  }
+  .wrow .wtitle {
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: clamp(21px, 2.7vw, 40px);
+    letter-spacing: -0.015em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    transition: color .15s;
+  }
+  .wrow .wtag { text-align: right; opacity: 0.72; transition: color .15s; white-space: nowrap; }
+  .wrow .warrow {
+    font-size: clamp(18px, 2vw, 28px);
+    text-align: right;
+    transition: color .15s, transform .15s;
+  }
+  .wrow:hover .wtitle, .wrow:focus-visible .wtitle { color: var(--paper); }
+  .wrow:hover .wtag, .wrow:focus-visible .wtag { color: var(--paper); opacity: 1; }
+  .wrow:hover .warrow, .wrow:focus-visible .warrow { color: var(--accent); transform: translate(3px, -3px); }
+
+  /* ============ SKILLS TICKER ============ */
+  .ticker {
+    border-bottom: var(--rule);
+    overflow: hidden;
+    padding: clamp(18px, 2vw, 28px) 0;
+  }
+  .ticker-track { display: flex; width: max-content; animation: tick 32s linear infinite; }
+  .tgroup {
+    display: flex;
+    align-items: center;
+    gap: clamp(28px, 3.4vw, 52px);
+    padding-right: clamp(28px, 3.4vw, 52px);
+    font-weight: 800;
+    font-stretch: 112%;
+    font-size: clamp(17px, 1.7vw, 24px);
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+  }
+  @keyframes tick { to { transform: translateX(-50%); } }
+
+  /* ============ FOOTER ============ */
+  .footer { padding-top: clamp(48px, 6vw, 100px); padding-bottom: clamp(28px, 3vw, 44px); }
+  .footer .sec-head { margin-bottom: clamp(32px, 4vw, 64px); }
+  .biglink {
+    display: block;
+    font-weight: 900;
+    font-stretch: 115%;
+    font-size: clamp(30px, 5.2vw, 78px);
+    line-height: 1.06;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+    max-width: 18ch;
+  }
+  .biglink .hello {
+    border-bottom: 0.05em solid var(--accent);
+    transition: background-color .15s, color .15s;
+  }
+  .biglink:hover .hello { background: var(--accent); color: var(--paper); }
+
+  .foot-bottom {
+    margin-top: clamp(48px, 6vw, 96px);
+    border-top: var(--rule);
+    padding-top: 18px;
+    padding-bottom: 6px;
+    display: flex;
+    justify-content: space-between;
+    gap: 14px 28px;
+    flex-wrap: wrap;
+  }
+  .foot-links { display: flex; gap: 28px; }
+  .foot-links a:hover { color: var(--accent); }
+  .colophon { opacity: 0.55; }
+
+  /* ============ COMMAND PALETTE ============ */
+  .cmdk { position: fixed; inset: 0; z-index: 100; }
+  .cmdk-backdrop { position: absolute; inset: 0; background: rgba(20, 18, 15, 0.45); }
+  .cmdk-panel {
+    position: absolute;
+    left: 50%;
+    top: 15vh;
+    transform: translateX(-50%);
+    width: min(560px, calc(100vw - 32px));
+    background: var(--paper);
+    border: var(--rule);
+    box-shadow: 10px 10px 0 var(--ink);
+  }
+  .cmdk-input {
+    width: 100%;
+    padding: 16px 18px;
+    background: transparent;
+    border: 0;
+    border-bottom: var(--rule);
+    outline: none;
+    color: var(--ink);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+  .cmdk-input::placeholder { color: var(--ink); opacity: 0.4; }
+  .cmdk-list { max-height: 324px; overflow-y: auto; }
+  .cmdk-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    padding: 13px 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(20, 18, 15, 0.12);
+  }
+  .cmdk-item.active { background: var(--accent); color: var(--paper); }
+  .cmdk-item.active .cmdk-hint { opacity: 1; }
+  .cmdk-hint { opacity: 0.5; }
+  .cmdk-empty {
+    padding: 18px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+    opacity: 0.5;
+  }
+  .cmdk-foot {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 18px;
+    border-top: var(--rule);
+    font-size: 10px;
+    opacity: 0.65;
+  }
+
+  /* ============ TOAST ============ */
+  .toast {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    z-index: 110;
+    background: var(--paper);
+    border: var(--rule);
+    box-shadow: 6px 6px 0 var(--ink);
+    padding: 11px 15px;
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity .2s, transform .2s;
+    pointer-events: none;
+  }
+  .toast.show { opacity: 1; transform: none; }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width: 760px) {
+    .topnav { display: none; }
+    .stats { grid-template-columns: 1fr 1fr; }
+    .stat:nth-child(3) { border-left: 0; }
+    .stat:nth-child(n+3) { border-top: var(--rule); }
+    .answer { margin-left: 0; }
+    .hero-marg-bottom { flex-direction: column; align-items: flex-start; }
+    .hero-quote { text-align: left; }
+    .wrow {
+      grid-template-columns: 44px 1fr 36px;
+      grid-template-rows: auto auto;
+      row-gap: 10px;
+    }
+    .wrow .widx { grid-column: 1; grid-row: 1; }
+    .wrow .wtitle { grid-column: 2; grid-row: 1; }
+    .wrow .warrow { grid-column: 3; grid-row: 1; }
+    .wrow .wtag { grid-column: 2 / 4; grid-row: 2; text-align: left; white-space: normal; }
+  }
+
+  /* ============ REDUCED MOTION ============ */
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .display .line-in, .hero-marg-top, .hero-marg-bottom { animation: none; }
+    .ticker-track { animation: none; }
+    .caret { animation: none; display: none; }
+    *, *::before, *::after { transition-duration: 0.01ms !important; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ TOP BAR ============ -->
+  <header class="topbar container">
+    <div class="brand">Anthony Boffman<sup>®</sup></div>
+    <nav class="topnav micro" aria-label="Primary">
+      <a href="#work">Work</a>
+      <a href="#experience">Experience</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="kbtn micro" id="cmdk-open" aria-label="Open command palette">[⌘K]</button>
+    <button class="menubtn micro" id="menu-open" aria-label="Open menu">Menu ≡</button>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero container">
+    <div class="hero-marg-top micro">
+      <span>Est. 2019 — San Diego, CA</span>
+      <span>Enterprise SaaS <span class="x">✕</span> AI-Assisted Engineering</span>
+    </div>
+
+    <h1 class="display">
+      <div class="line"><div class="line-in"><span>Senior</span></div></div>
+      <div class="line"><div class="line-in"><span>Fullstack</span><span class="dashrule" aria-hidden="true"></span><span class="idx">(01)</span></div></div>
+      <div class="line"><div class="line-in"><span>Engineer</span><span class="x" aria-hidden="true">✕</span><span>AI</span></div></div>
+    </h1>
+
+    <div class="hero-marg-bottom">
+      <span class="micro">6+ Yrs · San Diego · Qualtrics</span>
+      <p class="hero-quote">Enterprise software, shipped with the leverage of&nbsp;AI.</p>
+    </div>
+  </section>
+
+  <!-- ============ STATS ============ -->
+  <section class="stats container" id="experience" aria-label="Career statistics">
+    <div class="stat">
+      <div class="stat-num">6+</div>
+      <div class="stat-label micro">Years Experience</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">18</div>
+      <div class="stat-label micro">Enterprise Apps Shipped</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">$1.1M</div>
+      <div class="stat-label micro">Revenue Represented</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label micro">Engineers Mentored</div>
+    </div>
+  </section>
+
+  <!-- ============ INTERVIEW ============ -->
+  <section class="interview container">
+    <div class="sec-head micro">
+      <span><span class="x">(02)</span> A Short Interview —</span>
+      <span class="dim">Qualtrics, fmr. Press Ganey</span>
+    </div>
+    <p class="q-line micro"><span class="q">Q:</span> What does Anthony actually ship?</p>
+    <p class="answer"><span id="answer-text"></span><span class="caret" id="answer-caret" aria-hidden="true"></span></p>
+  </section>
+
+  <!-- ============ SELECTED WORK ============ -->
+  <section class="work container" id="work">
+    <div class="sec-head micro">
+      <span><span class="x">(03)</span> Selected Work ↓</span>
+      <span class="dim">2019 — 2026</span>
+    </div>
+
+    <div role="list" aria-label="Selected work">
+      <div class="wrow" role="listitem" tabindex="0">
+        <span class="widx">01</span>
+        <span class="wtitle">Headless CMS</span>
+        <span class="wtag micro">React / GraphQL</span>
+        <span class="warrow" aria-hidden="true">↗</span>
+      </div>
+      <div class="wrow" role="listitem" tabindex="0">
+        <span class="widx">02</span>
+        <span class="wtitle">18 Enterprise Brands</span>
+        <span class="wtag micro">$1.1M Revenue</span>
+        <span class="warrow" aria-hidden="true">↗</span>
+      </div>
+      <div class="wrow" role="listitem" tabindex="0">
+        <span class="widx">03</span>
+        <span class="wtitle">Legacy → Modern Replatform</span>
+        <span class="wtag micro">AngularJS → React Native</span>
+        <span class="warrow" aria-hidden="true">↗</span>
+      </div>
+      <div class="wrow" role="listitem" tabindex="0">
+        <span class="widx">04</span>
+        <span class="wtitle">CI/CD Standardization</span>
+        <span class="wtag micro">Docker / Pipelines</span>
+        <span class="warrow" aria-hidden="true">↗</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SKILLS TICKER ============ -->
+  <section class="ticker" aria-label="Technical skills">
+    <div class="ticker-track">
+      <div class="tgroup">
+        <span>PHP</span><span class="x">✕</span>
+        <span>TypeScript</span><span class="x">✕</span>
+        <span>React</span><span class="x">✕</span>
+        <span>Node.js</span><span class="x">✕</span>
+        <span>GraphQL</span><span class="x">✕</span>
+        <span>Docker</span><span class="x">✕</span>
+        <span>AWS</span><span class="x">✕</span>
+        <span>MySQL</span><span class="x">✕</span>
+        <span>MongoDB</span><span class="x">✕</span>
+        <span>AI-Accelerated Delivery</span><span class="x">✕</span>
+      </div>
+      <div class="tgroup" aria-hidden="true">
+        <span>PHP</span><span class="x">✕</span>
+        <span>TypeScript</span><span class="x">✕</span>
+        <span>React</span><span class="x">✕</span>
+        <span>Node.js</span><span class="x">✕</span>
+        <span>GraphQL</span><span class="x">✕</span>
+        <span>Docker</span><span class="x">✕</span>
+        <span>AWS</span><span class="x">✕</span>
+        <span>MySQL</span><span class="x">✕</span>
+        <span>MongoDB</span><span class="x">✕</span>
+        <span>AI-Accelerated Delivery</span><span class="x">✕</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer container" id="contact">
+    <div class="sec-head micro">
+      <span><span class="x">(04)</span> Contact —</span>
+      <span class="dim">Replies within 24 hrs</span>
+    </div>
+
+    <a class="biglink" href="mailto:aboffmanengineering@gmail.com">Available for senior roles — <span class="hello">Say hello&nbsp;↗</span></a>
+
+    <div class="foot-bottom micro">
+      <div class="foot-links">
+        <a href="https://github.com/amboffman" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="https://linkedin.com/in/anthonyboffman" target="_blank" rel="noopener">LinkedIn ↗</a>
+        <a href="mailto:aboffmanengineering@gmail.com">aboffmanengineering@gmail.com</a>
+      </div>
+      <span class="colophon">© 2026 Anthony Boffman® — Set in Archivo &amp; Instrument Serif</span>
+    </div>
+  </footer>
+
+  <!-- ============ COMMAND PALETTE ============ -->
+  <div class="cmdk" id="cmdk" hidden>
+    <div class="cmdk-backdrop" id="cmdk-backdrop"></div>
+    <div class="cmdk-panel" role="dialog" aria-modal="true" aria-label="Command palette">
+      <input class="cmdk-input" id="cmdk-input" type="text" placeholder="Type a command —" autocomplete="off" spellcheck="false" aria-label="Filter commands">
+      <ul class="cmdk-list" id="cmdk-list"></ul>
+      <div class="cmdk-foot micro">
+        <span>↑↓ Navigate · ↵ Select</span>
+        <span>Esc Close</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast micro" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var EMAIL = 'aboffmanengineering@gmail.com';
+
+  /* ---------- Interview typing ---------- */
+  var answerFull = 'Eighteen enterprise applications. $1.1M in revenue. Legacy systems reborn as modern platforms — with AI in the loop at every step.';
+  var answerEl = document.getElementById('answer-text');
+  var caretEl = document.getElementById('answer-caret');
+
+  if (reduced) {
+    answerEl.textContent = answerFull;
+    caretEl.style.display = 'none';
+  } else {
+    setTimeout(function () {
+      var i = 0;
+      var timer = setInterval(function () {
+        i += 1;
+        answerEl.textContent = answerFull.slice(0, i);
+        if (i >= answerFull.length) {
+          clearInterval(timer);
+          setTimeout(function () { caretEl.style.display = 'none'; }, 900);
+        }
+      }, 16);
+    }, 650);
+  }
+
+  /* ---------- Toast ---------- */
+  var toastEl = document.getElementById('toast');
+  var toastTimer = null;
+  function showToast(msg) {
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 1800);
+  }
+
+  /* ---------- Command actions ---------- */
+  function goTo(sel) {
+    return function () {
+      var el = document.querySelector(sel);
+      if (el) el.scrollIntoView({ behavior: reduced ? 'auto' : 'smooth', block: 'start' });
+    };
+  }
+  function openUrl(url) {
+    return function () { window.open(url, '_blank', 'noopener'); };
+  }
+  function copyEmail() {
+    function done() { showToast('Email copied — ' + EMAIL.toUpperCase()); }
+    function fallback() {
+      var ta = document.createElement('textarea');
+      ta.value = EMAIL;
+      ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try { document.execCommand('copy'); done(); }
+      catch (err) { showToast('Email: ' + EMAIL.toUpperCase()); }
+      document.body.removeChild(ta);
+    }
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(EMAIL).then(done, fallback);
+    } else {
+      fallback();
+    }
+  }
+
+  var commands = [
+    { label: 'GO TO WORK',       hint: '↵', run: goTo('#work') },
+    { label: 'GO TO EXPERIENCE', hint: '↵', run: goTo('#experience') },
+    { label: 'GO TO CONTACT',    hint: '↵', run: goTo('#contact') },
+    { label: 'COPY EMAIL',       hint: '⌘C', run: copyEmail },
+    { label: 'GITHUB',           hint: '↗', run: openUrl('https://github.com/amboffman') },
+    { label: 'LINKEDIN',         hint: '↗', run: openUrl('https://linkedin.com/in/anthonyboffman') }
+  ];
+
+  /* ---------- Palette state ---------- */
+  var cmdkEl = document.getElementById('cmdk');
+  var inputEl = document.getElementById('cmdk-input');
+  var listEl = document.getElementById('cmdk-list');
+  var filtered = commands.slice();
+  var active = 0;
+  var lastFocus = null;
+
+  function render() {
+    listEl.innerHTML = '';
+    if (!filtered.length) {
+      var empty = document.createElement('li');
+      empty.className = 'cmdk-empty';
+      empty.textContent = 'NO RESULTS';
+      listEl.appendChild(empty);
+      return;
+    }
+    filtered.forEach(function (cmd, idx) {
+      var li = document.createElement('li');
+      li.className = 'cmdk-item' + (idx === active ? ' active' : '');
+      var label = document.createElement('span');
+      label.textContent = cmd.label;
+      var hint = document.createElement('span');
+      hint.className = 'cmdk-hint';
+      hint.textContent = cmd.hint;
+      li.appendChild(label);
+      li.appendChild(hint);
+      li.addEventListener('mouseenter', function () {
+        if (active !== idx) { active = idx; render(); }
+      });
+      li.addEventListener('click', function () { runCommand(cmd); });
+      listEl.appendChild(li);
+    });
+  }
+
+  function runCommand(cmd) {
+    closePalette();
+    cmd.run();
+  }
+
+  function openPalette() {
+    lastFocus = document.activeElement;
+    cmdkEl.hidden = false;
+    inputEl.value = '';
+    filtered = commands.slice();
+    active = 0;
+    render();
+    inputEl.focus();
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closePalette() {
+    cmdkEl.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus && typeof lastFocus.focus === 'function') lastFocus.focus();
+  }
+
+  inputEl.addEventListener('input', function () {
+    var q = inputEl.value.trim().toUpperCase();
+    filtered = commands.filter(function (c) { return c.label.indexOf(q) !== -1; });
+    active = 0;
+    render();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+      e.preventDefault();
+      if (cmdkEl.hidden) openPalette(); else closePalette();
+      return;
+    }
+    if (cmdkEl.hidden) return;
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closePalette();
+    } else if (e.key === 'ArrowDown') {
+      e.preventDefault();
+      if (filtered.length) { active = (active + 1) % filtered.length; render(); }
+    } else if (e.key === 'ArrowUp') {
+      e.preventDefault();
+      if (filtered.length) { active = (active - 1 + filtered.length) % filtered.length; render(); }
+    } else if (e.key === 'Enter') {
+      e.preventDefault();
+      if (filtered[active]) runCommand(filtered[active]);
+    }
+  });
+
+  document.getElementById('cmdk-open').addEventListener('click', openPalette);
+  document.getElementById('menu-open').addEventListener('click', openPalette);
+  document.getElementById('cmdk-backdrop').addEventListener('click', closePalette);
+})();
+</script>
+</body>
+</html>
