@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anthony Boffman — Senior Fullstack Engineer</title>
+<meta name="description" content="Anthony Boffman — Senior Fullstack Engineer. Enterprise systems, shipped with AI leverage. San Diego, CA.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   AI COMMAND CENTER — design mockup
+   Palette:  bg #0A0F14 · panel #0E141B / #111922
+             text #E6EDF3 · muted #8B949E
+             cyan #22D3EE · green #4ADE80
+   Type:     Space Grotesk (display/UI) · JetBrains Mono (code)
+   ============================================================ */
+
+:root {
+  --bg:        #0A0F14;
+  --panel:     #0E141B;
+  --panel-2:   #111922;
+  --line:      rgba(148, 163, 184, 0.12);
+  --line-soft: rgba(148, 163, 184, 0.07);
+  --text:      #E6EDF3;
+  --muted:     #8B949E;
+  --cyan:      #22D3EE;
+  --green:     #4ADE80;
+  --cyan-glow:  rgba(34, 211, 238, 0.18);
+  --green-glow: rgba(74, 222, 128, 0.22);
+  --font-ui:   "Space Grotesk", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Consolas, monospace;
+  --shell: 1200px;
+  --ease:  cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-ui);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+::selection { background: rgba(34, 211, 238, 0.28); color: #F3FBFE; }
+
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+
+.shell { max-width: var(--shell); margin: 0 auto; padding: 0 40px; }
+
+.mono { font-family: var(--font-mono); }
+
+/* micro-label: uppercase mono with tracking */
+.micro {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.micro .sig { color: var(--cyan); }
+
+/* ---------------------------------------------------------- */
+/* Entrance animations — all complete by ~3s                   */
+/* ---------------------------------------------------------- */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.rise { opacity: 0; animation: rise 0.7s var(--ease) forwards; }
+.d1 { animation-delay: 0.08s; }
+.d2 { animation-delay: 0.18s; }
+.d3 { animation-delay: 0.28s; }
+.d4 { animation-delay: 0.40s; }
+.d5 { animation-delay: 0.52s; }
+.d6 { animation-delay: 0.64s; }
+.d7 { animation-delay: 0.76s; }
+.d8 { animation-delay: 0.88s; }
+
+@keyframes blink {
+  0%, 64% { opacity: 1; }
+  65%, 100% { opacity: 0; }
+}
+@keyframes pulse-dot {
+  0%, 100% { box-shadow: 0 0 0 0 var(--green-glow), 0 0 8px var(--green-glow); }
+  50%      { box-shadow: 0 0 0 5px rgba(74, 222, 128, 0.05), 0 0 12px var(--green-glow); }
+}
+
+/* ---------------------------------------------------------- */
+/* NAV                                                         */
+/* ---------------------------------------------------------- */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 15, 20, 0.82);
+  -webkit-backdrop-filter: blur(14px);
+  backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+.logo {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text);
+  white-space: nowrap;
+}
+.logo .tilde { color: var(--cyan); text-shadow: 0 0 12px var(--cyan-glow); }
+.logo .slash { color: var(--muted); }
+
+.nav-links {
+  display: flex;
+  gap: 8px;
+  margin: 0 auto;
+}
+.nav-links a {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding: 6px 12px;
+  border-radius: 6px;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+.nav-links a:hover { color: var(--text); background: rgba(148, 163, 184, 0.07); }
+.nav-links a .h { color: rgba(34, 211, 238, 0.55); margin-right: 2px; }
+
+.nav-right { display: flex; align-items: center; gap: 18px; }
+
+.status {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  white-space: nowrap;
+}
+.status .dot-live {
+  width: 7px; height: 7px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse-dot 2.2s ease-in-out infinite;
+}
+.status .micro { color: var(--green); letter-spacing: 0.16em; }
+
+/* keycap ⌘K */
+.keycap {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--text);
+  padding: 6px 12px 7px;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #18222D 0%, #0E141B 100%);
+  border: 1px solid rgba(148, 163, 184, 0.22);
+  box-shadow:
+    0 2px 0 rgba(0, 0, 0, 0.55),
+    inset 0 1px 0 rgba(230, 237, 243, 0.08);
+  transition: transform 0.08s ease, box-shadow 0.08s ease, border-color 0.2s ease;
+}
+.keycap:hover { border-color: rgba(34, 211, 238, 0.45); }
+.keycap:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(230, 237, 243, 0.06);
+}
+.keycap .cmd { color: var(--cyan); margin-right: 3px; }
+
+/* ---------------------------------------------------------- */
+/* HERO                                                        */
+/* ---------------------------------------------------------- */
+.hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line-soft);
+}
+#gridCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.32;
+  pointer-events: none;
+}
+.hero::after {
+  /* vignette keeps text crisp over the canvas */
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 70% 60% at 28% 42%, rgba(10, 15, 20, 0.55) 0%, rgba(10, 15, 20, 0) 70%),
+    linear-gradient(180deg, rgba(10, 15, 20, 0.1) 0%, rgba(10, 15, 20, 0) 30%, rgba(10, 15, 20, 0.6) 100%);
+}
+.hero-grid {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.02fr) minmax(0, 0.98fr);
+  gap: 72px;
+  align-items: center;
+  width: 100%;
+  padding: 96px 0 104px;
+}
+
+.eyebrow { margin-bottom: 26px; }
+
+.headline {
+  font-family: var(--font-ui);
+  font-weight: 700;
+  font-size: clamp(40px, 4.6vw, 62px);
+  line-height: 1.06;
+  letter-spacing: -0.025em;
+  margin-bottom: 26px;
+}
+.headline .grad {
+  background: linear-gradient(92deg, #22D3EE 0%, #7DE8F7 55%, #4ADE80 115%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  text-shadow: none;
+}
+.subline {
+  max-width: 46ch;
+  color: var(--muted);
+  font-size: 17px;
+  line-height: 1.7;
+  margin-bottom: 40px;
+}
+.subline strong { color: var(--text); font-weight: 600; }
+
+.cta-row { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+  padding: 13px 24px;
+  border-radius: 8px;
+  transition: transform 0.15s var(--ease), box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+.btn-primary {
+  color: #04181D;
+  background: var(--cyan);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.28), 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 0 36px rgba(34, 211, 238, 0.42), 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+.btn-ghost {
+  color: var(--muted);
+  border: 1px solid var(--line);
+  background: rgba(14, 20, 27, 0.5);
+}
+.btn-ghost:hover { color: var(--text); border-color: rgba(34, 211, 238, 0.4); }
+.btn-ghost .cmd { color: var(--cyan); }
+
+/* ---------------------------------------------------------- */
+/* TERMINAL WINDOW                                             */
+/* ---------------------------------------------------------- */
+.term {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow:
+    0 24px 60px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(0, 0, 0, 0.3),
+    0 0 48px rgba(34, 211, 238, 0.06);
+  overflow: hidden;
+}
+.term-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 42px;
+  padding: 0 16px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+}
+.term-bar .dot { width: 11px; height: 11px; border-radius: 50%; }
+.term-bar .dot.r { background: #FF5F57; }
+.term-bar .dot.y { background: #FEBC2E; }
+.term-bar .dot.g { background: #28C840; }
+.term-title {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  /* re-center against the traffic lights */
+  margin-right: 45px;
+}
+.term-body {
+  padding: 24px 24px 28px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.9;
+  min-height: 324px;
+}
+.tline { white-space: pre-wrap; word-break: break-word; }
+.tline .tprompt { color: var(--green); font-weight: 500; }
+.tline .ttext { color: var(--text); }
+.tline.tout { color: var(--muted); }
+.tline.tout .arrow { color: rgba(34, 211, 238, 0.7); }
+.tline.tok { color: #B9C6D2; }
+.tline.tok .tick { color: var(--green); text-shadow: 0 0 10px var(--green-glow); font-weight: 500; }
+.tline.tgap { height: 0.9em; }
+.tcursor {
+  display: inline-block;
+  width: 8px;
+  height: 1.05em;
+  margin-left: 1px;
+  vertical-align: text-bottom;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan-glow);
+}
+.tcursor.blink { animation: blink 1.05s steps(1) infinite; }
+
+/* ---------------------------------------------------------- */
+/* SYSTEM METRICS                                              */
+/* ---------------------------------------------------------- */
+.section { padding: 136px 0 128px; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+.section-head h2 {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--text);
+}
+.section-head h2 .h { color: var(--cyan); }
+.section-head .meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+.section-head .meta .ok { color: var(--green); }
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+.metric {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 26px 24px 22px;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s var(--ease);
+}
+.metric:hover {
+  border-color: rgba(34, 211, 238, 0.35);
+  box-shadow: 0 0 32px rgba(34, 211, 238, 0.07), 0 12px 28px rgba(0, 0, 0, 0.35);
+  transform: translateY(-2px);
+}
+.metric .m-label {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 14px;
+}
+.metric .m-value {
+  font-family: var(--font-mono);
+  font-size: 38px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 16px;
+  text-shadow: 0 0 24px rgba(34, 211, 238, 0.12);
+}
+.metric .m-value .unit { font-size: 18px; color: var(--cyan); font-weight: 500; margin-left: 2px; }
+.metric svg { display: block; width: 100%; height: 34px; margin-bottom: 14px; }
+.metric .m-status {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.1em;
+  color: var(--green);
+}
+.metric .m-status .dim { color: var(--muted); }
+
+/* skill chips */
+.chip-row-label { margin: 68px 0 18px; }
+.chips { display: flex; flex-wrap: wrap; gap: 10px; }
+.chip {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: #B9C6D2;
+  padding: 8px 14px;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: var(--panel);
+  transition: border-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+  cursor: default;
+}
+.chip .br { color: rgba(34, 211, 238, 0.55); }
+.chip:hover {
+  color: var(--text);
+  border-color: rgba(34, 211, 238, 0.45);
+  box-shadow: 0 0 18px rgba(34, 211, 238, 0.1);
+}
+
+/* featured build card */
+.featured {
+  margin-top: 68px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 32px;
+  background:
+    linear-gradient(120deg, rgba(34, 211, 238, 0.06) 0%, rgba(17, 25, 34, 0) 45%),
+    var(--panel-2);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 46px 44px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.featured::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 2px;
+  background: linear-gradient(180deg, var(--cyan), rgba(34, 211, 238, 0));
+  box-shadow: 0 0 16px var(--cyan-glow);
+}
+.featured:hover { border-color: rgba(34, 211, 238, 0.3); box-shadow: 0 0 40px rgba(34, 211, 238, 0.07); }
+.featured .f-label { margin-bottom: 12px; }
+.featured h3 {
+  font-family: var(--font-ui);
+  font-size: 26px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.featured .f-desc {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.7;
+  max-width: 62ch;
+  margin-bottom: 14px;
+}
+.featured .f-meta {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+}
+.featured .f-meta .sep { color: rgba(34, 211, 238, 0.5); margin: 0 8px; }
+.f-link {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--cyan);
+  white-space: nowrap;
+  padding: 10px 4px;
+  border-bottom: 1px solid rgba(34, 211, 238, 0.3);
+  transition: text-shadow 0.2s ease, border-color 0.2s ease;
+}
+.f-link:hover { text-shadow: 0 0 14px var(--cyan-glow); border-color: var(--cyan); }
+
+/* ---------------------------------------------------------- */
+/* FOOTER                                                      */
+/* ---------------------------------------------------------- */
+.footer { border-top: 1px solid var(--line); padding: 60px 0 76px; }
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.footer a, .footer span {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+}
+.footer a { transition: color 0.2s ease, text-shadow 0.2s ease; }
+.footer a:hover { color: var(--cyan); text-shadow: 0 0 12px var(--cyan-glow); }
+.footer .links { display: flex; gap: 28px; flex-wrap: wrap; }
+.footer .c { color: rgba(139, 148, 158, 0.55); }
+
+/* ---------------------------------------------------------- */
+/* COMMAND PALETTE                                             */
+/* ---------------------------------------------------------- */
+.palette-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: none;
+  background: rgba(4, 8, 12, 0.72);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+}
+.palette-overlay.open { display: block; }
+.palette {
+  width: min(580px, calc(100vw - 32px));
+  margin: 16vh auto 0;
+  background: var(--panel);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  border-radius: 12px;
+  box-shadow:
+    0 32px 80px rgba(0, 0, 0, 0.65),
+    0 0 60px rgba(34, 211, 238, 0.08);
+  overflow: hidden;
+  animation: rise 0.22s var(--ease);
+}
+.palette-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 38px;
+  padding: 0 14px;
+  background: var(--panel-2);
+  border-bottom: 1px solid var(--line);
+}
+.palette-bar .dot { width: 9px; height: 9px; border-radius: 50%; }
+.palette-bar .dot.r { background: #FF5F57; }
+.palette-bar .dot.y { background: #FEBC2E; }
+.palette-bar .dot.g { background: #28C840; }
+.palette-bar .t {
+  flex: 1;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  margin-right: 35px;
+}
+.palette-input-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 4px 18px;
+  border-bottom: 1px solid var(--line);
+}
+.palette-input-row .caret { font-family: var(--font-mono); color: var(--green); font-weight: 700; }
+#paletteInput {
+  flex: 1;
+  background: transparent;
+  border: 0;
+  outline: none;
+  color: var(--text);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  padding: 13px 0;
+  caret-color: var(--cyan);
+}
+#paletteInput::placeholder { color: rgba(139, 148, 158, 0.6); }
+.palette-list { list-style: none; max-height: 320px; overflow-y: auto; padding: 8px; }
+.palette-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 11px 14px;
+  border-radius: 7px;
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: #B9C6D2;
+}
+.palette-list li .hint { font-size: 11px; color: var(--muted); letter-spacing: 0.04em; }
+.palette-list li.active {
+  background: rgba(34, 211, 238, 0.08);
+  border-left-color: var(--cyan);
+  color: var(--text);
+}
+.palette-list li.empty { cursor: default; color: var(--muted); justify-content: center; font-size: 12px; }
+.palette-foot {
+  display: flex;
+  gap: 18px;
+  padding: 10px 18px;
+  border-top: 1px solid var(--line);
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+}
+.palette-foot .k {
+  display: inline-block;
+  padding: 1px 5px;
+  margin-right: 4px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  background: var(--panel-2);
+  color: #B9C6D2;
+  font-size: 10px;
+}
+
+/* toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: 36px;
+  transform: translateX(-50%) translateY(8px);
+  z-index: 300;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--green);
+  background: var(--panel-2);
+  border: 1px solid rgba(74, 222, 128, 0.35);
+  border-radius: 8px;
+  padding: 10px 18px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.5), 0 0 24px rgba(74, 222, 128, 0.1);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s var(--ease);
+}
+.toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+/* ---------------------------------------------------------- */
+/* RESPONSIVE                                                  */
+/* ---------------------------------------------------------- */
+@media (max-width: 960px) {
+  .shell { padding: 0 20px; }
+  .nav-links { display: none; }
+  .status .micro { display: none; }
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; padding: 64px 0 72px; }
+  .hero { min-height: 0; }
+  .headline { font-size: clamp(34px, 9vw, 44px); }
+  .metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .featured { grid-template-columns: 1fr; padding: 28px 24px; }
+  .section { padding: 72px 0 64px; }
+  .term-body { min-height: 300px; padding: 20px 18px 24px; font-size: 12px; }
+}
+@media (max-width: 480px) {
+  .metrics { grid-template-columns: 1fr; }
+  .section-head { flex-direction: column; gap: 8px; }
+  .footer-inner { flex-direction: column; align-items: flex-start; }
+  .footer .links { flex-direction: column; gap: 12px; }
+}
+
+/* ---------------------------------------------------------- */
+/* REDUCED MOTION — static frame, everything rendered final    */
+/* ---------------------------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  .rise { opacity: 1; transform: none; animation: none; }
+  .tcursor.blink { animation: none; opacity: 1; }
+  .status .dot-live { animation: none; }
+}
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<header class="nav">
+  <div class="shell nav-inner">
+    <a class="logo" href="#top" aria-label="Home">
+      <span class="tilde">~</span><span class="slash">/</span>anthonyboffman
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#work"><span class="h">01</span> Work</a>
+      <a href="#experience"><span class="h">02</span> Experience</a>
+      <a href="#skills"><span class="h">03</span> Skills</a>
+      <a href="#contact"><span class="h">04</span> Contact</a>
+    </nav>
+    <div class="nav-right">
+      <div class="status">
+        <span class="dot-live" aria-hidden="true"></span>
+        <span class="micro">Open to work</span>
+      </div>
+      <button class="keycap" id="keycapBtn" aria-label="Open command palette (Ctrl+K)">
+        <span class="cmd">⌘</span>K
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ================= HERO ================= -->
+<main id="top">
+  <section class="hero">
+    <canvas id="gridCanvas" aria-hidden="true"></canvas>
+    <div class="shell hero-grid">
+      <div class="hero-copy">
+        <p class="micro eyebrow rise d1">
+          <span class="sig">//</span> SYS.STATUS: <span class="sig">OPEN_TO_WORK</span> · SAN_DIEGO_CA
+        </p>
+        <h1 class="headline">
+          <span class="rise d2" style="display:block">Senior Fullstack Engineer.</span>
+          <span class="rise d3" style="display:block">Enterprise systems, <span class="grad">shipped with AI leverage.</span></span>
+        </h1>
+        <p class="subline rise d4">
+          Six years building enterprise-scale SaaS at <strong>Qualtrics</strong> (formerly Press Ganey) —
+          headless CMS architecture, legacy re-platforms, and Docker/CI-CD standardization —
+          with deep command of AI-assisted engineering.
+        </p>
+        <div class="cta-row rise d5">
+          <a class="btn btn-primary" href="#work">View work <span aria-hidden="true">→</span></a>
+          <button class="btn btn-ghost" id="ctaPalette"><span class="cmd">⌘K</span> to navigate</button>
+        </div>
+      </div>
+
+      <div class="term rise d4" aria-label="Terminal session">
+        <div class="term-bar">
+          <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+          <span class="term-title">anthony@boffman:~/portfolio</span>
+        </div>
+        <div class="term-body" id="termBody" aria-live="polite"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SYSTEM METRICS ================= -->
+  <section class="section" id="work">
+    <div class="shell">
+      <div class="section-head rise d5">
+        <h2><span class="h">//</span> System metrics</h2>
+        <p class="meta"><span class="ok">●</span> ALL_SYSTEMS_NOMINAL · UPTIME 6Y+</p>
+      </div>
+
+      <div class="metrics" id="experience">
+        <article class="metric rise d5">
+          <p class="m-label">Years_experience</p>
+          <p class="m-value">6<span class="unit">+</span></p>
+          <svg viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,26 15,24 30,25 45,20 60,18 75,14 90,12 105,8 120,5"
+              fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round"/>
+            <circle cx="120" cy="5" r="2.2" fill="#4ADE80"/>
+          </svg>
+          <p class="m-status">▲ compounding <span class="dim">· since 2019</span></p>
+        </article>
+
+        <article class="metric rise d6">
+          <p class="m-label">Enterprise_apps_shipped</p>
+          <p class="m-value">18</p>
+          <svg viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,27 15,25 30,22 45,23 60,17 75,15 90,10 105,9 120,4"
+              fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round"/>
+            <circle cx="120" cy="4" r="2.2" fill="#4ADE80"/>
+          </svg>
+          <p class="m-status">▲ in production <span class="dim">· 0 rollbacks</span></p>
+        </article>
+
+        <article class="metric rise d7">
+          <p class="m-label">Revenue_represented</p>
+          <p class="m-value"><span class="unit" style="margin:0 2px 0 0">$</span>1.1M</p>
+          <svg viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,28 15,26 30,26 45,21 60,20 75,13 90,13 105,7 120,3"
+              fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round"/>
+            <circle cx="120" cy="3" r="2.2" fill="#4ADE80"/>
+          </svg>
+          <p class="m-status">▲ client portfolio <span class="dim">· enterprise</span></p>
+        </article>
+
+        <article class="metric rise d8">
+          <p class="m-label">Engineers_mentored</p>
+          <p class="m-value">3</p>
+          <svg viewBox="0 0 120 30" preserveAspectRatio="none" aria-hidden="true">
+            <polyline points="0,26 20,26 40,18 60,18 80,11 100,11 120,5"
+              fill="none" stroke="#22D3EE" stroke-width="1.5" stroke-opacity="0.75" stroke-linecap="round"/>
+            <circle cx="120" cy="5" r="2.2" fill="#4ADE80"/>
+          </svg>
+          <p class="m-status">▲ shipped solo <span class="dim">· then promoted</span></p>
+        </article>
+      </div>
+
+      <div id="skills">
+        <p class="micro chip-row-label rise d7"><span class="sig">//</span> Runtime_dependencies</p>
+        <div class="chips rise d8">
+          <span class="chip"><span class="br">[</span> PHP <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> TypeScript <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> React <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> Node.js <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> GraphQL <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> Docker <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> AWS <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> MySQL <span class="br">]</span></span>
+          <span class="chip"><span class="br">[</span> MongoDB <span class="br">]</span></span>
+        </div>
+      </div>
+
+      <article class="featured rise d8">
+        <div>
+          <p class="micro f-label"><span class="sig">//</span> Featured_build</p>
+          <h3>Headless CMS for multi-location enterprise brands</h3>
+          <p class="f-desc">Re-architected a legacy monolith into a headless content platform — one schema, dozens of branded frontends, zero-downtime deploys via standardized Docker/CI-CD pipelines.</p>
+          <p class="f-meta">React <span class="sep">·</span> GraphQL <span class="sep">·</span> legacy-to-modern re-architecture <span class="sep">·</span> Docker / CI-CD</p>
+        </div>
+        <a class="f-link" href="#work">view case study →</a>
+      </article>
+    </div>
+  </section>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer" id="contact">
+  <div class="shell footer-inner">
+    <a href="mailto:aboffmanengineering@gmail.com">aboffmanengineering@gmail.com</a>
+    <div class="links">
+      <a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer">github.com/amboffman</a>
+      <a href="https://linkedin.com/in/anthonyboffman" target="_blank" rel="noopener noreferrer">linkedin.com/in/anthonyboffman</a>
+    </div>
+    <span class="c">© 2026 · built in San Diego, CA</span>
+  </div>
+</footer>
+
+<!-- ================= COMMAND PALETTE ================= -->
+<div class="palette-overlay" id="paletteOverlay" role="dialog" aria-modal="true" aria-label="Command palette">
+  <div class="palette" id="palettePanel">
+    <div class="palette-bar">
+      <span class="dot r"></span><span class="dot y"></span><span class="dot g"></span>
+      <span class="t">command_palette</span>
+    </div>
+    <div class="palette-input-row">
+      <span class="caret">&gt;</span>
+      <input id="paletteInput" type="text" placeholder="type a command…" autocomplete="off" spellcheck="false" aria-label="Filter commands">
+    </div>
+    <ul class="palette-list" id="paletteList"></ul>
+    <div class="palette-foot">
+      <span><span class="k">↑↓</span>navigate</span>
+      <span><span class="k">↵</span>run</span>
+      <span><span class="k">esc</span>close</span>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast" role="status">✓ email copied to clipboard</div>
+
+<script>
+(function () {
+  'use strict';
+
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* ==========================================================
+     1. HERO CANVAS — drifting grid + sparse signal particles
+     ========================================================== */
+  (function initCanvas() {
+    var canvas = document.getElementById('gridCanvas');
+    if (!canvas || !canvas.getContext) return;
+    var ctx = canvas.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var w = 0, h = 0;
+
+    function resize() {
+      var rect = canvas.parentElement.getBoundingClientRect();
+      w = Math.max(rect.width, 1);
+      h = Math.max(rect.height, 1);
+      canvas.width = Math.round(w * dpr);
+      canvas.height = Math.round(h * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    resize();
+
+    // sparse particles with faint cyan glow
+    var particles = [];
+    var COUNT = 26;
+    for (var i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random(),           // 0..1 of width
+        y: Math.random(),           // 0..1 of height
+        r: 0.8 + Math.random() * 1.6,
+        vy: 0.006 + Math.random() * 0.014, // fraction of height per second (upward)
+        a: 0.25 + Math.random() * 0.5,
+        phase: Math.random() * Math.PI * 2
+      });
+    }
+
+    var SPACING = 56;
+
+    function draw(t) {
+      // t in milliseconds
+      ctx.clearRect(0, 0, w, h);
+
+      var driftX = (t * 0.004) % SPACING;
+      var driftY = (t * 0.0025) % SPACING;
+
+      // grid — vertical lines
+      ctx.lineWidth = 1;
+      ctx.strokeStyle = 'rgba(34, 211, 238, 0.10)';
+      ctx.beginPath();
+      for (var x = -driftX; x <= w + SPACING; x += SPACING) {
+        ctx.moveTo(x, 0);
+        ctx.lineTo(x, h);
+      }
+      ctx.stroke();
+
+      // grid — horizontal lines (slightly dimmer, slate tint)
+      ctx.strokeStyle = 'rgba(148, 163, 184, 0.07)';
+      ctx.beginPath();
+      for (var y = -driftY; y <= h + SPACING; y += SPACING) {
+        ctx.moveTo(0, y);
+        ctx.lineTo(w, y);
+      }
+      ctx.stroke();
+
+      // signal pulses running along two horizontal grid lines
+      var laneCount = Math.max(2, Math.floor(h / SPACING) - 1);
+      for (var p = 0; p < 2; p++) {
+        var laneIndex = (p === 0) ? Math.floor(laneCount * 0.3) : Math.floor(laneCount * 0.72);
+        var ly = laneIndex * SPACING - driftY + SPACING;
+        var progress = ((t * (0.00006 + p * 0.00004)) + p * 0.5) % 1;
+        var px = progress * (w + 160) - 80;
+        var grad = ctx.createLinearGradient(px - 90, ly, px, ly);
+        grad.addColorStop(0, 'rgba(34, 211, 238, 0)');
+        grad.addColorStop(1, 'rgba(34, 211, 238, 0.5)');
+        ctx.strokeStyle = grad;
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.moveTo(px - 90, ly);
+        ctx.lineTo(px, ly);
+        ctx.stroke();
+        ctx.fillStyle = 'rgba(34, 211, 238, 0.75)';
+        ctx.beginPath();
+        ctx.arc(px, ly, 1.8, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      // particles
+      for (var j = 0; j < particles.length; j++) {
+        var pt = particles[j];
+        var py = ((pt.y - (t / 1000) * pt.vy) % 1 + 1) % 1;
+        var twinkle = 0.6 + 0.4 * Math.sin(pt.phase + t * 0.0012);
+        var alpha = pt.a * twinkle;
+        var cx = pt.x * w;
+        var cy = py * h;
+        var glow = ctx.createRadialGradient(cx, cy, 0, cx, cy, pt.r * 6);
+        glow.addColorStop(0, 'rgba(34, 211, 238, ' + (alpha * 0.5).toFixed(3) + ')');
+        glow.addColorStop(1, 'rgba(34, 211, 238, 0)');
+        ctx.fillStyle = glow;
+        ctx.beginPath();
+        ctx.arc(cx, cy, pt.r * 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = 'rgba(230, 237, 243, ' + (alpha * 0.65).toFixed(3) + ')';
+        ctx.beginPath();
+        ctx.arc(cx, cy, pt.r * 0.7, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    if (reduceMotion) {
+      draw(1200); // single static frame
+      window.addEventListener('resize', function () { resize(); draw(1200); });
+      return;
+    }
+
+    var start = null;
+    function loop(now) {
+      if (start === null) start = now;
+      draw(now - start);
+      requestAnimationFrame(loop);
+    }
+    requestAnimationFrame(loop);
+    window.addEventListener('resize', resize);
+  })();
+
+  /* ==========================================================
+     2. TERMINAL — AI session animation (completes < 3s)
+     ========================================================== */
+  (function initTerminal() {
+    var body = document.getElementById('termBody');
+    if (!body) return;
+
+    var SCRIPT = [
+      { kind: 'cmd', text: 'whoami' },
+      { kind: 'out', text: 'Anthony Boffman — Senior Fullstack Engineer' },
+      { kind: 'out', text: 'Qualtrics · San Diego, CA' },
+      { kind: 'gap' },
+      { kind: 'cmd', text: 'ship --enterprise --with-ai' },
+      { kind: 'ok',  text: '18 enterprise apps deployed' },
+      { kind: 'ok',  text: '$1.1M revenue represented' },
+      { kind: 'ok',  text: '6+ years · 3 engineers mentored' },
+      { kind: 'gap' },
+      { kind: 'prompt' }
+    ];
+
+    function makeLine(step, instant) {
+      var div = document.createElement('div');
+      div.className = 'tline';
+      if (step.kind === 'cmd' || step.kind === 'prompt') {
+        var prompt = document.createElement('span');
+        prompt.className = 'tprompt';
+        prompt.textContent = '$ ';
+        div.appendChild(prompt);
+        var txt = document.createElement('span');
+        txt.className = 'ttext';
+        txt.textContent = (instant && step.kind === 'cmd') ? step.text : '';
+        div.appendChild(txt);
+      } else if (step.kind === 'out') {
+        div.className = 'tline tout';
+        var arrow = document.createElement('span');
+        arrow.className = 'arrow';
+        arrow.textContent = '› ';
+        div.appendChild(arrow);
+        div.appendChild(document.createTextNode(step.text));
+      } else if (step.kind === 'ok') {
+        div.className = 'tline tok';
+        var tick = document.createElement('span');
+        tick.className = 'tick';
+        tick.textContent = '✓ ';
+        div.appendChild(tick);
+        div.appendChild(document.createTextNode(step.text));
+      } else if (step.kind === 'gap') {
+        div.className = 'tline tgap';
+      }
+      body.appendChild(div);
+      return div;
+    }
+
+    function addCursor(parent, blinking) {
+      var c = document.createElement('span');
+      c.className = blinking ? 'tcursor blink' : 'tcursor';
+      parent.appendChild(c);
+      return c;
+    }
+
+    // Reduced motion (or any failure): render everything instantly.
+    function renderInstant() {
+      body.textContent = '';
+      for (var i = 0; i < SCRIPT.length; i++) {
+        var line = makeLine(SCRIPT[i], true);
+        if (SCRIPT[i].kind === 'prompt') addCursor(line, !reduceMotion);
+      }
+    }
+
+    if (reduceMotion) {
+      renderInstant();
+      return;
+    }
+
+    function sleep(ms) {
+      return new Promise(function (resolve) { setTimeout(resolve, ms); });
+    }
+
+    function typeInto(el, text, perChar) {
+      return new Promise(function (resolve) {
+        var i = 0;
+        var cursor = addCursor(el.parentElement, false);
+        function tick() {
+          if (i < text.length) {
+            el.textContent += text.charAt(i);
+            i++;
+            setTimeout(tick, perChar);
+          } else {
+            cursor.parentElement.removeChild(cursor);
+            resolve();
+          }
+        }
+        tick();
+      });
+    }
+
+    async function run() {
+      await sleep(280);
+      for (var i = 0; i < SCRIPT.length; i++) {
+        var step = SCRIPT[i];
+        if (step.kind === 'cmd') {
+          var line = makeLine(step, false);
+          var txt = line.querySelector('.ttext');
+          await typeInto(txt, step.text, step.text.length > 10 ? 26 : 38);
+          await sleep(140);
+        } else if (step.kind === 'out' || step.kind === 'ok') {
+          makeLine(step, true);
+          await sleep(140);
+        } else if (step.kind === 'gap') {
+          makeLine(step, true);
+          await sleep(80);
+        } else if (step.kind === 'prompt') {
+          var pl = makeLine(step, true);
+          addCursor(pl, true);
+        }
+      }
+    }
+
+    run().catch(function () { renderInstant(); });
+  })();
+
+  /* ==========================================================
+     3. COMMAND PALETTE
+     ========================================================== */
+  (function initPalette() {
+    var overlay = document.getElementById('paletteOverlay');
+    var panel = document.getElementById('palettePanel');
+    var input = document.getElementById('paletteInput');
+    var list = document.getElementById('paletteList');
+    var toast = document.getElementById('toast');
+    if (!overlay || !panel || !input || !list) return;
+
+    var EMAIL = 'aboffmanengineering@gmail.com';
+    var toastTimer = null;
+
+    function showToast(msg) {
+      if (!toast) return;
+      toast.textContent = '✓ ' + msg;
+      toast.classList.add('show');
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(function () { toast.classList.remove('show'); }, 1800);
+    }
+
+    function goTo(id) {
+      var el = document.getElementById(id);
+      if (el) el.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth' });
+    }
+
+    function copyEmail() {
+      function done() { showToast('email copied to clipboard'); }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(EMAIL).then(done, function () {
+          window.location.href = 'mailto:' + EMAIL;
+        });
+      } else {
+        window.location.href = 'mailto:' + EMAIL;
+      }
+    }
+
+    var COMMANDS = [
+      { label: 'Go to Work',        hint: '#work',      run: function () { goTo('work'); } },
+      { label: 'Go to Experience',  hint: '#experience', run: function () { goTo('experience'); } },
+      { label: 'Go to Skills',      hint: '#skills',    run: function () { goTo('skills'); } },
+      { label: 'Go to Contact',     hint: '#contact',   run: function () { goTo('contact'); } },
+      { label: 'Copy email',        hint: EMAIL,        run: copyEmail },
+      { label: 'GitHub',            hint: 'github.com/amboffman', run: function () { window.open('https://github.com/amboffman', '_blank', 'noopener'); } },
+      { label: 'LinkedIn',          hint: 'linkedin.com/in/anthonyboffman', run: function () { window.open('https://linkedin.com/in/anthonyboffman', '_blank', 'noopener'); } }
+    ];
+
+    var filtered = COMMANDS.slice();
+    var activeIndex = 0;
+    var isOpen = false;
+
+    function renderList() {
+      list.textContent = '';
+      if (filtered.length === 0) {
+        var empty = document.createElement('li');
+        empty.className = 'empty';
+        empty.textContent = 'no matches — try "work"';
+        list.appendChild(empty);
+        return;
+      }
+      filtered.forEach(function (cmd, idx) {
+        var li = document.createElement('li');
+        if (idx === activeIndex) li.className = 'active';
+        var label = document.createElement('span');
+        label.textContent = cmd.label;
+        var hint = document.createElement('span');
+        hint.className = 'hint';
+        hint.textContent = cmd.hint;
+        li.appendChild(label);
+        li.appendChild(hint);
+        li.addEventListener('click', function () { execute(cmd); });
+        li.addEventListener('mousemove', function () {
+          if (activeIndex !== idx) { activeIndex = idx; renderList(); }
+        });
+        list.appendChild(li);
+      });
+    }
+
+    function applyFilter() {
+      var q = input.value.trim().toLowerCase();
+      filtered = COMMANDS.filter(function (cmd) {
+        return (cmd.label + ' ' + cmd.hint).toLowerCase().indexOf(q) !== -1;
+      });
+      activeIndex = 0;
+      renderList();
+    }
+
+    function execute(cmd) {
+      closePalette();
+      cmd.run();
+    }
+
+    function openPalette() {
+      isOpen = true;
+      overlay.classList.add('open');
+      input.value = '';
+      applyFilter();
+      input.focus();
+    }
+
+    function closePalette() {
+      isOpen = false;
+      overlay.classList.remove('open');
+      input.blur();
+    }
+
+    // triggers
+    var keycap = document.getElementById('keycapBtn');
+    var ctaBtn = document.getElementById('ctaPalette');
+    if (keycap) keycap.addEventListener('click', openPalette);
+    if (ctaBtn) ctaBtn.addEventListener('click', openPalette);
+
+    document.addEventListener('keydown', function (e) {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        if (isOpen) { closePalette(); } else { openPalette(); }
+        return;
+      }
+      if (!isOpen) return;
+      if (e.key === 'Escape') {
+        e.preventDefault();
+        closePalette();
+      } else if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        if (filtered.length > 0) {
+          activeIndex = (activeIndex + 1) % filtered.length;
+          renderList();
+        }
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        if (filtered.length > 0) {
+          activeIndex = (activeIndex - 1 + filtered.length) % filtered.length;
+          renderList();
+        }
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        if (filtered.length > 0 && filtered[activeIndex]) execute(filtered[activeIndex]);
+      }
+    });
+
+    input.addEventListener('input', applyFilter);
+
+    // backdrop click closes; clicks inside the panel do not
+    overlay.addEventListener('mousedown', function (e) {
+      if (!panel.contains(e.target)) closePalette();
+    });
+
+    renderList();
+  })();
+})();
+</script>
+</body>
+</html>
