@@ -33,7 +33,7 @@
         { "@type": "CollegeOrUniversity", "name": "Pepperdine University" },
         { "@type": "CollegeOrUniversity", "name": "UC San Diego Extension" }
       ],
-      "knowsAbout": ["PHP", "TypeScript", "React", "Node.js", "GraphQL", "Docker", "AWS", "AI-assisted engineering"],
+      "knowsAbout": ["PHP", "TypeScript", "React", "Node.js", "GraphQL", "Docker", "AWS", "AI-assisted engineering", "Claude API tool use", "Model Context Protocol (MCP)", "LLM evaluation"],
       "sameAs": [
         "https://github.com/amboffman",
         "https://www.linkedin.com/in/anthonymboffman/"
@@ -51,9 +51,10 @@
             <a href="#" class="site-header__logo" aria-label="Anthony Boffman — home"><span class="tilde">~/</span>anthonyboffman</a>
             <nav class="site-header__nav" aria-label="Primary">
                 <a href="#work" class="site-header__link"><span class="idx">01</span>Work</a>
-                <a href="#experience" class="site-header__link"><span class="idx">02</span>Experience</a>
-                <a href="#skills" class="site-header__link"><span class="idx">03</span>Skills</a>
-                <a href="#contact" class="site-header__link"><span class="idx">04</span>Contact</a>
+                <a href="#projects" class="site-header__link"><span class="idx">02</span>Projects</a>
+                <a href="#experience" class="site-header__link"><span class="idx">03</span>Experience</a>
+                <a href="#skills" class="site-header__link"><span class="idx">04</span>Skills</a>
+                <a href="#contact" class="site-header__link"><span class="idx">05</span>Contact</a>
             </nav>
             <div class="site-header__right">
                 <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>OPEN TO WORK</span>
@@ -68,10 +69,11 @@
         <!-- Mobile Menu -->
         <div id="mobile-menu" class="mobile-menu">
             <a href="#work" class="mobile-menu__link"><span class="idx">01</span>Work</a>
-            <a href="#experience" class="mobile-menu__link"><span class="idx">02</span>Experience</a>
-            <a href="#skills" class="mobile-menu__link"><span class="idx">03</span>Skills</a>
-            <a href="#about" class="mobile-menu__link"><span class="idx">04</span>About</a>
-            <a href="#contact" class="mobile-menu__link"><span class="idx">05</span>Contact</a>
+            <a href="#projects" class="mobile-menu__link"><span class="idx">02</span>Projects</a>
+            <a href="#experience" class="mobile-menu__link"><span class="idx">03</span>Experience</a>
+            <a href="#skills" class="mobile-menu__link"><span class="idx">04</span>Skills</a>
+            <a href="#about" class="mobile-menu__link"><span class="idx">05</span>About</a>
+            <a href="#contact" class="mobile-menu__link"><span class="idx">06</span>Contact</a>
         </div>
     </header>
 
@@ -232,6 +234,85 @@
             </div>
         </section>
 
+        <!-- Projects: AI builds -->
+        <section id="projects" class="section cv-auto">
+            <div class="section__inner">
+                <div class="section__head">
+                    <h2 class="section__title"><span class="slashes">//</span>AI Builds</h2>
+                    <p class="section__meta">$ gh repo list amboffman --topic=ai</p>
+                </div>
+                <p class="section__intro">Client work shows impact; these show range. Production-grade AI products built end to end — hand-rolled Claude tool loops, MCP servers, deterministic eval harnesses, cost telemetry — open source, with the architecture decisions written down. Every number below comes from a real eval run.</p>
+
+                <article class="proj-card reveal">
+                    <div class="proj-card__header">
+                        <a class="proj-card__repo" href="https://github.com/amboffman/Venue-Insights-Platform" target="_blank" rel="noopener noreferrer"><span class="owner">amboffman/</span>venue-insights-platform</a>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--live">LIVE_DEMO</span>
+                            <span class="proj-badge">OPEN_SOURCE</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__grid">
+                        <div>
+                            <h3 class="proj-card__title">Venue Insights — conversational BI with a grounded AI analyst</h3>
+                            <p class="proj-card__desc">A business-intelligence dashboard where the AI analyst sees what you see. Filter a 50-location portfolio, ask about any chart, and every answer is grounded in live database tool calls — with each conversation metered to the microdollar.</p>
+                            <ul class="proj-card__list">
+                                <li><strong>Hand-rolled Claude tool loop</strong> on the raw Anthropic SDK — streaming, parallel tool execution, error recovery, deliberately no framework.</li>
+                                <li><strong>One tool implementation, two transports:</strong> the in-app loop and a stdio MCP server that Claude Desktop can attach to — zero schema duplication.</li>
+                                <li><strong>Deterministic generative UI</strong> — the model only picks tools and arguments; a typed React component registry renders the results. Testable, XSS-safe.</li>
+                                <li><strong>Evals + observability:</strong> 24 golden cases scored by deterministic scorers; OpenTelemetry GenAI spans feed a live cost dashboard and a daily budget circuit-breaker.</li>
+                            </ul>
+                            <p class="proj-card__tags">TypeScript<span class="sep">·</span>Next.js 16<span class="sep">·</span>Anthropic SDK<span class="sep">·</span>MCP<span class="sep">·</span>Postgres / Drizzle<span class="sep">·</span>OpenTelemetry</p>
+                            <div class="proj-card__links">
+                                <a class="mono-link" href="https://venue-insights-platform.vercel.app" target="_blank" rel="noopener noreferrer">open live demo →</a>
+                                <a class="mono-link" href="https://github.com/amboffman/Venue-Insights-Platform" target="_blank" rel="noopener noreferrer">read the source →</a>
+                            </div>
+                        </div>
+                        <aside class="proj-card__stats" aria-label="Venue Insights eval metrics">
+                            <p class="proj-card__stats-title">pnpm eval · claude-sonnet-5</p>
+                            <div class="proj-stat"><span class="proj-stat__value">0.96</span><span class="proj-stat__label">tool-argument correctness across 24 golden cases</span></div>
+                            <div class="proj-stat"><span class="proj-stat__value">0.87</span><span class="proj-stat__label">groundedness — zero invented dollar figures</span></div>
+                            <div class="proj-stat"><span class="proj-stat__value">123</span><span class="proj-stat__label">tests in CI — real SQL on in-memory Postgres</span></div>
+                            <div class="proj-stat"><span class="proj-stat__value">17.3k</span><span class="proj-stat__label">seeded metric rows, fully deterministic</span></div>
+                        </aside>
+                    </div>
+                </article>
+
+                <article class="proj-card reveal reveal--d1">
+                    <div class="proj-card__header">
+                        <a class="proj-card__repo" href="https://github.com/amboffman/asknearby" target="_blank" rel="noopener noreferrer"><span class="owner">amboffman/</span>asknearby</a>
+                        <div class="proj-card__badges">
+                            <span class="proj-badge proj-badge--live">LIVE_DEMO</span>
+                            <span class="proj-badge">OPEN_SOURCE</span>
+                        </div>
+                    </div>
+                    <div class="proj-card__grid">
+                        <div>
+                            <h3 class="proj-card__title">AskNearby — natural-language store locator for franchise chains</h3>
+                            <p class="proj-card__desc">A white-label locator where you just say what you're looking for — &ldquo;a men's department and free parking near Columbus&rdquo; — and get a synced map and list. The architectural bet: <strong>the AI is a query translator, not an answer generator</strong>, so hours, addresses, and distances can never be hallucinated.</p>
+                            <ul class="proj-card__list">
+                                <li><strong>One forced tool call</strong> (Vercel AI SDK) turns a sentence into a zod-validated typed query — the attribute enum is generated from the database, so the model can't invent filters.</li>
+                                <li><strong>Deterministic downstream:</strong> Postgres + PostGIS answers; the parsed query renders as removable chips whose edits re-run the search without ever touching the model.</li>
+                                <li><strong>Swappable by design:</strong> Claude ↔ Gemini, Google Maps ↔ MapLibre — each a one-env-var change behind ports-and-adapters boundaries.</li>
+                                <li><strong>Cost armor:</strong> per-IP rate limits and a daily AI budget breaker enforced in Postgres; evals scored field-by-field with no LLM judges.</li>
+                            </ul>
+                            <p class="proj-card__tags">TypeScript<span class="sep">·</span>Next.js 16<span class="sep">·</span>Vercel AI SDK<span class="sep">·</span>Claude Haiku 4.5<span class="sep">·</span>PostGIS / Drizzle<span class="sep">·</span>MapLibre</p>
+                            <div class="proj-card__links">
+                                <a class="mono-link" href="https://asknearby.vercel.app" target="_blank" rel="noopener noreferrer">open live demo →</a>
+                                <a class="mono-link" href="https://github.com/amboffman/asknearby" target="_blank" rel="noopener noreferrer">read the source →</a>
+                            </div>
+                        </div>
+                        <aside class="proj-card__stats" aria-label="AskNearby eval metrics">
+                            <p class="proj-card__stats-title">pnpm eval · claude-haiku-4-5</p>
+                            <div class="proj-stat"><span class="proj-stat__value">20/20</span><span class="proj-stat__label">golden natural-language cases translated correctly</span></div>
+                            <div class="proj-stat"><span class="proj-stat__value">967ms</span><span class="proj-stat__label">mean sentence → query latency</span></div>
+                            <div class="proj-stat"><span class="proj-stat__value">&lt;$0.002</span><span class="proj-stat__label">AI cost per search — chip edits are free</span></div>
+                            <div class="proj-stat"><span class="proj-stat__value">89</span><span class="proj-stat__label">tests in two tiers — CI never calls a paid API</span></div>
+                        </aside>
+                    </div>
+                </article>
+            </div>
+        </section>
+
         <!-- Experience: git log -->
         <section id="experience" class="section cv-auto">
             <div class="section__inner">
@@ -357,7 +438,7 @@
                     </div>
                     <div class="skill-group reveal">
                         <p class="skill-group__name">AI Leverage</p>
-                        <div class="skill-group__chips"><span class="chip">AI-assisted development</span><span class="chip">LLM integration</span><span class="chip">Prompt engineering</span><span class="chip">AI code review</span></div>
+                        <div class="skill-group__chips"><span class="chip">Claude tool use / agent loops</span><span class="chip">MCP servers</span><span class="chip">LLM eval harnesses</span><span class="chip">AI-assisted development</span><span class="chip">Prompt engineering</span><span class="chip">AI code review</span></div>
                     </div>
                     <div class="skill-group reveal">
                         <p class="skill-group__name">Ways of Working</p>
@@ -509,7 +590,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="iterm__hint">try: <span class="cmd">help</span> · <span class="cmd">skills</span> · <span class="cmd">resume</span> · <span class="cmd">email</span> · <span class="cmd">sudo hire</span></p>
+                        <p class="iterm__hint">try: <span class="cmd">help</span> · <span class="cmd">projects</span> · <span class="cmd">skills</span> · <span class="cmd">email</span> · <span class="cmd">sudo hire</span></p>
                     </div>
 
                     <div>
@@ -800,12 +881,13 @@
 
       var COMMANDS = [
         { idx: '01', label: 'Go to: Work', run: function () { location.hash = '#work'; } },
-        { idx: '02', label: 'Go to: Experience', run: function () { location.hash = '#experience'; } },
-        { idx: '03', label: 'Go to: Skills', run: function () { location.hash = '#skills'; } },
-        { idx: '04', label: 'Go to: About', run: function () { location.hash = '#about'; } },
-        { idx: '05', label: 'Go to: Diagnostics', run: function () { location.hash = '#diagnostics'; } },
-        { idx: '06', label: 'Go to: Peer Reviews', run: function () { location.hash = '#reviews'; } },
-        { idx: '07', label: 'Go to: Contact', run: function () { location.hash = '#contact'; } },
+        { idx: '02', label: 'Go to: Projects — AI Builds', run: function () { location.hash = '#projects'; } },
+        { idx: '03', label: 'Go to: Experience', run: function () { location.hash = '#experience'; } },
+        { idx: '04', label: 'Go to: Skills', run: function () { location.hash = '#skills'; } },
+        { idx: '05', label: 'Go to: About', run: function () { location.hash = '#about'; } },
+        { idx: '06', label: 'Go to: Diagnostics', run: function () { location.hash = '#diagnostics'; } },
+        { idx: '07', label: 'Go to: Peer Reviews', run: function () { location.hash = '#reviews'; } },
+        { idx: '08', label: 'Go to: Contact', run: function () { location.hash = '#contact'; } },
         { idx: '>_', label: 'Focus the terminal', run: function () { location.hash = '#home'; setTimeout(function () { document.getElementById('hero-input').focus(); }, 400); } },
         { idx: '@', label: 'Copy email address', run: copyEmail },
         { idx: '↗', label: 'Open GitHub — github.com/amboffman', run: function () { window.open('https://github.com/amboffman', '_blank', 'noopener'); } },
@@ -951,6 +1033,7 @@
             shell.print('available commands:');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;who is this guy');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;core stack');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">projects</strong>&nbsp;&nbsp;&nbsp;ai builds, open source');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">experience</strong>&nbsp;career log');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">resume</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the highlights');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">email</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy my address');
@@ -971,6 +1054,13 @@
             shell.print('<span class="check" style="color:var(--green)">✓</span>React · React Native · Next.js · Node.js · GraphQL');
             shell.print('<span class="check" style="color:var(--green)">✓</span>Docker · AWS · CI/CD · MySQL · MongoDB');
             shell.print('<span class="check" style="color:var(--green)">✓</span>AI-assisted development, end to end');
+          },
+          projects: function () {
+            shell.print('<span class="arrow">›</span><strong style="color:var(--text)">venue-insights</strong> — conversational BI · hand-rolled Claude tool loop · MCP server');
+            shell.print('&nbsp;&nbsp;<a href="https://venue-insights-platform.vercel.app" target="_blank" rel="noopener noreferrer">live demo</a> · <a href="https://github.com/amboffman/Venue-Insights-Platform" target="_blank" rel="noopener noreferrer">source</a>');
+            shell.print('<span class="arrow">›</span><strong style="color:var(--text)">asknearby</strong> — natural-language store locator · AI as query translator');
+            shell.print('&nbsp;&nbsp;<a href="https://asknearby.vercel.app" target="_blank" rel="noopener noreferrer">live demo</a> · <a href="https://github.com/amboffman/asknearby" target="_blank" rel="noopener noreferrer">source</a>');
+            shell.print('full specs: <a href="#projects">#projects</a>');
           },
           experience: function () {
             shell.print('f81c2e4 <strong style="color:var(--text)">Qualtrics</strong> — Application Developer III (2021–now)');
