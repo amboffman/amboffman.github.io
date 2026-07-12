@@ -1,0 +1,193 @@
+/* ============================================================
+   Blog — loaded only on /blog pages, on top of reset.css + style.css.
+   Reuses the design tokens from style.css (:root / body.high-contrast).
+   ============================================================ */
+
+/* ---------- Header (no JS on blog pages: border always on, nav always visible) ---------- */
+.blog-header { border-bottom: 1px solid var(--border); }
+.blog-nav { display: flex; gap: 24px; }
+
+.blog-main { padding-top: var(--header-h); }
+
+/* ---------- Blog index ---------- */
+.blog-index {
+  max-width: 840px;
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+}
+.blog-index .section__intro { margin-bottom: 40px; }
+.feed-link { color: inherit; text-decoration: none; }
+.feed-link:hover { color: var(--cyan); }
+
+.post-list { display: flex; flex-direction: column; gap: 14px; }
+.post-list__empty { padding: 32px 0; }
+
+.post-item {
+  display: grid;
+  grid-template-columns: 110px 1fr auto;
+  align-items: baseline;
+  gap: 20px;
+  padding: 22px 24px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  text-decoration: none;
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+}
+.post-item:hover {
+  border-color: var(--border-strong);
+  background: var(--surface-2);
+  transform: translateY(-2px);
+}
+.post-item__date { letter-spacing: 0.08em; color: var(--subtle); }
+.post-item__title {
+  font-size: 19px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 4px;
+}
+.post-item:hover .post-item__title { color: var(--cyan); }
+.post-item__desc { color: var(--muted); font-size: 15px; line-height: 1.55; }
+.post-item__arrow {
+  font-family: var(--font-mono);
+  color: var(--subtle);
+  align-self: center;
+  transition: color 0.2s, transform 0.2s;
+}
+.post-item:hover .post-item__arrow { color: var(--cyan); transform: translateX(3px); }
+
+/* ---------- Post page ---------- */
+.post {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 72px 24px 96px;
+}
+.post__eyebrow { margin-bottom: 18px; }
+.post__eyebrow .slashes { color: var(--cyan); }
+.post__title {
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+.post__desc {
+  color: var(--muted);
+  font-size: 18px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+.post__head { padding-bottom: 28px; border-bottom: 1px solid var(--border); margin-bottom: 36px; }
+
+/* ---------- Post body typography (rendered markdown) ---------- */
+.post__body { font-size: 17px; line-height: 1.75; color: var(--text); }
+.post__body > * + * { margin-top: 1.15em; }
+
+.post__body h2, .post__body h3, .post__body h4 {
+  font-weight: 700;
+  line-height: 1.3;
+  margin-top: 2em;
+}
+.post__body h2 { font-size: 26px; letter-spacing: -0.01em; }
+.post__body h2::before { content: '// '; color: var(--cyan); font-family: var(--font-mono); font-size: 0.8em; }
+.post__body h3 { font-size: 21px; }
+.post__body h4 { font-size: 17px; font-family: var(--font-mono); letter-spacing: 0.04em; }
+
+.post__body a { color: var(--cyan); text-decoration: underline; text-underline-offset: 3px; }
+.post__body a:hover { text-decoration: none; }
+
+.post__body ul, .post__body ol { padding-left: 26px; }
+.post__body ul { list-style: none; }
+.post__body ul > li { position: relative; }
+.post__body ul > li::before { content: '›'; position: absolute; left: -20px; color: var(--cyan); font-family: var(--font-mono); }
+.post__body ol { list-style: decimal; }
+.post__body li + li { margin-top: 0.5em; }
+.post__body li::marker { color: var(--cyan); font-family: var(--font-mono); }
+
+.post__body blockquote {
+  border-left: 3px solid var(--cyan);
+  background: var(--surface);
+  padding: 16px 22px;
+  border-radius: 0 var(--radius) var(--radius) 0;
+  color: var(--muted);
+  font-style: italic;
+}
+
+.post__body img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+.post__body hr { border: none; border-top: 1px solid var(--border); margin: 2.2em 0; }
+
+.post__body code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--surface-2);
+  border: 1px solid var(--border);
+  border-radius: 5px;
+  padding: 2px 6px;
+  color: var(--green);
+}
+.post__body pre {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+.post__body pre code { background: none; border: none; padding: 0; color: var(--text); font-size: 13.5px; }
+
+.post__body table { width: 100%; border-collapse: collapse; font-size: 15px; display: block; overflow-x: auto; }
+.post__body th, .post__body td { border: 1px solid var(--border); padding: 8px 12px; text-align: left; }
+.post__body th { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); background: var(--surface); }
+
+.post__body figcaption {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--subtle);
+  margin-top: 10px;
+}
+
+/* Rouge syntax highlighting — minimal terminal palette */
+.highlight .c, .highlight .c1, .highlight .cm { color: var(--subtle); font-style: italic; } /* comments */
+.highlight .k, .highlight .kd, .highlight .kn, .highlight .kw { color: var(--cyan); }       /* keywords */
+.highlight .s, .highlight .s1, .highlight .s2, .highlight .sb { color: var(--green); }      /* strings */
+.highlight .mi, .highlight .mf, .highlight .mh { color: var(--amber); }                     /* numbers */
+.highlight .nf, .highlight .nx { color: var(--text); }
+.highlight .nt, .highlight .nc { color: var(--cyan); }
+
+/* ---------- Post footer ---------- */
+.post__foot {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+.post__back, .post__share {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.post__back:hover, .post__share:hover { color: var(--cyan); }
+.post__back .arrow { color: var(--cyan); margin-right: 6px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .blog-nav { gap: 14px; }
+  .blog-nav .site-header__link--optional { display: none; } /* header must fit a 360px viewport */
+  .blog-index, .post { padding-top: 48px; }
+  .post-item { grid-template-columns: 1fr; gap: 8px; padding: 18px 18px; }
+  .post-item__arrow { display: none; }
+  .post__body { font-size: 16px; }
+}

@@ -1,0 +1,32 @@
+# Jekyll config — GitHub Pages builds this automatically on push.
+# The main site (index.html, style.css, assets/) has no front matter and is
+# passed through untouched; Jekyll only renders the blog (blog/_posts/*.md).
+
+url: "https://anthonyboffman.com"
+title: Anthony Boffman
+description: Senior Fullstack Engineer — enterprise systems, shipped with AI leverage.
+
+timezone: America/Los_Angeles
+future: true # never silently drop a same-day post over a timezone mismatch
+
+# Post URLs: blog/_posts/2026-07-11-my-post.md → /blog/my-post/
+permalink: /blog/:title/
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed # /feed.xml — GitHub Pages whitelisted, zero config
+
+defaults:
+  - scope:
+      type: posts
+    values:
+      layout: post
+
+exclude:
+  - CLAUDE.md
+  - README.md
+  - design-mockups/README.md

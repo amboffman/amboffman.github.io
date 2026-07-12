@@ -54,7 +54,8 @@
                 <a href="#projects" class="site-header__link"><span class="idx">02</span>Projects</a>
                 <a href="#experience" class="site-header__link"><span class="idx">03</span>Experience</a>
                 <a href="#skills" class="site-header__link"><span class="idx">04</span>Skills</a>
-                <a href="#contact" class="site-header__link"><span class="idx">05</span>Contact</a>
+                <a href="/blog/" class="site-header__link"><span class="idx">05</span>Blog</a>
+                <a href="#contact" class="site-header__link"><span class="idx">06</span>Contact</a>
             </nav>
             <div class="site-header__right">
                 <span class="status-pill"><span class="status-dot" aria-hidden="true"></span>OPEN TO WORK</span>
@@ -73,7 +74,8 @@
             <a href="#experience" class="mobile-menu__link"><span class="idx">03</span>Experience</a>
             <a href="#skills" class="mobile-menu__link"><span class="idx">04</span>Skills</a>
             <a href="#about" class="mobile-menu__link"><span class="idx">05</span>About</a>
-            <a href="#contact" class="mobile-menu__link"><span class="idx">06</span>Contact</a>
+            <a href="/blog/" class="mobile-menu__link"><span class="idx">06</span>Blog</a>
+            <a href="#contact" class="mobile-menu__link"><span class="idx">07</span>Contact</a>
         </div>
     </header>
 
@@ -624,6 +626,7 @@
         <div class="site-footer__inner">
             <p>© 2026 Anthony Boffman · built by hand in San Diego, CA · <span style="color:var(--green)">zero frameworks, AI in the loop</span></p>
             <div class="site-footer__links">
+                <a href="/blog/">blog</a>
                 <a href="mailto:aboffmanengineering@gmail.com">email</a>
                 <a href="https://github.com/amboffman" target="_blank" rel="noopener noreferrer">github</a>
                 <a href="https://www.linkedin.com/in/anthonymboffman/" target="_blank" rel="noopener noreferrer">linkedin</a>
@@ -888,6 +891,7 @@
         { idx: '06', label: 'Go to: Diagnostics', run: function () { location.hash = '#diagnostics'; } },
         { idx: '07', label: 'Go to: Peer Reviews', run: function () { location.hash = '#reviews'; } },
         { idx: '08', label: 'Go to: Contact', run: function () { location.hash = '#contact'; } },
+        { idx: '~/', label: 'Go to: Blog — dev log', run: function () { location.href = '/blog/'; } },
         { idx: '>_', label: 'Focus the terminal', run: function () { location.hash = '#home'; setTimeout(function () { document.getElementById('hero-input').focus(); }, 400); } },
         { idx: '@', label: 'Copy email address', run: copyEmail },
         { idx: '↗', label: 'Open GitHub — github.com/amboffman', run: function () { window.open('https://github.com/amboffman', '_blank', 'noopener'); } },
@@ -1034,6 +1038,7 @@
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">about</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;who is this guy');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">skills</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;core stack');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">projects</strong>&nbsp;&nbsp;&nbsp;ai builds, open source');
+            shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">blog</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;dev log');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">experience</strong>&nbsp;career log');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">resume</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;the highlights');
             shell.print('&nbsp;&nbsp;<strong style="color:var(--cyan)">email</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;copy my address');
@@ -1061,6 +1066,10 @@
             shell.print('<span class="arrow">›</span><strong style="color:var(--text)">asknearby</strong> — natural-language store locator · AI as query translator');
             shell.print('&nbsp;&nbsp;<a href="https://asknearby.vercel.app" target="_blank" rel="noopener noreferrer">live demo</a> · <a href="https://github.com/amboffman/asknearby" target="_blank" rel="noopener noreferrer">source</a>');
             shell.print('full specs: <a href="#projects">#projects</a>');
+          },
+          blog: function () {
+            shell.print('<span class="arrow">›</span>dev log — notes on enterprise engineering + AI-assisted development');
+            shell.print('<a href="/blog/">anthonyboffman.com/blog</a>');
           },
           experience: function () {
             shell.print('f81c2e4 <strong style="color:var(--text)">Qualtrics</strong> — Application Developer III (2021–now)');

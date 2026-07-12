@@ -1,0 +1,42 @@
+# Pages CMS configuration — https://pagescms.org/docs/configuration
+# Dashboard: sign in with GitHub at https://app.pagescms.org and open this repo.
+# Publishing from the dashboard commits markdown to blog/_posts/ and uploads
+# images to assets/blog/; GitHub Pages (Jekyll) rebuilds the site on push.
+
+media:
+  input: assets/blog
+  output: /assets/blog
+
+content:
+  - name: posts
+    label: Blog posts
+    type: collection
+    path: blog/_posts
+    filename: "{year}-{month}-{day}-{fields.title}.md" # Jekyll requires the date prefix
+    view:
+      fields: [title, date, description]
+      primary: title
+      sort: [date, title]
+      default:
+        sort: date
+        order: desc
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Publish date
+        type: date
+        required: true
+      - name: description
+        label: Description
+        description: One or two sentences. Shown on the blog index and used as the LinkedIn/SEO preview text.
+        type: text
+      - name: image
+        label: Social card image
+        description: Optional — the image on the LinkedIn preview card (1200×630 works best). Defaults to the site og-image if empty.
+        type: image
+      - name: body
+        label: Body
+        type: rich-text

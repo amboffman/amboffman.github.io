@@ -1,0 +1,62 @@
+---
+title: Blog
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog — Anthony Boffman</title>
+    <meta name="description" content="Dev log from Anthony Boffman — notes on enterprise fullstack engineering, AI-assisted development, and shipping real systems.">
+    <link rel="canonical" href="{{ '/blog/' | absolute_url }}">
+    <meta name="theme-color" content="#0a0f14">
+    <meta property="og:title" content="Blog — Anthony Boffman">
+    <meta property="og:description" content="Dev log — notes on enterprise fullstack engineering, AI-assisted development, and shipping real systems.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="{{ '/blog/' | absolute_url }}">
+    <meta property="og:image" content="{{ '/assets/og-image.png' | absolute_url }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="alternate" type="application/atom+xml" title="Anthony Boffman — Blog" href="{{ '/feed.xml' | absolute_url }}">
+    <link rel="preload" href="/assets/fonts/space-grotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/blog.css">
+</head>
+<body>
+    <script>try { if (localStorage.getItem('hc') === '1') document.body.classList.add('high-contrast'); } catch (e) {}</script>
+
+    {% include blog-header.html %}
+
+    <main id="main" class="blog-main">
+        <div class="blog-index">
+            <div class="section__head">
+                <h1 class="section__title"><span class="slashes">//</span>Dev Log</h1>
+                <p class="section__meta"><span class="ok">●</span> {{ site.posts.size }}_POST{% unless site.posts.size == 1 %}S{% endunless %} · <a class="feed-link" href="/feed.xml">RSS</a></p>
+            </div>
+            <p class="section__intro">Notes from the field — enterprise fullstack engineering, AI-assisted development, and what actually ships.</p>
+
+            {% if site.posts.size == 0 %}
+            <p class="post-list__empty mono-label">// no entries yet — first post compiling…</p>
+            {% endif %}
+
+            <div class="post-list">
+                {% for post in site.posts %}
+                <a class="post-item" href="{{ post.url }}">
+                    <p class="post-item__date mono-label"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time></p>
+                    <div>
+                        <h2 class="post-item__title">{{ post.title }}</h2>
+                        {% if post.description %}<p class="post-item__desc">{{ post.description }}</p>{% endif %}
+                    </div>
+                    <span class="post-item__arrow" aria-hidden="true">›</span>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+
+    {% include blog-footer.html %}
+
+</body>
+</html>

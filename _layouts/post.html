@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {%- assign og_image = page.image | default: '/assets/og-image.png' -%}
+    {%- assign page_desc = page.description | default: site.description | strip_newlines -%}
+    <title>{{ page.title | escape }} — Anthony Boffman</title>
+    <meta name="description" content="{{ page_desc | escape }}">
+    <link rel="canonical" href="{{ page.url | absolute_url }}">
+    <meta name="theme-color" content="#0a0f14">
+    <meta property="og:title" content="{{ page.title | escape }}">
+    <meta property="og:description" content="{{ page_desc | escape }}">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="{{ page.url | absolute_url }}">
+    <meta property="og:image" content="{{ og_image | absolute_url }}">
+    <meta property="og:site_name" content="Anthony Boffman">
+    <meta property="article:published_time" content="{{ page.date | date_to_xmlschema }}">
+    <meta property="article:author" content="Anthony Boffman">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/x-icon" href="/assets/favicon.ico">
+    <link rel="alternate" type="application/atom+xml" title="Anthony Boffman — Blog" href="{{ '/feed.xml' | absolute_url }}">
+    <link rel="preload" href="/assets/fonts/space-grotesk-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/jetbrains-mono-var-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="stylesheet" href="/blog.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": {{ page.title | jsonify }},
+      "description": {{ page_desc | jsonify }},
+      "datePublished": {{ page.date | date_to_xmlschema | jsonify }},
+      "url": {{ page.url | absolute_url | jsonify }},
+      "image": {{ og_image | absolute_url | jsonify }},
+      "author": { "@type": "Person", "name": "Anthony Boffman", "url": "https://anthonyboffman.com" }
+    }
+    </script>
+</head>
+<body>
+    <script>try { if (localStorage.getItem('hc') === '1') document.body.classList.add('high-contrast'); } catch (e) {}</script>
+
+    {% include blog-header.html %}
+
+    <main id="main" class="blog-main">
+        <article class="post">
+            <header class="post__head">
+                <p class="mono-label post__eyebrow"><span class="slashes">//</span> DEV_LOG · <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>{% assign words = content | strip_html | number_of_words %} · {{ words | divided_by: 200 | at_least: 1 }}_MIN_READ</p>
+                <h1 class="post__title">{{ page.title }}</h1>
+                {% if page.description %}<p class="post__desc">{{ page.description }}</p>{% endif %}
+            </header>
+
+            <div class="post__body">
+                {{ content }}
+            </div>
+
+            <footer class="post__foot">
+                <a class="post__back" href="/blog/"><span class="arrow">‹</span> cd ../blog</a>
+                <a class="post__share" href="https://www.linkedin.com/sharing/share-offsite/?url={{ page.url | absolute_url | url_encode }}" target="_blank" rel="noopener noreferrer">share on LinkedIn ↗</a>
+            </footer>
+        </article>
+    </main>
+
+    {% include blog-footer.html %}
+
+</body>
+</html>
