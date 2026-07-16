@@ -701,6 +701,63 @@
         }
       });
 
+      /* ---------- Accurate anchor jumps (content-visibility) ---------- */
+      // Skipped .cv-auto sections stand in at placeholder height (720px), so
+      // native fragment scrolls land off-target — badly on mobile, where real
+      // sections are much taller. Render them for real before any in-page
+      // navigation, then restore the hint once the scroll settles
+      // (contain-intrinsic-size: auto keeps the measured sizes, so nothing shifts).
+      var cvSections = Array.prototype.slice.call(document.querySelectorAll('.cv-auto'));
+      var cvRestoreTimer = null;
+      function cvRestoreSoon() {
+        clearTimeout(cvRestoreTimer);
+        cvRestoreTimer = setTimeout(function () {
+          window.removeEventListener('scroll', cvRestoreSoon);
+          cvSections.forEach(function (el) { el.style.contentVisibility = ''; });
+        }, 400);
+      }
+      function cvForceRender() {
+        cvSections.forEach(function (el) { el.style.contentVisibility = 'visible'; });
+        void document.documentElement.offsetHeight; // flush layout so anchor positions are real
+        window.addEventListener('scroll', cvRestoreSoon, { passive: true });
+        cvRestoreSoon();
+      }
+      var selfNavAt = 0; // timestamp of our own navigations, so hashchange can tell them from back/forward
+      function goTo(hash) {
+        cvForceRender();
+        if (location.hash === hash) {
+          var el = document.getElementById(hash.slice(1));
+          if (el) el.scrollIntoView();
+        } else {
+          selfNavAt = Date.now();
+          location.hash = hash;
+        }
+      }
+      document.addEventListener('click', function (e) {
+        var a = e.target.closest('a[href^="#"]');
+        if (a && a.hash && a.hash.length > 1 && document.getElementById(a.hash.slice(1))) {
+          selfNavAt = Date.now();
+          cvForceRender();
+        }
+      });
+      window.addEventListener('hashchange', function () {
+        if (Date.now() - selfNavAt < 1000) return; // our own jump — layout already rendered
+        // External change (back/forward, URL edit): render real layout but leave
+        // the browser's own scroll (restoration or fragment jump) untouched.
+        if (location.hash.length > 1 && document.getElementById(location.hash.slice(1))) cvForceRender();
+      });
+      if (location.hash.length > 1) {
+        (function () {
+          var el = document.getElementById(location.hash.slice(1));
+          if (!el) return;
+          cvForceRender();
+          var root = document.documentElement;
+          root.style.scrollBehavior = 'auto'; // land instantly on page load
+          el.scrollIntoView();
+          root.style.scrollBehavior = '';
+        })();
+      }
+
       /* ---------- High contrast (persisted) ---------- */
       var contrastToggle = document.getElementById('contrast-toggle');
       function setContrast(on, persist) {
@@ -885,16 +942,16 @@
       var lastFocus = null;
 
       var COMMANDS = [
-        { idx: '01', label: 'Go to: Work', run: function () { location.hash = '#work'; } },
-        { idx: '02', label: 'Go to: Projects — AI Builds', run: function () { location.hash = '#projects'; } },
-        { idx: '03', label: 'Go to: Experience', run: function () { location.hash = '#experience'; } },
-        { idx: '04', label: 'Go to: Skills', run: function () { location.hash = '#skills'; } },
-        { idx: '05', label: 'Go to: About', run: function () { location.hash = '#about'; } },
-        { idx: '06', label: 'Go to: Diagnostics', run: function () { location.hash = '#diagnostics'; } },
-        { idx: '07', label: 'Go to: Peer Reviews', run: function () { location.hash = '#reviews'; } },
-        { idx: '08', label: 'Go to: Contact', run: function () { location.hash = '#contact'; } },
+        { idx: '01', label: 'Go to: Work', run: function () { goTo('#work'); } },
+        { idx: '02', label: 'Go to: Projects — AI Builds', run: function () { goTo('#projects'); } },
+        { idx: '03', label: 'Go to: Experience', run: function () { goTo('#experience'); } },
+        { idx: '04', label: 'Go to: Skills', run: function () { goTo('#skills'); } },
+        { idx: '05', label: 'Go to: About', run: function () { goTo('#about'); } },
+        { idx: '06', label: 'Go to: Diagnostics', run: function () { goTo('#diagnostics'); } },
+        { idx: '07', label: 'Go to: Peer Reviews', run: function () { goTo('#reviews'); } },
+        { idx: '08', label: 'Go to: Contact', run: function () { goTo('#contact'); } },
         { idx: '~/', label: 'Go to: Blog — dev log', run: function () { location.href = '/blog/'; } },
-        { idx: '>_', label: 'Focus the terminal', run: function () { location.hash = '#home'; setTimeout(function () { document.getElementById('hero-input').focus(); }, 400); } },
+        { idx: '>_', label: 'Focus the terminal', run: function () { goTo('#home'); setTimeout(function () { document.getElementById('hero-input').focus(); }, 400); } },
         { idx: '@', label: 'Copy email address', run: copyEmail },
         { idx: '↗', label: 'Open GitHub — github.com/amboffman', run: function () { window.open('https://github.com/amboffman', '_blank', 'noopener'); } },
         { idx: '↗', label: 'Open LinkedIn', run: function () { window.open('https://www.linkedin.com/in/anthonymboffman/', '_blank', 'noopener'); } },
@@ -1104,7 +1161,7 @@
           },
           contact: function () {
             shell.print('opening channel…');
-            location.hash = '#contact';
+            goTo('#contact');
             setTimeout(function () { document.getElementById('name').focus(); }, 400);
           },
           ai: function () {
@@ -1113,7 +1170,7 @@
           },
           'sudo hire': function () {
             shell.print('<span style="color:var(--green)">PERMISSION GRANTED</span> — routing to contact form…');
-            location.hash = '#contact';
+            goTo('#contact');
             setTimeout(function () { document.getElementById('name').focus(); }, 600);
           },
           clear: function () {
