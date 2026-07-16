@@ -801,6 +801,7 @@ html.js .reveal--d3 { transition-delay: 0.24s; }
 .about-photo img {
   display: block;
   width: 100%;
+  height: auto; /* the height attribute otherwise wins and disables aspect-ratio */
   aspect-ratio: 4 / 5;
   object-fit: cover;
   filter: grayscale(0.9) contrast(1.05) brightness(0.92);
@@ -1320,6 +1321,9 @@ textarea.contact-form__input { resize: vertical; min-height: 120px; }
 
 @media (max-width: 640px) {
   .stats-grid, .case-grid, .reviews-grid { grid-template-columns: 1fr; }
+  .about-grid { gap: 28px; }
+  .about-photo { max-width: none; }
+  .about-photo img { aspect-ratio: 16 / 10; object-position: center 15%; }
   .skill-group { grid-template-columns: 1fr; gap: 10px; }
   .hero { padding-top: calc(var(--header-h) + 32px); }
   .hero__title { font-size: clamp(32px, 9vw, 40px); }
