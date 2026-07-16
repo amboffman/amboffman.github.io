@@ -599,6 +599,8 @@
                         <form id="contact-form" class="contact-form" action="https://formsubmit.co/aboffmanengineering@gmail.com" method="POST">
                             <p class="contact-form__title"><span style="color:var(--cyan)">//</span> Send_Message</p>
                             <input type="hidden" name="_subject" value="New Portfolio Contact Form Submission!">
+                            <input type="hidden" name="_next" value="https://anthonyboffman.com/#contact">
+                            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden;">
                             <div class="contact-form__field">
                                 <label for="name" class="contact-form__label">--name</label>
                                 <input type="text" name="name" id="name" required class="contact-form__input" autocomplete="name">
@@ -981,12 +983,18 @@
         submitButton.disabled = true;
         submitButton.textContent = 'Sending…';
         formStatus.innerHTML = '';
-        fetch(contactForm.action, {
+        // fetch() must hit the /ajax/ endpoint — the plain one silently drops
+        // XHR posts (returns the homepage with a 200). Form action stays plain
+        // for the no-JS fallback.
+        fetch(contactForm.action.replace('formsubmit.co/', 'formsubmit.co/ajax/'), {
           method: 'POST',
           body: formData,
           headers: { 'Accept': 'application/json' }
         }).then(function (res) {
           if (!res.ok) throw new Error('HTTP ' + res.status);
+          return res.json();
+        }).then(function (data) {
+          if (String(data.success) !== 'true') throw new Error(data.message || 'FormSubmit rejected the submission');
           formStatus.innerHTML = '<span class="ok">✓ message sent — I\'ll get back to you within 24h.</span>';
           contactForm.reset();
         }).catch(function (err) {
